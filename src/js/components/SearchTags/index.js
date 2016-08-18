@@ -3,13 +3,6 @@ import { connect } from 'react-redux'
 
 import { filter } from '../../actions'
 
-const eventHandlers = ({ dispatch }) => ({
-	onChange: ({ target }) => {
-		console.log(target)
-		dispatch(filter.update(target))
-	},
-})
-
 const children = {
 
 	list({ id, label, value, name }) {
@@ -32,12 +25,11 @@ const children = {
 
 export const SearchTags = ({ props }) => {
 
-	const { onChange } = eventHandlers(props)
 	const { results } = props.store.search
 
-	if (results.length) return <form class="tags" onChange={onChange}>
+	if (results.length) return <div class="tags">
 		{ results.map((kind) => children.group(kind)) }
-	</form>
+	</div>
 	
 	else return <h1>Nothing</h1>
 

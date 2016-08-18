@@ -1,2 +1,2 @@
 export { SearchPanel } from './SearchPanel'
-// export MapBox from './MapBox'
+export MapBox from './MapBox'

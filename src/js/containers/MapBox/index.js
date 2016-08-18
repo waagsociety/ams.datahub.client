@@ -40,7 +40,7 @@ export default class MapBox extends React.Component {
   }
 
   render() {
-    return <div ref="map" id="map" className={styles.map}></div>
+    return <div ref="map" id="map"></div>
   }
 
 }
