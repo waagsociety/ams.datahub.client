@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { query, search } from '../../actions'
-import { SearchPanel, MapBox } from '../../containers'
+import { SearchPanel, QueryPath, MapBox } from '../../containers'
 
 @connect ((store) => ({ store }))
 export default class Browse extends React.Component {
@@ -12,27 +12,28 @@ export default class Browse extends React.Component {
     dispatch(query.initialise(location))
   }
 
-  onChange(event) {
+  onKeyUp(event) {
+    console.log(event)
+  }
 
+  onChange(event) {
     const { dispatch } = this.props
     const { name, value } = document.activeElement
-
     if (name === 'search') dispatch(search.query(value))
-
   }
 
   onSubmit(event) {
-    // event.preventDefault()
-    // console.log(event)
+    event.preventDefault()
   }
   
   render() {
 
     const { props } = this
-    const { onChange, onSubmit } = this
+    const { onChange, onSubmit, onKeyUp } = this
 
-    return <form onChange={onChange.bind(this)} onSubmit={onSubmit.bind(this)}>
+    return <form method='post' onChange={onChange.bind(this)} onSubmit={onSubmit.bind(this)}>
       <SearchPanel props={props} />
+      <QueryPath props={props} />
     </form>
 
   }

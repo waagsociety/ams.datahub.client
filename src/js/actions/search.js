@@ -4,6 +4,14 @@ export const search = {
 
 	query: (value) => (dispatch) => {
 
+    axios.get('http://138.201.141.84/rest/collections?name=Data.Amsterdam')
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
     if (value) axios.get("./assets/data/suggestions.json")
       .then((response) => {
         dispatch({

@@ -10,20 +10,26 @@ body { background: #222 }
 
 .tags { background: #eee }
 
-.panel { width: 28em }
+.panel { width: 24em }
 
-.panel { max-width: 80% }
+.panel .menu + .content { padding-top: 3.25rem }
 
-.panel .menu + div {
-	margin: 4.5em 0 0;
+#queries {
+	left: 24.5rem;
+	right: 0.5rem;
+	top: 0.5rem;
+	
 }
 
 .menu {
-	background: #eee;
+	background: rgba(240,240,240,0.96);
 	width: inherit;
+	max-width: inherit;
 	position: fixed;
 	border-bottom: 1px solid #ddd;
-	padding: 0.625em 1em;
+	padding: 0 1em;
+	top: inherit;
+	height: 3.5rem;
 }
 
 h1 { font-weight: normal }
@@ -69,14 +75,20 @@ label input[type=checkbox] { display: none }
 	padding: 0.5em;
 	border-radius: 0.325em;
 	outline: 0;
+	margin: 0.5rem 0;
 }
 
 .menu input:focus { background: #fff }
 
 .fixed { position: fixed }
 
-.fixed.panel { top: 1em }
-.fixed.panel { bottom: 1em }
-.fixed.primary.panel { left: 1em }
+.fixed.panel { top: 0.5rem }
+.fixed.panel { bottom: 0.5rem }
+.fixed.primary.panel { left: 0.5rem }
 
 body { margin: 0 }
+
+
+
+
+

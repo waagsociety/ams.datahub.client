@@ -1,4 +1,5 @@
 // export Filters from './Filters'
 
-export { Search } from './Search'
+export { SearchInput } from './SearchInput'
 export { SearchTags } from './SearchTags'
+export { QueryTags } from './QueryTags'
