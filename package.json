@@ -1,7 +1,7 @@
 {
-  "name": "react-tutorials",
-  "version": "0.0.0",
-  "description": "",
+  "name": "ams.datahub.client",
+  "version": "0.0.1",
+  "description": "The datahub browser will be a browser to view different datasets of the AMR.",
   "main": "webpack.config.js",
   "dependencies": {
     "axios": "^0.12.0",
