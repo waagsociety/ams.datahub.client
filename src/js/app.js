@@ -8,11 +8,13 @@ import store from './store'
 import { Browse, Results } from './pages'
 
 const history = syncHistoryWithStore(browserHistory, store);
+const deployBase = '/ams/amsclient'
 
 ReactDOM.render(
 	<Provider store={store}>
 		<Router history={history}>
-			<Route path='/ams/amsclient/' component={Browse}></Route>
+			<Route path={deployBase + '/'} component={Browse}></Route>
+			<Route path='/' component={Browse}></Route>
 		</Router>
 	</Provider>,
 document.querySelector('#app'))
