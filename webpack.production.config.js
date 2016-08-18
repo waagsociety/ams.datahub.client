@@ -1,11 +1,14 @@
-var debug = process.env.NODE_ENV !== "production";
-var webpack = require('webpack');
-var path = require('path');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   context: __dirname + '/src',
-  devtool: debug ? "inline-sourcemap" : null,
+  devtool: null,
   entry: "./js/app.js",
+  output: {
+    path: __dirname + '/dist',
+    filename: 'app.min.js',
+  },
   module: {
     loaders: [
       {
@@ -40,14 +43,5 @@ module.exports = {
       loader: 'transform',
       query: 'brfs',
     }],
-  },
-  output: {
-    path: "/",
-    filename: "app.min.js"
-  },
-  plugins: debug ? [] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-  ],
+  }
 };

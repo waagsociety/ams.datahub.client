@@ -4,7 +4,7 @@ export const search = {
 
 	query: (value) => (dispatch) => {
 
-    if (value) axios.get("http://localhost:8080/data/suggestions.json")
+    if (value) axios.get("./assets/data/suggestions.json")
       .then((response) => {
         dispatch({
           type: 'search-fulfilled',
