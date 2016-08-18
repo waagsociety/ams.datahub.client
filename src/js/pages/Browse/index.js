@@ -17,16 +17,13 @@ export default class Browse extends React.Component {
     const { dispatch } = this.props
     const { name, value } = document.activeElement
 
-    if (name === 'search'){
-      if (value) dispatch(search.query(value))
-      else dispatch(search.clear())
-    }
+    if (name === 'search') dispatch(search.query(value))
 
   }
 
   onSubmit(event) {
-    event.preventDefault()
-    console.log(event)
+    // event.preventDefault()
+    // console.log(event)
   }
   
   render() {
@@ -35,7 +32,6 @@ export default class Browse extends React.Component {
     const { onChange, onSubmit } = this
 
     return <form onChange={onChange.bind(this)} onSubmit={onSubmit.bind(this)}>
-      <MapBox />
       <SearchPanel props={props} />
     </form>
 

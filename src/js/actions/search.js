@@ -4,7 +4,7 @@ export const search = {
 
 	query: (value) => (dispatch) => {
 
-    axios.get("http://localhost:8080/data/suggestions.json")
+    if (value) axios.get("http://localhost:8080/data/suggestions.json")
       .then((response) => {
         dispatch({
           type: 'search-fulfilled',
@@ -17,12 +17,12 @@ export const search = {
           payload: error,
         })
       })
-  },
+    else dispatch({
+      type: 'search-cleared',
+      payload: [],
+    })  
 
-  clear: () => ({
-    type: 'search-cleared',
-    payload: []
-  }),
+  },
   
   testQuery: (value) => (dispatch) => {
     post()

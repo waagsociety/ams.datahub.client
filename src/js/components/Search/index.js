@@ -5,7 +5,7 @@ import { search } from '../../actions'
 
 export const Search = ({ props }) => {
 
-	return <div>
+	return <div class='fixed menu'>
 		<input type='text' name='search' placeholder='Search' />
 	</div>
 

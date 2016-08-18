@@ -26,6 +26,7 @@ const children = {
 export const SearchTags = ({ props }) => {
 
 	const { results } = props.store.search
+	console.log(results)
 
 	if (results.length) return <div class="tags">
 		{ results.map((kind) => children.group(kind)) }

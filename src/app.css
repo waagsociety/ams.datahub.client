@@ -8,13 +8,13 @@ body { font-family: sans-serif }
 
 body { background: #222 }
 
-.panel { background: #eee }
+.tags { background: #eee }
 
 .panel { width: 24em }
 
 .panel { max-width: 80% }
 
-.panel .menu + form {
+.panel .menu + div {
 	margin: 4.5em 0 0;
 }
 
@@ -71,8 +71,8 @@ label input[type=checkbox] { display: none }
 
 .fixed { position: fixed }
 
-.fixed.panel { top: 0 }
-.fixed.panel { bottom: 0 }
-.fixed.primary.panel { left: 0 }
+.fixed.panel { top: 1em }
+.fixed.panel { bottom: 1em }
+.fixed.primary.panel { left: 1em }
 
 body { margin: 0 }
