@@ -1,11 +1,6 @@
-# datahub_browser_front-end
-The datahub browser will be a browser to view different datasets of the AMR.
+# AMS Datahub Client interface
+A client interface for the AMS data platform that runs in the browser using React, Redux, and MapBox.
 
-Start
-- `npm install`
-
-To develop
-- `npm run dev`: runs development version at http://localhost:8080/
-
-To build (and deploy).
-- `npm run build`: creates and populates dist/ in the project root.
+- Run `npm install` to get started.
+- To develop run `npm run dev`, the app is hosted at http://localhost:8080/
+- Run `npm run build` to create a new build in /dist
