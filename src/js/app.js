@@ -8,7 +8,7 @@ import store from './store'
 import { Browse, Results } from './pages'
 
 const history = syncHistoryWithStore(browserHistory, store);
-const deployBase = '/ams/amsclient'
+const deployBase = '/ams/browse-data'
 
 ReactDOM.render(
 	<Provider store={store}>
