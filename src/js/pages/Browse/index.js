@@ -12,26 +12,20 @@ export default class Browse extends React.Component {
     dispatch(query.initialise(location))
   }
 
-  onKeyUp(event) {
-    console.log(event)
-  }
+  // onChange(event) {
+  //   const { dispatch } = this.props
+  //   const { name, value } = document.activeElement
+  //   if (name === 'search') dispatch(search.query(value))
+  // }
 
-  onChange(event) {
-    const { dispatch } = this.props
-    const { name, value } = document.activeElement
-    if (name === 'search') dispatch(search.query(value))
-  }
-
-  onSubmit(event) {
-    event.preventDefault()
-  }
+  onSubmit(event) { event.preventDefault() }
   
   render() {
 
     const { props } = this
     const { onChange, onSubmit, onKeyUp } = this
 
-    return <form method='post' onChange={onChange.bind(this)} onSubmit={onSubmit.bind(this)}>
+    return <form method='post' action='/' onSubmit={onSubmit.bind(this)}>
       <SearchPanel props={props} />
       <QueryPath props={props} />
     </form>

@@ -1,37 +1,46 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { filter } from '../../actions'
+import { query } from '../../actions'
 
-const children = {
-
-	list({ id, label, value, name }) {
-		return <li key={id}>
-			<label className='tag'>
-				<input name={name} value={value} type='checkbox'  /> 
-				{label}
-			</label>
-		</li>
+const eventHandlers = ({ dispatch }) => ({
+	onChange({ target }) {
+		dispatch(query.update(target))
 	},
-
-	group({ id, name, tags }) {
-		return <section key={id}>
-			<h1>{name}</h1>
-			<ul>{ tags.map((item) => children.list(item)) }</ul>
-		</section>
-	},
-
-}
+})
 
 export const SearchTags = ({ props }) => {
-
-	const { results } = props.store.search
-	console.log(results)
-
-	if (results.length) return <div class='tags content'>
-		{ results.map((kind) => children.group(kind)) }
-	</div>
 	
-	else return <h1>Nothing</h1>
+	const { onChange } = eventHandlers(props)
+	const { results } = props.store.search
+
+	const Suggestions = (results) => {
+
+		const List = ({ id, label, value, name }) =>
+			<li key={id}>
+				<label className='tag'>
+					<input name={name} value={value} type='checkbox' onChange={onChange} /> 
+					{label}
+				</label>
+			</li>
+
+		const Group = ({ id, name, tags }) =>
+			<section key={id}>
+				<h1>{name}</h1>
+				<ul>{ tags.map((item) => List(item)) }</ul>
+			</section>
+
+		return <div class='tags content'>{ results.map((kind) => Group(kind)) }</div>
+
+	}
+
+	const Feedback = ({ title, description, className }) =>
+		<div className={className || ''}>
+			<h1>{title}</h1>
+			<p>{description}</p>
+		</div>
+	
+	if (results.length) return Suggestions(results)	
+	else return Feedback({ title: "Nothing to see here", description: "Start typing to search for data..." })
 
 }
