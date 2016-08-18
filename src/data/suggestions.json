@@ -1,0 +1,29 @@
+{
+	"groups": [ "Theme", "Topic", "Location" ],
+	"tags": [
+		{
+			"id": 0,
+			"value": "water",
+			"label": "Water",
+			"group": 1
+		},
+		{
+			"id": 1,
+			"value": "amsterdam",
+			"label": "Amsterdam",
+			"group": 2
+		},
+		{
+			"id": 2,
+			"value": "a'dam",
+			"label": 1,
+			"group": 2
+		},
+		{
+			"id": 3,
+			"value": "sloterdijk",
+			"label": "Sloterdijk",
+			"group": 2
+		}
+	]
+}
