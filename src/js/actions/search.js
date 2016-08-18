@@ -4,7 +4,11 @@ export const search = {
 
 	query: (value) => (dispatch) => {
 
-    axios.get('http://138.201.141.84/rest/collections?name=Data.Amsterdam')
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+
+    axios.get('http://138.201.141.84/rest/collections?name=Data.Amsterdam', { headers })
       .then((response) => {
         console.log(response)
       })
