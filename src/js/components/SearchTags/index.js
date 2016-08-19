@@ -34,12 +34,13 @@ export const SearchTags = ({ props }) => {
 
 	}
 
-	const Feedback = ({ description, className }) =>
-		<div className={`(className || '') content`}>
-			<p>{description}</p>
-		</div>
+	const Feedback = (description) =>
+		<p className='content feedback'>{description}</p>
 	
-	if (results.length) return Suggestions(results)	
-	else return Feedback({ description: "Start typing to search..." })
+	if (value){
+		if (results.length) return Suggestions(results)
+		else return Feedback(`There seem to be no tags that match “${value}”.`)
+	}
+	else return Feedback("Start typing to search...")
 
 }

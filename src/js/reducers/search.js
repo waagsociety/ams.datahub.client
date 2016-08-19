@@ -16,7 +16,7 @@ export const search = (state = initialState, { type, payload }) => {
       const results = response.data.reduce((result, group) => {
 
         const expression = new RegExp(value, 'ig')
-        const tags = group.tags.filter(tag => expression.test(tag.value))
+        const tags = group.tags.filter(tag => expression.test(tag.label))
 
         if (tags.length) result.push({ ...group, tags })
         return result

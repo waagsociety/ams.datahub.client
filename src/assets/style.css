@@ -31,7 +31,7 @@ li { list-style: none }
 /* pages */
 
 .page {
-    background: #111;
+    background: rgb(3,3,6);
     display: flex;
 }
 
@@ -44,49 +44,43 @@ li { list-style: none }
 /* components */
 
 .menu {
-    background: rgba(240,240,240,0.96);
+    background: rgba(16,16,24,0.96);
     height: 3.6em;
     width: 100%;
     padding: 0.5rem;
-    box-shadow: 0 1px 0 0 silver;
-    /*border-bottom-width: 1px;*/
-    /*border-color: rgba(192,192,192,0.8);*/
-}
-
-nav .tag {
-    background: red;
-    float: left;
+    border-bottom: rgba(0,0,0,0.96);
 }
 
 .panel {
+    background: rgb(30,30,45);
     width: 32rem;
     max-width: 50%;
 }
 
 .floating.panel { 
-    background: transparent;
-    pointer-events: none;
+    /*background: transparent;*/
+    /*pointer-events: none;*/
 }
 
 .floating.panel > * { 
     pointer-events: initial;
 }
 
-.panel .content {
-    /*margin: 0.5rem;*/
+.panel .content { 
+    color: #eee;
+    background: rgb(30,30,45);
 }
 
-.content { 
-    background: white;
+.panel .content.feedback {
+    padding: 1em 1em 1.25em;
 }
 
 .group h1 {
     font-size: 75%;
     text-transform: uppercase;
-    color: #666;
-    background: rgba(255,255,255,0.9);
+    background: rgba(30,30,45,0.9);
     border-bottom-width: 1px;
-    border-color: rgba(192,192,192,0.8);
+    border-color: rgba(50,50,75,0.8);
     padding: 0.5rem 0.75rem;
 }
 
@@ -95,21 +89,33 @@ nav .tag {
 }
 
 .group li { 
-    margin-right: 0.5rem 0;
-    display: inline-block;
+    display: inline;
 }
 
 .tag {
     line-height: 1.4;
-    background: #ddd;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #fff;
+    background: #000;
     height: 2.5rem;
-    padding: 0.5rem 0.625rem;
+    max-width: 66.66%;
+    padding: 0.5rem 0.75rem;
     margin: 0 0.25rem;
     display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+nav .tag {
+    background: #2cbf86;
 }
 
 /* elements */
 
+p {
+    line-height: 1.6;
+}
 
 input { 
     background: white;
