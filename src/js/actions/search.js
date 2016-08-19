@@ -27,7 +27,7 @@ export const search = {
     // xhr.send(data);
 
     const config = {
-      body: data,
+      data: data,
       withCredentials: true,
       headers: {
         'accept': 'application/json',
