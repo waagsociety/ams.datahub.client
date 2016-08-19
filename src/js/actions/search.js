@@ -28,7 +28,7 @@ export const search = {
 
     const config = {
       body: data,
-      credentials: 'include',
+      withCredentials: true,
       headers: {
         'accept': 'application/json',
         'content-type': 'application/json',
