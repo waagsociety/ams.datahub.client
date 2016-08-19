@@ -24,7 +24,7 @@ export const search = {
       console.info(error)
     })
 
-    axios.get('http://138.201.141.84/rest/items', { headers })
+    axios.get('http://138.201.141.84/rest/items')
       .then(response => {
         console.log(response)
       })
