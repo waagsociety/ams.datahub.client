@@ -12,21 +12,21 @@ const eventHandlers = ({ dispatch }) => ({
 export const SearchTags = ({ props }) => {
 	
 	const { onChange } = eventHandlers(props)
-	const { results } = props.store.search
+	const { results, value } = props.store.search
 
 	const Suggestions = (results) => {
 
-		const List = ({ id, label, value, name }) =>
-			<li key={id}>
+		const List = ({ label, value }) =>
+			<li key={value}>
 				<label className='tag'>
 					<input name={name} value={value} type='checkbox' onChange={onChange} hidden /> 
 					{label}
 				</label>
 			</li>
 
-		const Group = ({ id, name, tags }) =>
-			<section key={id} className='group'>
-				<h1>{name}</h1>
+		const Group = ({ group, value, tags }) =>
+			<section key={value} className='group'>
+				<h1>{group}</h1>
 				<ul>{ tags.map((item) => List(item)) }</ul>
 			</section>
 

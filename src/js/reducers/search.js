@@ -3,18 +3,35 @@ const initialState = {
   fetching: false,
   fetched: false,
   error: null,
+  value: ""
 }
 
 export const search = (state = initialState, { type, payload }) => {
 
 	switch(type){
 
-		case 'search-fulfilled': return {
-      ...state,
-      fetching: false,
-      fetched: true,
-      results: groupTags(payload),
-		}
+		case 'search-fulfilled': {
+      
+      const { response, value } = payload
+      const results = response.data.reduce((result, group) => {
+
+        const expression = new RegExp(value, 'ig')
+        const tags = group.tags.filter(tag => expression.test(tag.value))
+
+        if (tags.length) result.push({ ...group, tags })
+        return result
+
+      }, [])
+
+      return {
+        ...state,
+        fetching: false,
+        fetched: true,
+        results: results,
+        value: value,
+      }
+
+    }
 
 		case 'search-rejected': return {
       ...state,
@@ -32,25 +49,5 @@ export const search = (state = initialState, { type, payload }) => {
 		default: return state
 
 	}
-
-}
-
-function groupTags({ groups, tags }) {
-
-  return tags.reduce((result, item) => {
-    
-    const { label, group } = item 
-    const id = group, name = groups[id]
-
-    if (!result[id]) result[id] = { id, name, tags: [] }
-    if (typeof label === 'string') result[id].tags.push({ 
-      ...item, 
-      name: name.toLowerCase().replace(/\s+/g, '-') 
-      // replace whitespace with a dash
-    })
-
-    return result
-
-  }, [])
 
 }
