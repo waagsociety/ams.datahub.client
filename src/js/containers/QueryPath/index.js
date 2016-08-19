@@ -5,7 +5,7 @@ import { QueryTags } from '../../components'
 
 export const QueryPath = ({ props }) => {
 
-	return <nav id='queries' className='fixed menu'>
+	return <nav className='container menu'>
 		<QueryTags props={props} />
 	</nav>
 

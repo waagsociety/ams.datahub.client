@@ -1,8 +1,8 @@
 export const query = {
 
-	initialise: ({ query }) => ({
+	initialise: (location) => ({
 		type: 'query-initialise',
-		payload: query
+		payload: location
 	}),
 
 	update: ({ name, value }) => ({

@@ -7,21 +7,14 @@ export const QueryTags = ({ props }) => {
 
 	const { dispatch } = props
 	const { query } = props.store
-	const keys = Object.keys(query)
 
-	if (keys.length) return <div>
-		{ keys.map((key, i) => {
-			console.log(query[key])
-			return <h1 key={key+i}>{ 
+	const Tag = ({ key, value }, i) =>
+		<button className='tag' key={i} name={key} value={value}>{value}</button>
 
-				query[key].map((value, i) => {
-					return <button key={i+value}>{value}</button>
-				})
-
-			}</h1>
-		}) }
-	</div>
-
-	return <h1>QueryTags</h1>
+	const TagList = (query) => 
+		<div class='tags'>{ [ ...query ].reverse().map((item, i) => Tag(item, i)) }</div>
+	
+	if (query.length) return TagList(query)
+	else return <h1>QueryTags</h1>
 
 }

@@ -19,28 +19,27 @@ export const SearchTags = ({ props }) => {
 		const List = ({ id, label, value, name }) =>
 			<li key={id}>
 				<label className='tag'>
-					<input name={name} value={value} type='checkbox' onChange={onChange} /> 
+					<input name={name} value={value} type='checkbox' onChange={onChange} hidden /> 
 					{label}
 				</label>
 			</li>
 
 		const Group = ({ id, name, tags }) =>
-			<section key={id}>
+			<section key={id} className='group'>
 				<h1>{name}</h1>
 				<ul>{ tags.map((item) => List(item)) }</ul>
 			</section>
 
-		return <div class='tags content'>{ results.map((kind) => Group(kind)) }</div>
+		return <div class='content tags'>{ results.map((kind) => Group(kind)) }</div>
 
 	}
 
-	const Feedback = ({ title, description, className }) =>
-		<div className={className || ''}>
-			<h1>{title}</h1>
+	const Feedback = ({ description, className }) =>
+		<div className={`(className || '') content`}>
 			<p>{description}</p>
 		</div>
 	
 	if (results.length) return Suggestions(results)	
-	else return Feedback({ title: "Nothing to see here", description: "Start typing to search for data..." })
+	else return Feedback({ description: "Start typing to search..." })
 
 }
