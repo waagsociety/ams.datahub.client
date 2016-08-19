@@ -8,8 +8,8 @@ export const search = {
       method: 'post',
       url: 'http://138.201.141.84/rest/items/find-by-metadata-field',
       data: {
-        key: "dc.contributor",
-        value: "Bocconi, Stefano",
+        key: "dc.contributor.author",
+        value: "Gemeente Amsterdam",
       },
       withCredentials: true,
       headers: {
