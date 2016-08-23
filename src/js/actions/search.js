@@ -9,26 +9,26 @@ export const search = {
       payload: value
     })
 
-    if (value) axios.get("./assets/data/suggestions.json")
-      .then(response => {
-        dispatch({
-          type: 'search-fulfilled',
-          payload: {
-            value,
-            response,
-          }
-        })
-      })
-      .catch(error => {
-        dispatch({
-          type: 'search-rejected', 
-          payload: error,
-        })
-      })
-    else dispatch({
-      type: 'search-cleared',
-      payload: [],
-    })  
+    // if (value) axios.get("./assets/data/suggestions.json")
+    //   .then(response => {
+    //     dispatch({
+    //       type: 'search-fulfilled',
+    //       payload: {
+    //         value,
+    //         response,
+    //       }
+    //     })
+    //   })
+    //   .catch(error => {
+    //     dispatch({
+    //       type: 'search-rejected', 
+    //       payload: error,
+    //     })
+    //   })
+    // else dispatch({
+    //   type: 'search-cleared',
+    //   payload: [],
+    // })  
 
   },
 
@@ -38,6 +38,12 @@ export const search = {
         dispatch({
           type: 'suggest-initialise',
           payload: response.data
+        })
+      })
+      .catch(error => {
+        dispatch({
+          type: 'suggest-error',
+          payload: error,
         })
       })
   } 

@@ -27,6 +27,35 @@ body,
 
 li { list-style: none }
 [hidden] { display: none }
+.fixed { position: fixed }
+
+.panel {
+    position: relative;
+}
+
+.panel .tags {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    top: 3.5em;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.group {
+    max-width: 100%;
+}
+
+.group { position: relative }
+.group h1 {
+    position: sticky;
+    top: 0;
+}
+
+.panel .menu {
+    position: relative;
+    z-index: 100;
+}
 
 /* pages */
 
@@ -91,7 +120,9 @@ li { list-style: none }
 }
 
 .group li { 
-    display: inline;
+    display: inline-block;
+    margin: 0 0 0.25em;
+    max-width: 100%;
 }
 
 .tag {
@@ -103,8 +134,8 @@ li { list-style: none }
     height: 2.5rem;
     max-width: 100%;
     padding: 0.5rem 0.75rem;
-    margin: 0 0.25rem;
-    display: inline-block;
+    margin: 0 0.125rem;
+    display: block;
     overflow: hidden;
     cursor: pointer;
 }

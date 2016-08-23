@@ -16,8 +16,8 @@ export const SearchInput = ({ props }) => {
 
   const { onFocus, onChange } = eventHandlers(props)
 
-  return <div class='fixed menu'>
-    <input type='search' name='search' placeholder='Search' onFocus={onFocus} onChange={onChange} autoComplete='off' />
+  return <div class='menu'>
+    <input type='text' name='search' placeholder='Search' onFocus={onFocus} onChange={onChange} autoComplete='off' />
   </div>
 
 }

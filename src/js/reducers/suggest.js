@@ -2,6 +2,10 @@ const initialState = {
   groups: [ 'author', 'publisher', 'type' ],
   groupMap: [],
   filtered: [],
+  loaded: false,
+  match: false,
+  query: false,
+  error: false,
 }
 
 export const suggest = (state = initialState, { type, payload }) => {
@@ -49,23 +53,52 @@ export const suggest = (state = initialState, { type, payload }) => {
 
       })
 
-      return { ...state, groupMap }
+      return { 
+        ...state, 
+        groupMap, 
+        loaded: true 
+      }
 
     }
 
     case 'suggest-filter': {
 
-      const pattern = new RegExp(payload, 'gi')
-      const filtered = state.groupMap.reduce((result, group) => {
+      let filtered = []
+      let match = false
+      let query = payload.length && payload
 
-        const tags = group.tags.filter(tag => pattern.test(tag.label))
-        if (tags.length) result.push({ ...group, tags })
+      if (payload) {
+        
+        const pattern = new RegExp(payload, 'gi')
+        filtered = state.groupMap.reduce((result, group) => {
 
-        return result
+          const tags = group.tags.filter(tag => pattern.test(tag.label))
+          if (tags.length) result.push({ ...group, tags })
 
-      }, [])
+          return result
 
-      return { ...state, filtered }
+        }, [])
+
+         if (filtered.length) match = true
+
+      }
+
+      return { 
+        ...state, 
+        filtered, 
+        match,
+        query,
+        error: false,
+      }
+
+    }
+
+    case 'suggest-error': {
+
+      return { 
+        ...state, 
+        error: payload,
+      }
 
     }
 

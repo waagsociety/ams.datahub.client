@@ -6,8 +6,6 @@ import { query } from '../../actions'
 
 const eventHandlers = ({ dispatch }) => ({
 	onChange({ target }) {
-		// console.log(target.name)
-		// browserHistory.push(`?${target.name}=${target.value}`)
 		dispatch(query.update(target))
 	},
 })
@@ -15,15 +13,15 @@ const eventHandlers = ({ dispatch }) => ({
 export const SearchTags = ({ props }) => {
 
 	const { onChange } = eventHandlers(props)
-	const { results, value, fetched } = props.store.search
-	const { filtered, groups } = props.store.suggest
+	// const { results, value, fetched } = props.store.search
+	const { filtered, groups, match, query } = props.store.suggest
 
 	const Suggestions = (results) => {
 
 		const List = ({ value, label, group }) => {
 			const name = groups[group]
 			return <li key={name+value}>
-				<label className='tag'>
+				<label className='tag' title={label}>
 					<input name={name} value={value} type='checkbox' onChange={onChange} hidden /> 
 					{label}
 				</label>
@@ -37,8 +35,6 @@ export const SearchTags = ({ props }) => {
 			</section>
 		}
 
-		console.log(filtered)
-
 		return <div class='content tags'>{ filtered.map((kind) => Group(kind)) }</div>
 
 	}
@@ -46,9 +42,9 @@ export const SearchTags = ({ props }) => {
 	const Feedback = (description) =>
 		<p className='content feedback'>{description}</p>
 	
-	if (filtered.length) {
-		return Suggestions(results)
-		// else return Feedback(`There seem to be no tags that match “${value}”.`)
+	if (query) {
+		if (match) return Suggestions(filtered)
+		else return Feedback(`There seem to be no tags that match “${query}”.`)
 	}
 	else return Feedback("Start typing to search...")
 

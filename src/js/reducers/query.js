@@ -1,4 +1,5 @@
 const initialState = {}
+import { browserHistory } from 'react-router'
 
 export const query = (state = initialState, { type, payload }) => {
 
@@ -21,7 +22,8 @@ export const query = (state = initialState, { type, payload }) => {
     case 'query-update': {
 
       const { name, value } = payload
-      // console.log(name in state)
+      
+      console.log(state, name, value)
 
       return {
         ...state

@@ -1,5 +1,3 @@
-import { browserHistory } from 'react-router'
-
 export const query = {
 
 	initialise: (location) => ({
@@ -7,10 +5,11 @@ export const query = {
 		payload: location
 	}),
 
-	update: ({ name, value }) => {
+	update: ({ name, value, active: checked }) => {
+		// const active = checked
         return {
 		  type: 'query-update',
-		  payload: { name, value },
+		  payload: { name, value, active },
         }
 	},
 
