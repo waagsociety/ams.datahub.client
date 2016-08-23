@@ -23,7 +23,7 @@ export const SearchTags = ({ props }) => {
 			const name = groups[group]
 			return <li key={name+value}>
 				<label className='tag' title={label}>
-					<input name={name} value={value} type='checkbox' onChange={onChange} hidden /> 
+					<input name={name} value={label} type='checkbox' onChange={onChange} hidden /> 
 					{label}
 				</label>
 			</li>
