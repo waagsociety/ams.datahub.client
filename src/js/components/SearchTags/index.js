@@ -14,7 +14,6 @@ const eventHandlers = ({ dispatch }) => ({
 export const SearchTags = ({ props }) => {
 
 	const { onChange } = eventHandlers(props)
-	// const { results, value, fetched } = props.store.search
 	const { filtered, groups, match, query } = props.store.suggest
 
 	const Suggestions = (results) => {
