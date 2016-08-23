@@ -21,6 +21,8 @@ html,
 body,
 #app,
 .page {
+    background: rgb(3,3,6);
+    background: gray;
     height: 100%;
     width: 100%;
 }
@@ -60,8 +62,8 @@ li { list-style: none }
 /* pages */
 
 .page {
-    background: rgb(3,3,6);
     display: flex;
+    padding: 1em; /* Controls padding for entire page */
 }
 
 /* containers */
@@ -84,13 +86,17 @@ li { list-style: none }
     background: rgb(30,30,45);
     width: 36rem;
     max-width: 50%;
-    overflow: hidden;
+    /*overflow: hidden;*/
     overflow-y: scroll;
 }
 
 .floating.panel { 
-    /*background: transparent;*/
-    /*pointer-events: none;*/
+    background: transparent;
+    pointer-events: none;
+}
+
+.group {
+    background: rgb(30,30,45);
 }
 
 .floating.panel > * { 
@@ -99,7 +105,7 @@ li { list-style: none }
 
 .panel .content { 
     color: #eee;
-    background: rgb(30,30,45);
+    /*background: rgb(30,30,45);*/
 }
 
 .panel .content.feedback {
@@ -116,7 +122,7 @@ li { list-style: none }
 }
 
 .group ul { 
-    padding: 0.5rem 0.5rem 0.75rem; 
+    padding: 0.5rem 0.5rem 0.5rem; 
 }
 
 .group li { 
