@@ -10,6 +10,7 @@ export default class Browse extends React.Component {
   componentWillMount() {
     const { dispatch, location } = this.props
     dispatch(query.initialise(location))
+    dispatch(search.tempInit())
   }
 
   eventHandlers() {    

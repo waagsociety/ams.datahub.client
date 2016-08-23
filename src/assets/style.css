@@ -53,8 +53,10 @@ li { list-style: none }
 
 .panel {
     background: rgb(30,30,45);
-    width: 32rem;
+    width: 36rem;
     max-width: 50%;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .floating.panel { 
@@ -99,7 +101,7 @@ li { list-style: none }
     color: #fff;
     background: #000;
     height: 2.5rem;
-    max-width: 66.66%;
+    max-width: 100%;
     padding: 0.5rem 0.75rem;
     margin: 0 0.25rem;
     display: inline-block;

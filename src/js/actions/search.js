@@ -2,11 +2,12 @@ import axios from "axios";
 
 export const search = {
 
-	query: (value) => (dispatch) => {
+	query: value => dispatch => {
 
-    // findByMetaData((response) => {
-    //   console.log('findByMetaData', response);
-    // });
+    dispatch({
+      type: 'suggest-filter',
+      payload: value
+    })
 
     if (value) axios.get("./assets/data/suggestions.json")
       .then(response => {
@@ -30,6 +31,16 @@ export const search = {
     })  
 
   },
+
+  tempInit: value => dispatch => {
+    axios.get('http://138.201.141.84/rest/items?expand=metadata')
+      .then(response => {
+        dispatch({
+          type: 'suggest-initialise',
+          payload: response.data
+        })
+      })
+  } 
 
 }
 
