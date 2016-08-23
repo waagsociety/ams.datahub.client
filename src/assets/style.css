@@ -125,6 +125,17 @@ li { list-style: none }
     max-width: 100%;
 }
 
+.menu {
+    position: relative;
+    overflow: hidden;
+}
+
+.menu .tags {
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+}
+
 .tag {
     line-height: 1.4;
     white-space: nowrap;
@@ -135,9 +146,13 @@ li { list-style: none }
     max-width: 100%;
     padding: 0.5rem 0.75rem;
     margin: 0 0.125rem;
-    display: block;
+    display: inline-block;
     overflow: hidden;
     cursor: pointer;
+}
+
+.panel .tag {
+    display: block;
 }
 
 nav .tag {

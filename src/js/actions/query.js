@@ -5,12 +5,14 @@ export const query = {
 		payload: location
 	}),
 
-	update: ({ name, value, active: checked }) => {
-		// const active = checked
-        return {
-		  type: 'query-update',
-		  payload: { name, value, active },
-        }
-	},
+	remove: (parameters) => ({
+		type: 'query-remove',
+		payload: parameters,
+	}),
+
+	add: (parameters) => ({
+		type: 'query-add',
+		payload: parameters,
+	}),
 
 }

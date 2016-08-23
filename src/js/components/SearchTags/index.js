@@ -6,7 +6,8 @@ import { query } from '../../actions'
 
 const eventHandlers = ({ dispatch }) => ({
 	onChange({ target }) {
-		dispatch(query.update(target))
+		if (target.checked) dispatch(query.add(target))
+		else dispatch(query.remove(target))
 	},
 })
 

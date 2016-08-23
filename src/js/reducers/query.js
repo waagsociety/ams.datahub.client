@@ -1,5 +1,4 @@
-const initialState = {}
-import { browserHistory } from 'react-router'
+const initialState = []
 
 export const query = (state = initialState, { type, payload }) => {
 
@@ -19,15 +18,25 @@ export const query = (state = initialState, { type, payload }) => {
 
     }
 
-    case 'query-update': {
+    case 'query-remove': {
 
       const { name, value } = payload
-      
-      console.log(state, name, value)
 
-      return {
-        ...state
-      }
+      return state.reduce((result, item) => {
+        if (!(item.key === name && item.value === value)) result.push(item)
+        return result
+      }, [])
+
+    }
+
+    case 'query-add': {
+
+      const { name, value } = payload
+      const isActive = state.some(item => item.key === name && item.value === value)
+     
+      if (!isActive) state.push({ key: name, value })
+
+      return [ ...state ]
 
     }
 
