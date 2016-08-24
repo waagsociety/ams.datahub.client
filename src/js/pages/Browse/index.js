@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router' // Todo A
 
 import { SearchPanel, QueryPath, MapBox } from '../'
 import handlers from './events'
-import { filter } from '../../actions' // Temp A
+import { search } from '../../actions' // Temp A
 
 @connect ((store) => ({ store }))
 export default class Browse extends React.Component {
@@ -20,7 +20,7 @@ export default class Browse extends React.Component {
 
     // Temp A) Prefetch metadata filters from all dSpace items
     const { dispatch } = this.props 
-    dispatch(filter.tempInit())
+    dispatch(search.tempInit())
 
   }
 

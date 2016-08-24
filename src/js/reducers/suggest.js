@@ -2,18 +2,17 @@ const initialState = {
   groups: [ 'author', 'publisher', 'type' ],
   groupMap: [],
   filtered: [],
-  selection: [],
   loading: false,
   match: false,
   query: false,
   error: false,
 }
 
-export const filter = (state = initialState, { type, payload }) => {
+export const suggest = (state = initialState, { type, payload }) => {
 
   switch(type){
 
-    case 'filter-initialise': {
+    case 'suggest-initialise': {
       
       const { groups } = state
       const pattern = new RegExp(groups.join('|'), 'i')
@@ -62,7 +61,7 @@ export const filter = (state = initialState, { type, payload }) => {
 
     }
 
-    case 'filter-suggestions': {
+    case 'suggest-filter': {
 
       let filtered = []
       let match = false
@@ -95,7 +94,7 @@ export const filter = (state = initialState, { type, payload }) => {
 
     }
 
-    case 'filter-error': {
+    case 'suggest-error': {
 
       return { 
         ...state, 

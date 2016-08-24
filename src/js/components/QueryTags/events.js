@@ -1,9 +1,9 @@
-import { filter } from '../../actions'
+import { query } from '../../actions'
 
 const QueryTags = ({ dispatch }) => ({
     
   onClick({ target }) {
-      dispatch(filter.remove(target))
+      dispatch(query.remove(target))
   },
     
 })

@@ -1,3 +1,3 @@
 export { view } from './view'
-export { filter } from './filter'
-// export { query } from './query'
+export { search } from './search'
+export { query } from './query'
