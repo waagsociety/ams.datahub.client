@@ -33,6 +33,7 @@ export default function(state = initialState, { type, payload }) {
                 label: item.value,
                 value: item.value.toLowerCase().replace(/\W+/g, '-'),
                 group: index,
+                active: false,
               })
 
               group.hash[item.value] = true

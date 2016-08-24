@@ -32,7 +32,7 @@ export const SearchTags = ({ props }) => {
 	const Feedback = (description) =>
 		<p className='content feedback'>{description}</p>
 	
-	// console.log(props.store.suggest)
+	console.log(props.store.filter)
 	
 	if (!loading && query) {
 		if (match) return Suggestions(filtered)

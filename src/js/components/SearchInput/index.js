@@ -3,11 +3,11 @@ import handlers from './events'
 
 export const SearchInput = ({ props }) => {
 
-  const { onFocusChange, onChange } = handlers(props)
+  const { setFocus, getSuggestions } = handlers(props)
 
   return <div class='menu'>
     <input type='text' name='search' placeholder='Search' autoComplete='off' 
-      onFocus={onFocusChange} onBlur={onFocusChange} onChange={onChange} />
+      onFocus={setFocus} onBlur={setFocus} onChange={getSuggestions} />
   </div>
 
 }

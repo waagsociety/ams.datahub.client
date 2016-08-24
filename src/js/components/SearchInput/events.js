@@ -2,12 +2,12 @@ import { view, filter } from '../../store'
 
 const SearchInput = ({ dispatch }) => ({
     
-  onFocusChange({ target }) {
+  setFocus({ target }) {
     const focus = (target === document.activeElement)
     dispatch(view.SearchInput({ focus }))
   },
 
-  onChange({ target }) {
+  getSuggestions({ target }) {
       dispatch(filter.query(target.value))
   },
 
