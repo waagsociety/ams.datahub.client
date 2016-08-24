@@ -1,11 +1,11 @@
 import { combineReducers } from "redux"
 import { routerReducer as routing } from 'react-router-redux'
 
-import { view } from './view'
-import { filter } from './filter'
+import { view } from '../reducers/view'
+import { filter } from '../reducers/filter'
 
 export default combineReducers({
-	routing,
+  routing,
   view,
   filter,
 })

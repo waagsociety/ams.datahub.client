@@ -5,11 +5,11 @@ const eventHandlers = ({ dispatch }) => ({
   },
 
   onChange: (event) => {
-    console.log(event)
+    // console.log(event)
   },
 
   eventLog: (event) => {
-    console.log('onKeyDown', event)
+    // console.log('onKeyDown', event)
   }
 
 })

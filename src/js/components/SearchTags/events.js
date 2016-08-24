@@ -1,10 +1,10 @@
-import { query } from '../../actions'
+import { filter } from '../../actions'
 
 const SearchTags = ({ dispatch }) => ({
     
   onChange({ target }) {
-      if (target.checked) dispatch(query.add(target))
-      else dispatch(query.remove(target))
+      if (target.checked) dispatch(filter.add(target))
+      else dispatch(filter.remove(target))
   },
 
 })

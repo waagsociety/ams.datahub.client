@@ -7,7 +7,9 @@ import handlers from './events'
 export const SearchTags = ({ props }) => {
 	
 	const { onChange } = handlers(props)
-	const { filtered, groups, match, query, loading } = props.store.suggest
+	const { filtered, groups, match, query, loading } = props.store.filter
+
+
 
 	const Suggestions = (results) => {
 

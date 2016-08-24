@@ -1,16 +1,20 @@
-import { search, view } from '../../actions'
+import { view, filter } from '../../actions'
 
-const SearchInput = ({ dispatch }) => ({
+const eventHandlers = ({ dispatch }) => ({
     
-  onFocusChange({ target }) {
+  setFocus({ target }) {
     const focus = (target === document.activeElement)
-    dispatch(view.SearchInput({ focus }))
+    // dispatch(view.SearchInput({ focus }))
+  },
+
+  clearInput({ target }) {
+    dispatch(filter.query(''))
   },
 
   onChange({ target }) {
-      dispatch(search.query(target.value))
+      dispatch(filter.query(target.value))
   },
 
 })
 
-export default SearchInput
+export default eventHandlers
