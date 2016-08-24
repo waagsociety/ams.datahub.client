@@ -1,4 +1,4 @@
-import { search, view } from '../../actions'
+import { view, filter } from '../../store'
 
 const SearchInput = ({ dispatch }) => ({
     
@@ -8,7 +8,7 @@ const SearchInput = ({ dispatch }) => ({
   },
 
   onChange({ target }) {
-      dispatch(search.query(target.value))
+      dispatch(filter.query(target.value))
   },
 
 })

@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import handlers from './events'
 
 export const SearchInput = ({ props }) => {

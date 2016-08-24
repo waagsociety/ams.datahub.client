@@ -1,14 +1,6 @@
-const initialState = {
-  groups: [ 'author', 'publisher', 'type' ],
-  groupMap: [],
-  filtered: [],
-  loading: false,
-  match: false,
-  query: false,
-  error: false,
-}
+import { initialState } from './initial'
 
-export const suggest = (state = initialState, { type, payload }) => {
+export default function(state = initialState, { type, payload }) {
 
   switch(type){
 

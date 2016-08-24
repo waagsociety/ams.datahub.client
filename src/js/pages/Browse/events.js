@@ -4,14 +4,6 @@ const eventHandlers = ({ dispatch }) => ({
     event.preventDefault() 
   },
 
-  onChange: (event) => {
-    console.log(event)
-  },
-
-  eventLog: (event) => {
-    console.log('onKeyDown', event)
-  }
-
 })
 
 export default eventHandlers

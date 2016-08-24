@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const search = {
+export const filter = {
 
 	query: value => dispatch => {
 
@@ -9,28 +9,17 @@ export const search = {
       payload: value
     })
 
-    // if (value) axios.get("./assets/data/suggestions.json")
-    //   .then(response => {
-    //     dispatch({
-    //       type: 'search-fulfilled',
-    //       payload: {
-    //         value,
-    //         response,
-    //       }
-    //     })
-    //   })
-    //   .catch(error => {
-    //     dispatch({
-    //       type: 'search-rejected', 
-    //       payload: error,
-    //     })
-    //   })
-    // else dispatch({
-    //   type: 'search-cleared',
-    //   payload: [],
-    // })  
-
   },
+
+  remove: (parameters) => ({
+    type: 'query-remove',
+    payload: parameters,
+  }),
+
+  add: (parameters) => ({
+    type: 'query-add',
+    payload: parameters,
+  }),
 
   tempInit: value => dispatch => {
     axios.get('http://138.201.141.84/rest/items?expand=metadata')
@@ -49,6 +38,17 @@ export const search = {
   } 
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
