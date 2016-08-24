@@ -1,15 +1,17 @@
-// import { query, search } from '../../actions'
-
-const Browse = ({ dispatch }) => ({
+const eventHandlers = ({ dispatch }) => ({
 
   onSubmit: (event) => {
     event.preventDefault() 
   },
 
   onChange: (event) => {
-    // 
+    console.log(event)
   },
+
+  eventLog: (event) => {
+    console.log('onKeyDown', event)
+  }
 
 })
 
-export default Browse
+export default eventHandlers

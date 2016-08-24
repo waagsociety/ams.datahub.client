@@ -1,9 +1,10 @@
-import { search } from '../../actions'
+import { search, view } from '../../actions'
 
 const SearchInput = ({ dispatch }) => ({
     
-  onFocus(event) {
-      // console.log(event) // works
+  onFocusChange({ target }) {
+    const focus = (target === document.activeElement)
+    dispatch(view.SearchInput({ focus }))
   },
 
   onChange({ target }) {
