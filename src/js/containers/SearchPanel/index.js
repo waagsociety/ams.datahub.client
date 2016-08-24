@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { SearchInput, SearchTags } from '../../components'
+import { SearchInput, SearchTags } from '../'
 
 export const SearchPanel = ({ props }) => {
 

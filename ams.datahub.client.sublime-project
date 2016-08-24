@@ -1,0 +1,24 @@
+{
+	"folders":
+	[
+    {
+        "path": "/",
+        "follow_symlinks": true
+    },
+    {
+        "name": "application",
+        "path": "src/js",
+        "follow_symlinks": true
+    },
+    {
+        "name": "assets",
+        "path": "src/assets",
+        "follow_symlinks": true
+    },
+],
+  "settings":
+  {
+      "tab_size": 2,
+      "translate_tabs_to_spaces": true
+  },
+}

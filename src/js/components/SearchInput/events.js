@@ -2,13 +2,13 @@ import { search } from '../../actions'
 
 const SearchInput = ({ dispatch }) => ({
     
-    onFocus(event) {
-        // console.log(event) // works
-    },
+  onFocus(event) {
+      // console.log(event) // works
+  },
 
-    onChange({ target }) {
-        dispatch(search.query(target.value))
-    },
+  onChange({ target }) {
+      dispatch(search.query(target.value))
+  },
 
 })
 

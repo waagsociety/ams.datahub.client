@@ -2,7 +2,7 @@ const initialState = {
   groups: [ 'author', 'publisher', 'type' ],
   groupMap: [],
   filtered: [],
-  loaded: false,
+  loading: false,
   match: false,
   query: false,
   error: false,
@@ -56,7 +56,7 @@ export const suggest = (state = initialState, { type, payload }) => {
       return { 
         ...state, 
         groupMap, 
-        loaded: true 
+        loading: true
       }
 
     }
@@ -88,6 +88,7 @@ export const suggest = (state = initialState, { type, payload }) => {
         filtered, 
         match,
         query,
+        loading: false,
         error: false,
       }
 

@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
 
-import { SearchPanel, QueryPath, MapBox } from '../../containers'
+import { SearchPanel, QueryPath, MapBox } from '../'
 import handlers from './events'
 import { search } from '../../actions' // temp.a (untill search works properly)
 
@@ -13,6 +14,8 @@ export default class Browse extends React.Component {
     // Prefetch metadata filters from all dSpace items (temp.a)
     const { dispatch } = this.props 
     dispatch(search.tempInit())
+
+    // browserHistory.push('/?a=b')
     
     // get search parameters (filters) from the URL query
     // dispatch(query.initialise(location)) 

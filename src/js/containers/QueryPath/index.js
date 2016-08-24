@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { QueryTags } from '../../components'
+import { QueryTags } from '../'
 
 export const QueryPath = ({ props }) => {
 

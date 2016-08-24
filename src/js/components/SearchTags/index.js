@@ -7,7 +7,7 @@ import handlers from './events'
 export const SearchTags = ({ props }) => {
 	
 	const { onChange } = handlers(props)
-	const { filtered, groups, match, query } = props.store.suggest
+	const { filtered, groups, match, query, loading } = props.store.suggest
 
 	const Suggestions = (results) => {
 
@@ -35,7 +35,9 @@ export const SearchTags = ({ props }) => {
 	const Feedback = (description) =>
 		<p className='content feedback'>{description}</p>
 	
-	if (query) {
+	// console.log(props.store.suggest)
+	
+	if (!loading && query) {
 		if (match) return Suggestions(filtered)
 		else return Feedback(`There seem to be no tags that match “${query}”.`)
 	}

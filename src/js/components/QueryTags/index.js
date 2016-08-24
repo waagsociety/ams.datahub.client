@@ -5,7 +5,7 @@ import handlers from './events'
 
 export const QueryTags = ({ props }) => {
     
-    const { onClick } = handlers(props)
+  const { onClick } = handlers(props)
 	const { query } = props.store
 
 	const Tag = ({ key, value }, i) =>
