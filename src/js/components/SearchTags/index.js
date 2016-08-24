@@ -2,18 +2,11 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 
-import { query } from '../../actions'
-
-const eventHandlers = ({ dispatch }) => ({
-	onChange({ target }) {
-		if (target.checked) dispatch(query.add(target))
-		else dispatch(query.remove(target))
-	},
-})
+import handlers from './events'
 
 export const SearchTags = ({ props }) => {
-
-	const { onChange } = eventHandlers(props)
+	
+	const { onChange } = handlers(props)
 	const { filtered, groups, match, query } = props.store.suggest
 
 	const Suggestions = (results) => {

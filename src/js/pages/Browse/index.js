@@ -1,40 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { query, search } from '../../actions'
 import { SearchPanel, QueryPath, MapBox } from '../../containers'
+import handlers from './events'
+import { search } from '../../actions' // temp.a (untill search works properly)
 
 @connect ((store) => ({ store }))
 export default class Browse extends React.Component {
 
   componentWillMount() {
-    const { dispatch, location } = this.props
-    dispatch(query.initialise(location))
+
+    // Prefetch metadata filters from all dSpace items (temp.a)
+    const { dispatch } = this.props 
     dispatch(search.tempInit())
-  }
+    
+    // get search parameters (filters) from the URL query
+    // dispatch(query.initialise(location)) 
 
-  eventHandlers() {    
-    return {     
-      onSubmit: (event) => {
-        event.preventDefault() 
-      },
-      onChange: (event) => {
-        const { dispatch } = this.props
-        const { name, value } = document.activeElement
-        if (name === 'search') dispatch(search.query(value))
-      },
-      testHandler: (event) => {
-
-      },
-    }
   }
 
   render() {
 
     const { props } = this
-    const { onSubmit, testHandler } = this.eventHandlers.call(this)
+    const { onSubmit, onChange } = handlers(props)
 
-    return <form id='Browse' className='page' method='get' action='/' onSubmit={onSubmit} onChange={testHandler}>
+    return <form id='Browse' className='page' method='get' action='/' onSubmit={onSubmit} onChange={onChange}>
       <SearchPanel props={props} />
       <QueryPath props={props} />
     </form>

@@ -8,7 +8,7 @@ import store from './store'
 import { Browse, Results } from './pages'
 
 const history = syncHistoryWithStore(browserHistory, store);
-const basepath = location.pathname
+const basepath = location.pathname // use location.pathname as the application entry point
 
 ReactDOM.render(
 	<Provider store={store}>

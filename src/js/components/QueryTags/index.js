@@ -1,17 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { query } from '../../actions'
-
-const eventHandlers = ({ dispatch }) => ({
-    onClick({ target }) {
-        dispatch(query.remove(target))
-    },
-})
+import handlers from './events'
 
 export const QueryTags = ({ props }) => {
     
-    const { onClick } = eventHandlers(props)
+    const { onClick } = handlers(props)
 	const { query } = props.store
 
 	const Tag = ({ key, value }, i) =>
