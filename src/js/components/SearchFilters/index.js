@@ -1,6 +1,5 @@
 import React from 'react'
-import { SearchFilterGroup } from '../'
-import { Feedback } from '../'
+import { SearchFilterGroup, Feedback } from '../'
 
 export default function ({ props, content }) {
 
@@ -14,9 +13,6 @@ export default function ({ props, content }) {
   return <div className='content tags'>{ 
     filters.map((group, i) => <SearchFilterGroup key={i} props={props} content={group} />) 
   }</div>
-
-
-  return <h1>Okay</h1>
 
 }
 

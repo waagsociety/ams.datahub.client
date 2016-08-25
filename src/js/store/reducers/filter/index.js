@@ -13,11 +13,10 @@ export default function(state = initialState, { type, payload }) {
       let suggestions = state.localStorage.filter(item => pattern.test(item.value))
 
       // set active state based on selection
-      suggestions = suggestions.map(filter => {
-        const isSelected = state.selection.some(({ id }) => (id === filter.id))        
-        filter.active = isSelected
-        return filter
-      })
+      suggestions = suggestions.map(filter => ({
+        ...filter,
+        active: state.selection.some(({ id }) => (id === filter.id))
+      }))
 
       const match = !!suggestions.length
 

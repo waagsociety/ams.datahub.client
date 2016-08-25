@@ -1,1 +1,0 @@
-export SearchTag from './SearchTag'

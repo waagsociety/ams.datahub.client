@@ -1,19 +1,13 @@
 import React from 'react'
-import handlers from './events'
+import { SearchTag } from '../'
 
-import { SearchTag } from '../../atoms'
-
-export const QueryTags = ({ props }) => {
+export default function ({ props }) {
     
-  const { onClick } = handlers(props)
 	const { selection } = props.store.filter
 
-	const TagList = (selection) => 
-		<div class='breadcrumb tags'>{ 
+	if (selection.length) return <div class='breadcrumb tags'>{ 
       [ ...selection ].reverse().map((item, i) => <SearchTag key={i} props={props} content={item} /> )
-    }</div>
-
-	if (selection.length) return TagList(selection)
+  }</div>
 	else return <h1>QueryTags</h1>
 
 }

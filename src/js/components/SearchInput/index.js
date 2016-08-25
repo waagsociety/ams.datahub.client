@@ -1,7 +1,7 @@
 import React from 'react'
 import handlers from './events'
 
-export const SearchInput = ({ props }) => {
+export default function ({ props }) {
 
   const { setFocus, getSuggestions, clearInput } = handlers(props)
   const { value } = props.store.filter

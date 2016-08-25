@@ -1,12 +1,9 @@
 import React from 'react'
-import handlers from './events'
-
 import { Feedback, SearchFilters } from '../'
 
-export const SearchTags = ({ props }) => {
+export default function ({ props }) {
 
-	const { onChange } = handlers(props)
-	const { value, suggestions, selection, groups } = props.store.filter
+	const { value, suggestions, selection } = props.store.filter
 
 	if (value) return <SearchFilters props={props} content={suggestions} />  
   else if (selection.length) return <SearchFilters props={props} content={selection} />
