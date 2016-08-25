@@ -20,10 +20,12 @@ export default class Browse extends React.Component {
 
     const { props } = this
     const { onSubmit, onChange } = handlers(props)
-
+    
+    //<QueryPath props={props} />
+    
     return <form id='Browse' className='page' method='get' action='/' onSubmit={onSubmit} onChange={onChange} >
       <SearchPanel props={props} />
-      <QueryPath props={props} />
+      
     </form>
 
   }
