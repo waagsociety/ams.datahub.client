@@ -8,7 +8,7 @@ export default function (props, content) {
   
   const className = [ active ? 'active' : '', 'tag' ].join(' ').trim()
 
-  return <label className={className} >
+  return <label key={key + '-' + id} className={className} >
     <input type='checkbox' name={name} value={value} checked={active} onChange={toggleActivity} />
     { value }
   </label>

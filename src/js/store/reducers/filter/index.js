@@ -18,15 +18,29 @@ export default function(state = initialState, { type, payload }) {
     }
 
     case 'filter-toggle': {
-      
-      const localStorage = state.localStorage.map(filter => {
-        
-        if (filter.id === payload.id) filter.active = !filter.active
 
-        return filter
+      const { id, active } = payload
+
+      // Update suggestions
+      const suggestions = state.suggestions.map(filter => {
+
+        if (id === filter.id) return {
+          ...filter,
+          active
+        }
+        else return filter
+
       })
 
-      return { ...state, localStorage }
+      // Update selection
+      let selection = [ ...state.selection ]
+      const inSelection = selection.find(filter => id === filter.id)
+      if (active && !inSelection) selection.push(payload)
+      else selection = selection.filter(filter => id !== filter.id)
+
+
+      return { ...state, suggestions, selection }
+
     }
 
     case 'filter-initialise': {
