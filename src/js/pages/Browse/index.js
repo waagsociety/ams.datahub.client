@@ -25,7 +25,7 @@ export default class Browse extends React.Component {
     
     return <form id='Browse' className='page' method='get' action='/' onSubmit={onSubmit} onChange={onChange} >
       <SearchPanel props={props} />
-      
+      <QueryPath props={props} />
     </form>
 
   }

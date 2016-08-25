@@ -255,6 +255,7 @@ input:focus {
 
 .icon:disabled {
     color: silver;
+    cursor: default;
 }
 
 
