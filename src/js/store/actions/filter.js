@@ -3,12 +3,10 @@ import axios from "axios";
 export const filter = {
 
 	query: value => dispatch => {
-
     dispatch({
-      type: 'suggest-filter',
+      type: 'filter-input',
       payload: value
     })
-
   },
 
   remove: (parameters) => ({
@@ -25,13 +23,13 @@ export const filter = {
     axios.get('http://138.201.141.84/rest/items?expand=metadata')
       .then(response => {
         dispatch({
-          type: 'suggest-initialise',
+          type: 'filter-initialise',
           payload: response.data
         })
       })
       .catch(error => {
         dispatch({
-          type: 'suggest-error',
+          type: 'filter-error',
           payload: error,
         })
       })

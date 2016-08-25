@@ -1,4 +1,4 @@
-import * as initialState from './initial'
+import * as initialState from './initialise'
 
 export default function(state = initialState, { type, payload }) {
 

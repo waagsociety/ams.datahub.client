@@ -4,7 +4,7 @@ const SearchInput = ({ dispatch }) => ({
     
   setFocus({ target }) {
     const focus = (target === document.activeElement)
-    dispatch(view.SearchInput({ focus }))
+    // dispatch(view.SearchInput({ focus }))
   },
 
   getSuggestions({ target }) {

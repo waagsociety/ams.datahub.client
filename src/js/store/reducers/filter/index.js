@@ -1,102 +1,85 @@
-import { initialState } from './initial'
+import { initialState } from './initialise'
 
 export default function(state = initialState, { type, payload }) {
 
   switch(type){
 
-    case 'suggest-initialise': {
+    case 'filter-input': {
       
-      const { groups } = state
-      const pattern = new RegExp(groups.join('|'), 'i')
+      const query = !!payload && typeof payload === 'string' && payload
       
-      const groupMap = groups.map((group, i) => ({
-        group,
-        tags: [],
-        hash: {},
-      }))
+      const pattern = new RegExp(payload, 'gi')
 
-      // Map metadata to an object sorted by metadata kind
-      payload.forEach(({ metadata }, i) => {
+      const suggestions = state.localStorage.filter(item => pattern.test(item.value))
+      const match = !!suggestions.length
+
+      return { ...state, query, suggestions, match }
+
+    }
+
+    case 'filter-toggle': {
+      
+      const localStorage = state.localStorage.map(filter => {
         
-        metadata.forEach(item => {
-          
-          const key = item.key.split('.').pop()
-          const index = groups.indexOf(key)
+        if (filter.id === payload.id) filter.active = !filter.active
 
-          if (index !== -1) { // group is indexable
-            
-            const group = groupMap[index]
+        return filter
+      })
 
-            if (!group.hash[item.value]) { // prevent double entries
-              
-              group.tags.push({
-                label: item.value,
-                value: item.value.toLowerCase().replace(/\W+/g, '-'),
-                group: index,
-                active: false,
-              })
+      return { ...state, localStorage }
+    }
 
-              group.hash[item.value] = true
+    case 'filter-initialise': {
 
-            }
+      let id = 0
 
-          }
+      const groupMap = state.groups.reduce((result, { key }, index) => {
+        result[key] = index
+        return result
+      }, {})
+
+      // Prevent double values
+      const dictionary = state.groups.reduce((result, { key }) => {
+        result[key] = {}
+        return result
+      }, {})
+
+      const localStorage = payload.reduce((result, { metadata }) => {
+        
+        metadata.forEach(({ key, value }) => {
+
+          const index = groupMap[key]
+          const groupExists = typeof index === 'number'
+
+          if (groupExists && !dictionary[key][value]) result.push({
+            id: ++id, 
+            name: key.split('.').pop(),
+            key,
+            value,
+            index,
+            active: false
+          })
 
         })
 
-      })
+        return result
 
-      return { 
-        ...state, 
-        groupMap, 
-        loading: true
-      }
+      }, [])
 
-    }
+      const initialised = true
 
-    case 'suggest-filter': {
-
-      let filtered = []
-      let match = false
-      let query = payload.length && payload
-
-      if (payload) {
-        
-        const pattern = new RegExp(payload, 'gi')
-        filtered = state.groupMap.reduce((result, group) => {
-
-          const tags = group.tags.filter(tag => pattern.test(tag.label))
-          if (tags.length) result.push({ ...group, tags })
-
-          return result
-
-        }, [])
-
-         if (filtered.length) match = true
-
-      }
-
-      return { 
-        ...state, 
-        filtered, 
-        match,
-        query,
-        loading: false,
-        error: false,
-      }
+      return { ...state, localStorage, initialised  }
 
     }
 
-    case 'suggest-error': {
+    case 'filter-error': {
 
-      return { 
-        ...state, 
-        error: payload,
-      }
+      const error = payload
+      return { ...state, error }
 
     }
 
-    default: return state
+    default: return { ...state }
 
   }
 

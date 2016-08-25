@@ -1,3 +1,6 @@
 export { SearchInput } from './SearchInput'
-export { SearchTags } from './SearchTags'
+export { SearchTags } from './SearchSuggestions'
 export { QueryTags } from './QueryTags'
+export Feedback from './Feedback'
+export SearchFilters from './SearchFilters'
+export SearchFilterGroup from './SearchFilterGroup'

@@ -19,9 +19,9 @@ export default class Browse extends React.Component {
   render() {
 
     const { props } = this
-    const { onSubmit } = handlers(props)
+    const { onSubmit, onChange } = handlers(props)
 
-    return <form id='Browse' className='page' method='get' action='/' onSubmit={onSubmit} >
+    return <form id='Browse' className='page' method='get' action='/' onSubmit={onSubmit} onChange={onChange} >
       <SearchPanel props={props} />
       <QueryPath props={props} />
     </form>

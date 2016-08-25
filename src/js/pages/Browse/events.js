@@ -4,6 +4,10 @@ const eventHandlers = ({ dispatch }) => ({
     event.preventDefault() 
   },
 
+  onChange: ({ target }) => {
+    // console.log(target)
+  },
+
 })
 
 export default eventHandlers
