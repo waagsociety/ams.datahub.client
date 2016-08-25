@@ -10,7 +10,6 @@ export default function ({ props, content }) {
     .filter(group => group.match) // removes empty groups
 
   if (error) return <Feedback content={"An error has occured"} />
-  else if (!match) return <Feedback content={"Nothing here"} />
 
   return <div className='content tags'>{ 
     filters.map((group, i) => <SearchFilterGroup key={i} props={props} content={group} />) 

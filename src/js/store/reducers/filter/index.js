@@ -10,7 +10,18 @@ export default function(state = initialState, { type, payload }) {
       
       const pattern = new RegExp(value, 'gi')
 
-      const suggestions = state.localStorage.filter(item => pattern.test(item.value))
+      let suggestions = state.localStorage.filter(item => pattern.test(item.value))
+
+      // set active state based on selection
+      suggestions = suggestions.map(filter => {
+
+        const selected = state.selection.find(({ id }) => (id === filter.id))
+        if (selected) filter.active = selected.active
+
+        return filter
+
+      })
+
       const match = !!suggestions.length
 
       return { ...state, value, suggestions, match }
