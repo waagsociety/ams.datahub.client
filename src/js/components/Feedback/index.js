@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Feedback(textContent) {
+export default function Feedback({ content }) {
 
   return <article className='feedback content'>
-    <p>{ textContent || 'No description.' }</p>
+    <p>{ content || 'No description.' }</p>
   </article>
 
 }

@@ -1,15 +1,20 @@
 import React from 'react'
 import { SearchTag } from '../../atoms'
 
-export default function (props, { value, key, suggestions }) {
+
+export default function ({ props, content }) {
+
+  const { value, key, filters } = content
+
+  const childNodes = filters.map((content, i) => { 
+    return <li key={i}>
+      <SearchTag props={props} content={content} />
+    </li> 
+  })
 
   return <section key={key} className='group'>
     <h1>{value}</h1>
-    <ul>{ 
-      suggestions.map(filter => {
-        return <li key={ Math.random() }>{ SearchTag(props, filter) }</li>
-      })
-    }</ul>
+    <ul>{childNodes}</ul>
   </section>
 
 }

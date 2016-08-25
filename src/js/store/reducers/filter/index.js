@@ -6,14 +6,14 @@ export default function(state = initialState, { type, payload }) {
 
     case 'filter-input': {
       
-      const query = !!payload && typeof payload === 'string' && payload
+      const value = !!payload && typeof payload === 'string' && payload
       
-      const pattern = new RegExp(payload, 'gi')
+      const pattern = new RegExp(value, 'gi')
 
       const suggestions = state.localStorage.filter(item => pattern.test(item.value))
       const match = !!suggestions.length
 
-      return { ...state, query, suggestions, match }
+      return { ...state, value, suggestions, match }
 
     }
 

@@ -8,7 +8,11 @@ const SearchInput = ({ dispatch }) => ({
   },
 
   getSuggestions({ target }) {
-      dispatch(filter.query(target.value))
+    dispatch(filter.query(target.value || ''))
+  },
+
+  clearInput() {
+    dispatch(filter.query(''))
   },
 
 })

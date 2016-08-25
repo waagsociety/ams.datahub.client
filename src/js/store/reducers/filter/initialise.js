@@ -4,16 +4,16 @@ export const initialState = {
 
   groups: [ 'Author', 'Publisher', 'Type' ].map(value => ({ 
     key: 'dc.contributor.' + value.toLowerCase(),
-    value: value,
+    value,
   })),
   
+  value: '',
   selection: [],
   suggestions: [],
+  match: false,
 
   initialised: false,
   loading: false,
-  match: false,
-  query: false,
   error: false,
   
 }

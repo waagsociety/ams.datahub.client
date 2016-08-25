@@ -1,7 +1,7 @@
 import React from 'react'
 import { eventHandlers } from './events'
 
-export default function (props, content) {
+export default function ({ props, content }) {
   
   const { id, name, key, value, active } = content
   const { toggleActivity } = eventHandlers(props, content)

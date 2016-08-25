@@ -6,16 +6,12 @@ import { Feedback, SearchFilters } from '../'
 export const SearchTags = ({ props }) => {
 
 	const { onChange } = handlers(props)
-	const { query, suggestions, selection, groups, match, initialised, error } = props.store.filter
+	const { value, suggestions, selection, groups } = props.store.filter
 
-	if (!initialised) return Feedback('Loading...')
-	else if (query) { 
-		
-		if (match) return SearchFilters(props, { groups, suggestions })
-		else return Feedback(`No match was found for “${query}”`)
-
-	}
-	else return Feedback('Start typing to search...')
+	if (value) return <SearchFilters props={props} content={suggestions} />  
+  else if (selection.length) return <SearchFilters props={props} content={selection} />
+  
+  else return <Feedback content={"Start typing to search..."} />
 
 }
 
