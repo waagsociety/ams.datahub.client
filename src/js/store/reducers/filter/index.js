@@ -14,12 +14,9 @@ export default function(state = initialState, { type, payload }) {
 
       // set active state based on selection
       suggestions = suggestions.map(filter => {
-
-        const selected = state.selection.find(({ id }) => (id === filter.id))
-        if (selected) filter.active = selected.active
-
+        const isSelected = state.selection.some(({ id }) => (id === filter.id))        
+        filter.active = isSelected
         return filter
-
       })
 
       const match = !!suggestions.length
