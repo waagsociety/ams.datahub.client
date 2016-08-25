@@ -51,14 +51,20 @@ export default function(state = initialState, { type, payload }) {
           const index = groupMap[key]
           const groupExists = typeof index === 'number'
 
-          if (groupExists && !dictionary[key][value]) result.push({
-            id: ++id, 
-            name: key.split('.').pop(),
-            key,
-            value,
-            index,
-            active: false
-          })
+          if (groupExists && !dictionary[key][value]){ 
+
+            dictionary[key][value] = true
+            
+            result.push({
+              id: ++id, 
+              name: key.split('.').pop(),
+              key,
+              value,
+              index,
+              active: false
+            })
+
+          }
 
         })
 

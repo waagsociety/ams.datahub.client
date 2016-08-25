@@ -18,19 +18,16 @@ function createFilterGroups({ groups, suggestions }) {
   
   const groupMap = groups.map(item => ({ 
     ...item,
-    selection: [],
     suggestions: [],
     match: false
   }))
 
-  return suggestions.reduce((result, filter, i) => {    
+  return suggestions.reduce((result, filter) => {    
 
-    const { index, active } = filter
+    const { index } = filter
     const group = result[index]
     
-    if (active) group.selection.push(filter)
-    else group.suggestions.push(filter)
-
+    group.suggestions.push(filter)
     group.match = true
 
     return result
