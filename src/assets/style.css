@@ -48,7 +48,7 @@ li { list-style: none }
     position: absolute;
     width: 100%;
     bottom: 0;
-    top: 5.6em;
+    top: 6.6em;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -70,7 +70,7 @@ li { list-style: none }
 
 .page {
     display: flex;
-    /*padding: 1.5em;  Controls padding for entire page */
+    padding: 1.5em; /* Controls padding for entire page */
 }
 
 /* containers */
@@ -80,7 +80,7 @@ li { list-style: none }
 .menu {
     height: 5.6em;
     width: 100%;
-    padding: 1em 1.25rem;
+    padding: 1em 1.5rem;
 }
 
 .panel { width: 32rem }
@@ -89,6 +89,10 @@ li { list-style: none }
 .floating.panel > * { pointer-events: initial }
 
 .feedback { padding: 1em 1.5rem 1.25em }
+
+.group.search {
+    padding: 1rem 1.5rem;
+}
 
 .group h1 {
     font-size: 100%;
@@ -124,7 +128,7 @@ li { list-style: none }
     text-overflow: ellipsis;
     height: 2.5rem;
     max-width: 100%;
-    padding: 0.5rem 0.75rem;
+    padding: 0.625rem 0.75rem;
     margin: 0 0.5em 0 0;
     display: inline-block;
     overflow: hidden;
@@ -186,9 +190,32 @@ input {
 }
 
 
+.tag { 
+    padding-left: 2.5em;
+    position: relative;
+}
 
+.tag:before {
+    content: '';
+    position: absolute;
+    width: 0.5em;
+    height: 0.5em;
+    background: #223;
+    left: 1em;
+    top: 1em;
+    border-radius: 50%;
+}
 
+.search .tag:before {
+    content: '';
+}
 
+.tag.active:before {
+    content: '✔︎';
+    background: transparent;
+    left: 0.9em;
+    top: 0.625em;
+}
 
 
 

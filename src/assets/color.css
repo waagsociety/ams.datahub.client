@@ -13,7 +13,7 @@ html { background: #000 }
 
 
 /* .panel */
-/*.panel.floating { background: transparent }*/
+.panel.floating { background: transparent }
 .panel { background: hsl(240, 20%, 15%) }
 .panel .group { background: hsl(240, 20%, 15%) }
 
@@ -22,12 +22,15 @@ html { background: #000 }
 .panel .group h1 { border-color: hsla(240, 20%, 20%, 0.9)  }
 
 /*. tag */
-.tag:hover { color: hsl(160, 75%, 48%) }
-.tag.active { color: #000 }
+/*.tag:hover,
+.tag.active { color: #000 }*/
 
-.tag { background: #000 }
-.tag.active { background: hsl(160, 75%, 48%) }
-.tag.active:hover { background: hsl(160, 75%, 44%) }
+.tag { background: hsl(240, 20%, 5%) }
+.tag.active { background: #5F46BD }
+.tag:hover { background: #5F46BD }
+.tag:before { background: hsl(240, 20%, 15%) }
+
+.tag.active:before { color: hsl(240, 20%, 15%) }
 
 
 /* input */

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ActiveFilters } from '../'
 
-export const QueryPath = ({ props }) => {
+export default function ({ props }) {
 
 	return <nav className='container menu'>
 		<ActiveFilters props={props} />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { SearchPanel, QueryPath, MapBox } from '../'
+import { SearchPanel, FilterSelection, MapBox } from '../'
 import handlers from './events'
 import { filter } from '../../store' // Temp A
 
@@ -21,11 +21,11 @@ export default class Browse extends React.Component {
     const { props } = this
     const { onSubmit, onChange } = handlers(props)
     
-    // <QueryPath props={props} />
+    // <FilterSelection props={props} />
     
     return <form id='Browse' className='page' method='get' action='/' onSubmit={onSubmit} onChange={onChange} >
       <SearchPanel props={props} />
-      <QueryPath props={props} />
+      
     </form>
 
   }

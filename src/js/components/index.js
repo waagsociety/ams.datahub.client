@@ -4,6 +4,7 @@ export Feedback from './Feedback'
 
 export SearchInput from './SearchInput'
 export SearchSuggestions from './SearchSuggestions'
+  export SearchTag from './SearchTag'
   export SearchFilters from './SearchFilters'
     export SearchFilterGroup from './SearchFilterGroup'
 
