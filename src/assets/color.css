@@ -13,9 +13,11 @@ html { background: #000 }
 
 
 /* .panel */
-.panel.floating { background: transparent }
+/*.panel.floating { background: transparent }*/
 .panel { background: hsl(240, 20%, 15%) }
 .panel .group { background: hsl(240, 20%, 15%) }
+
+.panel .feedback { background: hsl(240, 20%, 15%) }
 
 .panel .group h1 { border-color: hsla(240, 20%, 20%, 0.9)  }
 

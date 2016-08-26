@@ -2,17 +2,22 @@ import { view, filter } from '../../store'
 
 const SearchInput = ({ dispatch }) => ({
     
-  setFocus({ target }) {
+  storeFocus({ target }) {
     const focus = (target === document.activeElement)
     // dispatch(view.SearchInput({ focus }))
   },
 
-  getSuggestions({ target }) {
+  fetchSuggestions({ target }) {
     dispatch(filter.query(target.value || ''))
   },
 
   clearInput() {
     dispatch(filter.query(''))
+  },
+
+  fetchQuery(event) {
+    const onEnter = event.keyCode === 13
+    if (onEnter) event.preventDefault()
   },
 
 })

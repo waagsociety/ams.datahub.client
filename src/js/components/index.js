@@ -7,4 +7,4 @@ export SearchSuggestions from './SearchSuggestions'
   export SearchFilters from './SearchFilters'
     export SearchFilterGroup from './SearchFilterGroup'
 
-export SearchTag from './SearchTag'
+export FilterTag from './FilterTag'
