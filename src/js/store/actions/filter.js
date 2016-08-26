@@ -2,22 +2,15 @@ import axios from "axios";
 
 export const filter = {
 
-	query: value => dispatch => {
-    dispatch({
-      type: 'filter-input',
-      payload: value
-    })
-  },
+	filter: payload => ({
+    type: 'filter-suggestions',
+    payload: payload
+  }),
 
-  // remove: (parameters) => ({
-  //   type: 'query-remove',
-  //   payload: parameters,
-  // }),
-
-  // add: (parameters) => ({
-  //   type: 'query-add',
-  //   payload: parameters,
-  // }),
+  search: value => ({
+    type: 'filter-search',
+    payload: value
+  }),
 
   tempInit: value => dispatch => {
     axios.get('http://138.201.141.84/rest/items?expand=metadata')

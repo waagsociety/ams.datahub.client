@@ -1,12 +1,10 @@
-export const eventHandlers = ({ dispatch }, payload) => ({
+export const eventHandlers = ({ dispatch, store }) => ({
 
-  toggleQuery({ target }) {
+  searchQuery({ target }) {
+    const { search, value } = store.filter
     dispatch({
-      type: 'filter-toggle',
-      payload: {
-        ...payload,
-        active: target.checked
-      }
+      type: 'filter-search',
+      payload: !search && value || '',
     })
   },
 

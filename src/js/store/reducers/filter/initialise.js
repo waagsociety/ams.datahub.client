@@ -8,6 +8,7 @@ export const initialState = {
   })),
   
   value: '',
+  search: '',
   selection: [],
   suggestions: [],
   match: false,

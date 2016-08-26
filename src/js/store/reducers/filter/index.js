@@ -4,7 +4,7 @@ export default function(state = initialState, { type, payload }) {
 
   switch(type){
 
-    case 'filter-input': {
+    case 'filter-suggestions': {
       
       const value = !!payload && typeof payload === 'string' && payload
       
@@ -48,6 +48,11 @@ export default function(state = initialState, { type, payload }) {
 
       return { ...state, suggestions, selection }
 
+    }
+
+    case 'filter-search': {
+      const searchQuery = state.search && '' || payload
+      return { ...state, search: searchQuery }
     }
 
     case 'filter-initialise': {
