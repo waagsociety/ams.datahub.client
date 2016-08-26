@@ -1,4 +1,4 @@
-export QueryTags from './QueryTags'
+export ActiveFilters from './ActiveFilters'
 
 export Feedback from './Feedback'
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import { QueryTags } from '../'
+import { ActiveFilters } from '../'
 
 export const QueryPath = ({ props }) => {
 
 	return <nav className='container menu'>
-		<QueryTags props={props} />
+		<ActiveFilters props={props} />
 	</nav>
 
 }
