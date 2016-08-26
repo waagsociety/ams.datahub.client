@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActiveFilters } from '../'
+import { ActiveFilters } from '../../components'
 
 export default function ({ props }) {
 

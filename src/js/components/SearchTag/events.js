@@ -1,6 +1,6 @@
 export const eventHandlers = ({ dispatch }, payload) => ({
 
-  toggleActivity({ target }) {
+  toggleQuery({ target }) {
     dispatch({
       type: 'filter-toggle',
       payload: {

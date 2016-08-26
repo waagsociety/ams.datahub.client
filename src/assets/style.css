@@ -44,6 +44,16 @@ li { list-style: none }
 
 .panel { position: relative }
 
+#Browse {
+    position: relative;
+    padding: 1em;
+}
+
+.secondary.panel {
+    position: absolute;
+    right: 1em;
+}
+
 .panel .tags {
     position: absolute;
     width: 100%;
@@ -217,7 +227,11 @@ input {
     top: 0.625em;
 }
 
-
+svg {
+    width: 2em;
+    height: 2em;
+    stroke-width: 1;
+}
 
 
 
