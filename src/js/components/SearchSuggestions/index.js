@@ -3,10 +3,10 @@ import { Feedback, SearchFilters } from '../'
 
 export default function ({ props }) {
 
-	const { value, suggestions, selection } = props.store.filter
+	const { value, search, suggestions, selection } = props.store.filter
+  const filters = value && suggestions || selection
 
-	if (value) return <SearchFilters props={props} content={suggestions} />  
-  else return <SearchFilters props={props} content={selection} />
+	return <SearchFilters props={props} content={filters} />  
   
 }
 

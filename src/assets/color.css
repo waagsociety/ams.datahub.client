@@ -29,6 +29,7 @@ html { background: #000 }
 .tag.active { background: #5F46BD }
 .tag:hover { background: #5F46BD }
 .tag:before { background: hsl(240, 20%, 15%) }
+.tag.disabled { background: transparent }
 
 .tag.active:before { color: hsl(240, 20%, 15%) }
 
