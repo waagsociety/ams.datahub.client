@@ -1,6 +1,6 @@
 import { view, filter } from '../../store'
 
-const SearchInput = ({ dispatch }) => ({
+const SearchInput = ({ dispatch, store }) => ({
     
   storeFocus({ target }) {
     const focus = (target === document.activeElement)
@@ -16,8 +16,18 @@ const SearchInput = ({ dispatch }) => ({
   },
 
   fetchQuery(event) {
+    
+    const { value } = store.filter
     const onEnter = event.keyCode === 13
-    if (onEnter) event.preventDefault()
+
+    if (onEnter){ 
+      event.preventDefault()
+      if (value) dispatch({
+        type: 'filter-search',
+        payload: value,
+      })
+      
+    }
   },
 
 })
