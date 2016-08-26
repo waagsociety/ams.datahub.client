@@ -1,0 +1,35 @@
+/* html */
+html { color: #eee }
+html { background: #000 }
+
+
+/* .menu */
+.menu { color: #000 }
+
+.menu { background: hsl(0, 0%, 96%) }
+.breadcrumb:after {
+  background: linear-gradient(to right, hsla(0, 0%, 96%, 0), hsl(0, 0%, 96%))
+}
+
+
+/* .panel */
+.panel.floating { background: transparent }
+.panel { background: hsl(240, 20%, 15%) }
+.panel .group { background: hsl(240, 20%, 15%) }
+
+.panel .group h1 { border-color: hsla(240, 20%, 20%, 0.9)  }
+
+/*. tag */
+.tag:hover { color: hsl(160, 75%, 48%) }
+.tag.active { color: #000 }
+
+.tag { background: #000 }
+.tag.active { background: hsl(160, 75%, 48%) }
+.tag.active:hover { background: hsl(160, 75%, 44%) }
+
+
+/* input */
+input { background: #fff }
+
+input { box-shadow: inset 0 0 0 1px hsla(0, 0%, 25%, 0.25) }
+input:focus { box-shadow: inset 0 0 0 1px hsla(240, 20%, 20%, 0.5) }

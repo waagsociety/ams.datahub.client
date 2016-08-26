@@ -1,39 +1,19 @@
 import React from 'react'
 import { SearchFilterGroup, Feedback } from '../'
+import { createFilterGroups } from './actions'
 
 export default function ({ props, content }) {
 
-  const { groups, error, match } = props.store.filter
-  
+  const { groups, error, match, value } = props.store.filter  
   const filters = createFilterGroups(groups, content)
     .filter(group => group.match) // removes empty groups
 
   if (error) return <Feedback content={"An error has occured"} />
 
-  return <div className='content tags'>{ 
+  else return <div className='content tags'>
+    <Feedback content={value} />
+  { 
     filters.map((group, i) => <SearchFilterGroup key={i} props={props} content={group} />) 
   }</div>
-
-}
-
-function createFilterGroups(groups, filters) {
-
-  const groupMap = groups.map(item => ({ 
-    ...item,
-    filters: [],
-    match: false
-  }))
-
-  return filters.reduce((result, filter) => {    
-
-    const { index } = filter
-    const group = result[index]
-    
-    group.filters.push(filter)
-    group.match = true
-
-    return result
-
-  }, groupMap)
 
 }
