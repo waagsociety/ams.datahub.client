@@ -56,8 +56,6 @@ export const filter = {
 
 function findByMetaData(meta, callback) {
 
-  console.log(callback)
-
   var data = JSON.stringify(meta);
 
   var xhr = new XMLHttpRequest();
