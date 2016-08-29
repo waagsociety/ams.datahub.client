@@ -22,13 +22,20 @@ html { background: #000 }
 .panel .group h1 { border-color: hsla(240, 20%, 20%, 0.9)  }
 
 /*. tag */
-/*.tag:hover,
-.tag.active { color: #000 }*/
+.tag svg { color: hsl(252, 32%, 16%) }
+.search .tag.active svg.icon { color: currentColor }
+.tag.disabled svg { color: white }
+
+.tag.disabled svg.shortcut,
+.tag.active svg.shortcut { color: transparent }
+
+.tag svg.shortcut { color: currentColor }
+
 
 .tag { background: hsl(240, 20%, 5%) }
-.tag.active { background: #5F46BD }
-.tag:hover { background: #5F46BD }
-.tag:before { background: hsl(240, 20%, 15%) }
+.tag.active { background: hsl(252, 50%, 48%) }
+.tag:hover { background: hsl(252, 50%, 50%) }
+.tag.active:hover { background: hsl(252, 50%, 46%) }
 .tag.disabled { background: transparent }
 
 .tag.active:before { color: hsl(240, 20%, 15%) }

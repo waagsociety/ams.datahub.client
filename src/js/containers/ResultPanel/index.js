@@ -4,7 +4,7 @@ import { Feedback } from '../../components'
 export default function ({ props }) {
 
   return <div id='ResultPanel' className='container floating secondary panel'>
-    <Feedback content="ResultPanel" />
+    ResultPanel
   </div>
 
 }

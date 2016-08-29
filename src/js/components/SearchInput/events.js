@@ -8,11 +8,11 @@ const SearchInput = ({ dispatch, store }) => ({
   },
 
   fetchSuggestions({ target }) {
-    dispatch(filter.filter(target.value || ''))
+    dispatch(filter.suggestions(target.value || ''))
   },
 
   clearInput() {
-    dispatch(filter.filter(''))
+    dispatch(filter.suggestions(''))
   },
 
   fetchQuery(event) {
@@ -22,12 +22,9 @@ const SearchInput = ({ dispatch, store }) => ({
 
     if (onEnter){ 
       event.preventDefault()
-      if (value) dispatch({
-        type: 'filter-search',
-        payload: value,
-      })
-      
+      if (value) dispatch(filter.search(value))     
     }
+
   },
 
 })

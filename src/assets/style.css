@@ -46,19 +46,19 @@ li { list-style: none }
 
 #Browse {
     position: relative;
-    padding: 1em;
 }
 
 .secondary.panel {
     position: absolute;
-    right: 1em;
+    right: 0;
 }
 
-.panel .tags {
+.panel .content {
     position: absolute;
-    width: 100%;
-    bottom: 0;
-    top: 6.6em;
+    top: 6.6em; 
+    right: 1em; 
+    bottom: 1em; 
+    left: 1em;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -80,7 +80,10 @@ li { list-style: none }
 
 .page {
     display: flex;
-    padding: 1.5em; /* Controls padding for entire page */
+}
+
+.panel {
+    padding: 1em;
 }
 
 /* containers */
@@ -145,10 +148,6 @@ li { list-style: none }
     cursor: pointer;
 }
 
-.tag.disabled {
-    cursor: default;
-}
-
 .panel .tag { display: block }
 
 .breadcrumb { position: relative }
@@ -196,48 +195,45 @@ input {
     cursor: pointer;
 }
 
-.icon:hover { color: red }
-
-.icon:disabled {
-    color: silver;
-    cursor: default;
-}
-
-
 .tag { 
     padding-left: 2.5em;
     position: relative;
 }
 
-.tag:before {
-    content: '';
+.tag svg {
     position: absolute;
-    width: 0.5em;
-    height: 0.5em;
-    background: #223;
-    left: 1em;
-    top: 1em;
-    border-radius: 50%;
+    left: 0.5em;
+    top: 0.5em;
+    width: 1.5em;
+    height: 1.5em;
+    stroke-width: 2;
+    transition: 0.2s ease;
 }
 
-.search .tag:before {
-    content: '';
+.tag svg.shortcut {
+    left: auto;
+    right: 0.5em;
 }
 
-.tag.active:before {
-    content: '✔︎';
-    background: transparent;
-    left: 0.9em;
-    top: 0.625em;
+.tag.active svg {
+    transform: rotate(45deg);
 }
+
+.search .tag.active svg {
+    transform: none;
+}
+
 
 svg {
-    width: 2em;
-    height: 2em;
-    stroke-width: 1;
+    width: 1.5em;
+    height: 1.5em;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    fill: none;
 }
 
-
-
-
-
+*[disabled] { 
+    cursor: default;
+    pointer-events: none;
+}

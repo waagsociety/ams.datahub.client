@@ -2,9 +2,9 @@ import axios from "axios";
 
 export const filter = {
 
-	filter: payload => ({
+	suggestions: value => ({
     type: 'filter-suggestions',
-    payload: payload
+    payload: value
   }),
 
   search: value => ({
