@@ -219,8 +219,10 @@ input {
     transform: rotate(45deg);
 }
 
-.search .tag.active svg {
-    transform: none;
+.search .tag.active svg { transform: none }
+
+.tag.focus {
+    padding-right: 2em;
 }
 
 

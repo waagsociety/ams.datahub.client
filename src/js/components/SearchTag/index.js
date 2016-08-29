@@ -4,7 +4,9 @@ import { eventHandlers } from './events'
 
 export default function ({ props }) {
   
-  const { value, search } = props.store.filter
+  const { store } = props
+  const { value, search } = store.filter
+  const { focus } = store.view.SearchInput
   const { searchQuery } = eventHandlers(props)
 
   const active = !!search
@@ -13,6 +15,7 @@ export default function ({ props }) {
   const className = [ 
     active ? 'active' : '', 
     enabled ? 'enabled' : 'disabled',
+    focus && !!value ? 'focus' : '',
     'tag'
   ].join(' ').trim()
 

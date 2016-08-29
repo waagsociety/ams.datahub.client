@@ -14,9 +14,7 @@ export const filter = {
 
   tempInit: value => dispatch => {
 
-    findByMetaData((response) => {
-      console.log(response)
-    })
+    findByMetaData((response) => { console.log(response) })
 
     axios.get('http://138.201.141.84/rest/items?expand=metadata')
       .then(response => {
@@ -63,11 +61,11 @@ function findByMetaData(callback) {
   });
 
   xhr.open("POST", "http://138.201.141.84/rest/items/find-by-metadata-field");
-  xhr.setRequestHeader("rest-dspace-token", "faeae1f3-4880-41ef-ae26-cca6f10229ca");
+  // xhr.setRequestHeader("rest-dspace-token", "faeae1f3-4880-41ef-ae26-cca6f10229ca");
   xhr.setRequestHeader("content-type", "application/json");
   xhr.setRequestHeader("accept", "application/json");
-  xhr.setRequestHeader("cache-control", "no-cache");
-  xhr.setRequestHeader("postman-token", "51d36325-7693-2d45-4736-ea90f3c5c28f");
+  // xhr.setRequestHeader("cache-control", "no-cache");
+  // xhr.setRequestHeader("postman-token", "51d36325-7693-2d45-4736-ea90f3c5c28f");
 
   xhr.send(data);
 

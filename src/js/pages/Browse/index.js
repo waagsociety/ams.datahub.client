@@ -10,7 +10,8 @@ export default class Browse extends React.Component {
 
   componentWillMount() {
 
-    // Temp A) Prefetch metadata filters from all dSpace items
+    // this.props.store.filter.value = "okay" // preset a search input value
+
     const { dispatch } = this.props 
     dispatch(filter.tempInit())
 
@@ -19,13 +20,14 @@ export default class Browse extends React.Component {
   render() {
 
     const { props } = this
-    const { onSubmit, onChange } = handlers(props)
+    const { onSubmit, onChange, onTest } = handlers(props)
     
     // <FilterSelection props={props} />
     
     return <form id='Browse' className='page' method='get' action='/' onSubmit={onSubmit} onChange={onChange} >
       <SearchPanel props={props} />
       <ResultPanel props={props} />
+      
     </form>
 
   }

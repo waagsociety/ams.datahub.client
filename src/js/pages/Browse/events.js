@@ -1,12 +1,16 @@
 const eventHandlers = ({ dispatch }) => ({
 
-  onSubmit: (event) => {
+  onSubmit(event) {
     event.preventDefault() 
   },
 
-  onChange: ({ target }) => {
+  onChange({ target }) {
     // console.log(target)
   },
+
+  onTest(event) {
+    console.log(event)
+  }
 
 })
 

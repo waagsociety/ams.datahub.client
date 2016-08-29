@@ -1,5 +1,6 @@
 import React from 'react'
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from 'mapbox-gl'
+import * as mapActions from './actions'
 
 export default class MapBox extends React.Component {
   
@@ -29,8 +30,8 @@ export default class MapBox extends React.Component {
       }
     });
 
-    // const nav = new mapboxgl.Navigation({ position: 'top-left' }); // position is optional
-    // map.addControl(nav);
+    const nav = new mapboxgl.Navigation({ position: 'top-left' }); // position is optional
+    map.addControl(nav);
 
     map.on('load', () => {
       mapActions.addSources(map);
