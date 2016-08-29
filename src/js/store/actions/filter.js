@@ -12,9 +12,38 @@ export const filter = {
     payload: value
   }),
 
+  findByMetaData: query => dispatch => {
+
+    findByMetaData(response => {
+      console.log('responseTest', response)
+    })
+    console.log('query', query)
+
+    const config = {
+      data: {
+        "key": "dc.contributor.author",
+        "value": "Gemeente Amsterdam"
+      },
+      withCredentials: true,
+      headers: {
+        "content-type": "application/json",
+        "accept": "application/json",
+        "cache-control": "no-cache"
+      },
+    }
+
+    axios.post('http://138.201.141.84/rest/items/find-by-metadata-field', config)
+      .then(response => {
+        console.log(response)
+      })
+      
+  },
+
   tempInit: value => dispatch => {
 
-    findByMetaData((response) => { console.log(response) })
+    findByMetaData((response) => { 
+      console.log('Find by metadata POST:', response.response) 
+    })
 
     axios.get('http://138.201.141.84/rest/items?expand=metadata')
       .then(response => {
