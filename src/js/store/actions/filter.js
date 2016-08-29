@@ -12,38 +12,29 @@ export const filter = {
     payload: value
   }),
 
-  findByMetaData: query => dispatch => {
-
-    findByMetaData(response => {
-      console.log('responseTest', response)
+  findByMetaData: dispatch => value => {
+    
+    dispatch({
+      type: 'filter-toggle',
+      payload: value
     })
-    console.log('query', query)
 
-    const config = {
-      data: {
-        "key": "dc.contributor.author",
-        "value": "Gemeente Amsterdam"
-      },
-      withCredentials: true,
-      headers: {
-        "content-type": "application/json",
-        "accept": "application/json",
-        "cache-control": "no-cache"
-      },
+    const meta = { 
+      key: value.key,
+      value: value.value
     }
 
-    axios.post('http://138.201.141.84/rest/items/find-by-metadata-field', config)
-      .then(response => {
-        console.log(response)
-      })
-      
+    findByMetaData(meta, function(request) {
+      console.log(request.response)
+    })
+
   },
 
   tempInit: value => dispatch => {
 
-    findByMetaData((response) => { 
-      console.log('Find by metadata POST:', response.response) 
-    })
+    // findByMetaData((response) => { 
+    //   console.log('Find by metadata POST:', response.response.substr(0, 50) + ' ...') 
+    // })
 
     axios.get('http://138.201.141.84/rest/items?expand=metadata')
       .then(response => {
@@ -63,12 +54,11 @@ export const filter = {
 }
 
 
-function findByMetaData(callback) {
+function findByMetaData(meta, callback) {
 
-  var data = JSON.stringify({
-    "key": "dc.contributor.author",
-    "value": "Gemeente Amsterdam"
-  });
+  console.log(callback)
+
+  var data = JSON.stringify(meta);
 
   var xhr = new XMLHttpRequest();
   xhr.withCredentials = true;
