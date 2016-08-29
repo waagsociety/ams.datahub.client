@@ -13,6 +13,11 @@ export const filter = {
   }),
 
   tempInit: value => dispatch => {
+
+    findByMetaData((response) => {
+      console.log(response)
+    })
+
     axios.get('http://138.201.141.84/rest/items?expand=metadata')
       .then(response => {
         dispatch({

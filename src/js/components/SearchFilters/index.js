@@ -6,7 +6,7 @@ export default function ({ props, content }) {
 
   const { groups, match, value } = props.store.filter  
   const filters = createFilterGroups(groups, content)
-    .filter(group => group.match) // removes empty groups
+    // .filter(group => group.match) // removes empty groups
 
   // if (error) return <Feedback content={"An error has occured"} />
   // else 
