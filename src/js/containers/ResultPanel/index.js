@@ -1,10 +1,10 @@
 import React from 'react'
-import { Feedback } from '../../components'
+import { Feedback, ResultsPreview } from '../../components'
 
-export default function ({ props }) {
+export default function ResultPanel({ props }) {
 
   return <div id='ResultPanel' className='container floating secondary panel'>
-    ResultPanel
+    <ResultsPreview props={props} />
   </div>
 
 }

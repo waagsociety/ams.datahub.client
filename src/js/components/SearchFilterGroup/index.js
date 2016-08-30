@@ -1,7 +1,7 @@
 import React from 'react'
 import { FilterTag } from '../'
 
-export default function ({ props, content }) {
+export default function SearchFilterGroup({ props, content }) {
 
   const { value, key, filters } = content
 

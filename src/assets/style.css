@@ -51,16 +51,22 @@ li { list-style: none }
 .secondary.panel {
     position: absolute;
     right: 0;
+    bottom: 0;
+    top: 0;
 }
 
 .panel .content {
     position: absolute;
-    top: 6.6em; 
+    top: 1em; 
     right: 1em; 
     bottom: 1em; 
     left: 1em;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+.panel .menu + .content {
+    top: 7.5em;
 }
 
 .group { max-width: 100% }

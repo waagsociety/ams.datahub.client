@@ -1,7 +1,7 @@
 import React from 'react'
 import { Feedback, SearchFilters } from '../'
 
-export default function ({ props }) {
+export default function SearchSuggestions({ props }) {
 
 	const { value, search, suggestions, selection } = props.store.filter
   const filters = value && suggestions || selection

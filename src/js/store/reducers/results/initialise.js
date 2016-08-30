@@ -1,19 +1,11 @@
 export const initialState = {
-  
-  localStorage: [],
 
-  groups: [ 'Author', 'Publisher', 'Type' ].map(value => ({ 
-    key: 'dc.contributor.' + value.toLowerCase(),
-    value,
-  })),
-  
-  value: '',
-  search: '',
+  collection: [],
   selection: [],
-  suggestions: [],
-  match: false,
 
-  initialised: false,
+  sort: 'name',
+  
+  match: false,
   loading: false,
   error: false,
   

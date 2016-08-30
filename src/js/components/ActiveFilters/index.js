@@ -1,7 +1,7 @@
 import React from 'react'
 import { FilterTag } from '../'
 
-export default function ({ props }) {
+export default function ActiveFilters({ props }) {
     
 	const { selection } = props.store.filter
 

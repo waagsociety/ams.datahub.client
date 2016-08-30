@@ -2,7 +2,7 @@ import React from 'react'
 import { Feedback } from '../'
 import { eventHandlers } from './events'
 
-export default function ({ props }) {
+export default function SearchTag({ props }) {
   
   const { store } = props
   const { value, search } = store.filter
@@ -24,7 +24,7 @@ export default function ({ props }) {
     <svg className='icon' viewBox='0 0 18 18'>
       <path d='M10,10 l4,4' /><circle cx='7' cy='7' r='4'/>
     </svg>
-    { search || value || "Type to search..." }
+    { search || value || "Start typing to search for text and filters..." }
     <svg className='shortcut' viewBox='0 0 18 18'>
       <path d='M12,4 v7 h-6 m2,-2.5 l-2.5,2.5 l2.5,2.5' />
     </svg>

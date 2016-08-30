@@ -1,7 +1,7 @@
 import React from 'react'
 import { eventHandlers } from './events'
 
-export default function ({ props, content }) {
+export default function FilterTag({ props, content }) {
   
   const { name, value, active } = content
   const { toggleActivity } = eventHandlers(props, content)

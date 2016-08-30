@@ -19,13 +19,21 @@ export const filter = {
       payload: value
     })
 
+    dispatch({
+      type: 'results-loading',
+      payload: true
+    })
+
     const meta = { 
       key: value.key,
       value: value.value
     }
 
     findByMetaData(meta, function(request) {
-      console.log(request.response)
+      dispatch({
+        type: 'results-add',
+        payload: JSON.parse(request.response)
+      })
     })
 
   },

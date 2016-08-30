@@ -1,0 +1,11 @@
+.results {
+  background: white;
+  color: #000;
+}
+
+.results li {
+  margin: 0 1.5rem;
+  padding: 1em 0;
+  border-bottom-width: 1px;
+  border-color: #eee;
+}
