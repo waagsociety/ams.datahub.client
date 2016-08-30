@@ -2,10 +2,13 @@ export const initialState = {
   
   localStorage: [],
 
-  groups: [ 'Author', 'Publisher', 'Type' ].map(value => ({ 
-    key: 'dc.contributor.' + value.toLowerCase(),
-    value,
-  })),
+  groups: [ 'Subject', 'Publisher', 'Author', 'Type' ].map(value => {
+    const prefix = 'dc' + (value === 'Author' ? '.contributor.' : '.')
+    return {
+      key: prefix + value.toLowerCase(),
+      value,
+    }
+  }),
   
   value: '',
   search: '',

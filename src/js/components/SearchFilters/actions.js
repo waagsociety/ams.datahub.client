@@ -7,7 +7,7 @@ export const createFilterGroups = (groups, filters) => {
     match: false
   }))
 
-  return filters.reduce((result, filter) => {    
+  return filters.reduce((result, filter) => {  
 
     const { index } = filter
     const group = result[index]

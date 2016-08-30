@@ -8,7 +8,11 @@ import * as reducers from './reducers'
 
 export default createStore(
   combineReducers(reducers),
-  applyMiddleware(promise(), thunk, logger({ collapsed: true }))
+  applyMiddleware(
+    promise(), 
+    thunk, 
+    // logger({ collapsed: true })
+  )
 )
 
 // Actions

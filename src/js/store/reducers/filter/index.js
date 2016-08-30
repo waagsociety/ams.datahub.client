@@ -74,6 +74,8 @@ export default function(state = initialState, { type, payload }) {
         
         metadata.forEach(({ key, value }) => {
 
+          console.log(key)
+
           const index = groupMap[key]
           const groupExists = typeof index === 'number'
 
