@@ -10,6 +10,8 @@
   border-color: #eee;
 }
 
+.loading h1 { color: gray }
+
 .menu h1 {
   font-size: 150%;
   padding: 0.625em 0;

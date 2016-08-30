@@ -9,8 +9,6 @@ export const initialState = {
   loading: false,
   error: false,
   
-  localStorage: {
-
-  },
+  localStorage: {},
 
 }

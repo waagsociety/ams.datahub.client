@@ -1,6 +1,6 @@
 import { filter } from '../../store'
 
-export const eventHandlers = ({ dispatch }, payload) => ({
+export const eventHandlers = ({ dispatch, store }, payload) => ({
 
   toggleActivity({ target }) {
 

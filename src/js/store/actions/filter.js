@@ -12,31 +12,21 @@ export const filter = {
     payload: value
   }),
 
-  findByMetaData: dispatch => value => {
+  findByMetaData: dispatch => payload => {
     
+    const { key, value } = payload
+    dispatch({ type: 'filter-toggle', payload })
+    dispatch({ type: 'results-loading' })
 
-    dispatch({ type: 'filter-toggle', payload: value })
-    dispatch({ type: 'results-loading', payload: true })
-
-    if (value.active) {
-      
-      const meta = { key: value.key, value: value.value }
-
-      findByMetaData(meta, function(request) {
-        dispatch({
-          type: 'results-add',
-          payload: {
-            key: meta.key,
-            value: meta.value,
-            data: JSON.parse(request.response)
-          }
-        })
+    findByMetaData({ key, value }, request => {
+      dispatch({
+        type: 'results-store',
+        payload: {
+          key: key,
+          value: value,
+          data: JSON.parse(request.response),
+        }
       })
-
-    }
-    else dispatch({
-      type: 'results-remove',
-      payload: value
     })
 
   },
