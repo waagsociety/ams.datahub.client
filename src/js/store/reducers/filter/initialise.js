@@ -2,7 +2,7 @@ export const initialState = {
   
   localStorage: [],
 
-  groups: [ 'Subject', 'Publisher', 'Author', 'Type' ].map(value => {
+  groups: [ 'Subject', 'Author', 'Publisher', 'Type' ].map(value => {
     const prefix = 'dc' + (value === 'Author' ? '.contributor.' : '.')
     return {
       key: prefix + value.toLowerCase(),

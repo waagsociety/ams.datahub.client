@@ -14,26 +14,29 @@ export const filter = {
 
   findByMetaData: dispatch => value => {
     
-    dispatch({
-      type: 'filter-toggle',
-      payload: value
-    })
 
-    dispatch({
-      type: 'results-loading',
-      payload: true
-    })
+    dispatch({ type: 'filter-toggle', payload: value })
+    dispatch({ type: 'results-loading', payload: true })
 
-    const meta = { 
-      key: value.key,
-      value: value.value
-    }
+    if (value.active) {
+      
+      const meta = { key: value.key, value: value.value }
 
-    findByMetaData(meta, function(request) {
-      dispatch({
-        type: 'results-add',
-        payload: JSON.parse(request.response)
+      findByMetaData(meta, function(request) {
+        dispatch({
+          type: 'results-add',
+          payload: {
+            key: meta.key,
+            value: meta.value,
+            data: JSON.parse(request.response)
+          }
+        })
       })
+
+    }
+    else dispatch({
+      type: 'results-remove',
+      payload: value
     })
 
   },

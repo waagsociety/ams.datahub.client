@@ -10,15 +10,41 @@ export default function(state = initialState, { type, payload }) {
 
     case 'results-add': {
 
-      console.log('results-add', payload)
+      const { key, value, data } = payload
+      const localStorage = { 
+        ...state.localStorage, 
+        [key + value]: data.map(x => x.id)
+      }
 
-      const collection = payload
+      // concat and remove doubles
+      const idDictionary = []
+      const collection = state.collection.concat(data).filter(item => {
+        if (idDictionary[item.id]) return false
+        idDictionary[item.id] = true
+        return true
+      })
 
       return {
-        ...state, 
+        ...state,
+        localStorage, 
         collection,
+        selection: collection,
         match: !!collection.length,
         loading: false,
+      }
+
+    }
+
+    case 'results-remove': {
+
+      const { key, value } = payload
+      const idFilterIndex = state.localStorage[ key + value ]
+
+      const selection = state.selection.filter(item => !idFilterIndex.includes(item.id))
+
+      return {
+        ...state,
+        selection
       }
 
     }
