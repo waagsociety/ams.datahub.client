@@ -6,9 +6,10 @@ export default function(state = initialState, { type, payload }) {
 
     case 'filter-suggestions': {
       
-      const value = !!payload && typeof payload === 'string' && payload
+      const value = !!payload && typeof payload === 'string' && payload || ''
       
-      const pattern = new RegExp(value, 'gi')
+      const expression = value.length < 2 ? `\\b${value}` : value
+      const pattern = new RegExp(expression, 'i')
 
       let suggestions = state.localStorage.filter(item => pattern.test(item.value))
 

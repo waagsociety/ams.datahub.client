@@ -6,10 +6,12 @@ html { background: #000 }
 /* .menu */
 .menu { color: #000 }
 
-.menu { background: hsl(0, 0%, 96%) }
+.menu { background: #fff }
 .breadcrumb:after {
   background: linear-gradient(to right, hsla(0, 0%, 96%, 0), hsl(0, 0%, 96%))
 }
+
+.menu { box-shadow: inset 0 -1px 0 0 hsl(240, 20%, 15%) }
 
 
 /* .panel */

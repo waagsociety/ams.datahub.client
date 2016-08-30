@@ -39,12 +39,14 @@ export default function(state = initialState, { type, payload }) {
 
       const { key, value } = payload
       const idFilterIndex = state.localStorage[ key + value ]
+      state.localStorage[ key + value ] = null
 
       const selection = state.selection.filter(item => !idFilterIndex.includes(item.id))
 
       return {
         ...state,
-        selection
+        selection,
+        localStorage
       }
 
     }
