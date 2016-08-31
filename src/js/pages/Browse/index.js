@@ -3,16 +3,15 @@ import { connect } from 'react-redux'
 
 import { SearchPanel, ResultPanel, FilterSelection, MapBox } from '../../containers'
 import handlers from './events'
-import { filter } from '../../store' // Temp A
+import { filter, results } from '../../store' // Temp A
 
 @connect ((store) => ({ store }))
 export default class Browse extends React.Component {
 
   componentWillMount() {
 
-    // this.props.store.filter.value = "okay" // preset a search input value
-
     const { dispatch } = this.props 
+    // temp
     dispatch(filter.tempInit())
 
   }

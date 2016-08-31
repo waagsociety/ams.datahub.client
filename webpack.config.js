@@ -3,9 +3,9 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  context: path.join(__dirname, "src"),
-  devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/app.js",
+  context: path.join(__dirname, 'src'),
+  devtool: debug ? 'inline-sourcemap' : null,
+  entry: './js/app.js',
   module: {
     loaders: [
       {
@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader?modules&localIdentName=[hash:base64:5]!postcss-loader',
+        loader: 'style-loader!css-loader?modules&localIdentName=[hash:base64:5]',
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -42,8 +42,8 @@ module.exports = {
     }],
   },
   output: {
-    path: __dirname + "/src/",
-    filename: "app.min.js"
+    path: __dirname + '/src/',
+    filename: 'app.min.js'
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),

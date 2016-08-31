@@ -8,6 +8,10 @@ export default function(state = initialState, { type, payload }) {
       return { ...state, loading: true }
     }
 
+    case 'results-tempInit': {
+      return { ...state }
+    }
+
     case 'results-store': {
 
       const { key, value, data } = payload

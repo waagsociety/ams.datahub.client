@@ -1,6 +1,13 @@
-.results {
+a {
+  text-decoration: none;
+}
+
+.results ul {
   background: white;
   color: #000;
+  max-height: calc(100% - 4em);
+  overflow: auto;
+  /*margin-bottom: 3em;*/
 }
 
 .results li {
@@ -10,9 +17,35 @@
   border-color: #eee;
 }
 
-.loading h1 { color: gray }
+.loading .menu h1 { color: gray }
 
 .menu h1 {
   font-size: 150%;
   padding: 0.625em 0;
+}
+
+.results li h1 {
+  font-size: 125%;
+  line-height: 1.4;
+  padding: 0 0 0.25em;
+}
+
+.results li time {
+  color: gray;
+}
+
+.primary.button {
+  display: block;
+  padding: 0.75em 1em;
+  color: white;
+  margin: 1em 0 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.full.button {
+  width: 100%;
+  height: 4em;
+  margin: 0;
 }

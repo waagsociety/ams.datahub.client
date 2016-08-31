@@ -37,6 +37,19 @@ export const filter = {
     //   console.log('Find by metadata POST:', response.response.substr(0, 50) + ' ...') 
     // })
 
+    const key = 'dc.type', value = 'dataset'
+
+    findByMetaData({ key, value }, request => {
+      dispatch({
+        type: 'results-store',
+        payload: {
+          key: key,
+          value: value,
+          data: JSON.parse(request.response),
+        }
+      })
+    })
+
     axios.get('http://138.201.141.84/rest/items?expand=metadata')
       .then(response => {
         dispatch({
@@ -51,7 +64,7 @@ export const filter = {
         })
       })
   } 
-
+  
 }
 
 

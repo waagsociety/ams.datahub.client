@@ -24,7 +24,7 @@ export default function SearchTag({ props }) {
     <svg className='icon' viewBox='0 0 18 18'>
       <path d='M10,10 l4,4' /><circle cx='7' cy='7' r='4'/>
     </svg>
-    { search || value || "Start typing to search for text and filters..." }
+    { search || value || "Start typing to search..." }
     <svg className='shortcut' viewBox='0 0 18 18'>
       <path d='M12,4 v7 h-6 m2,-2.5 l-2.5,2.5 l2.5,2.5' />
     </svg>
