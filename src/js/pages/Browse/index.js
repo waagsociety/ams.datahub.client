@@ -5,14 +5,16 @@ import { SearchPanel, ResultPanel, FilterSelection, MapBox } from '../../contain
 import handlers from './events'
 import { filter, results } from '../../store' // Temp A
 
-@connect ((store) => ({ store }))
+@connect ((store) => ({ store, history }))
 export default class Browse extends React.Component {
 
   componentWillMount() {
 
     const { dispatch } = this.props 
-    // temp
+    
     dispatch(filter.tempInit())
+
+    console.log(history)
 
   }
 

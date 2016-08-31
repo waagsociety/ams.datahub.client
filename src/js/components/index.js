@@ -1,12 +1,10 @@
 export Feedback from './Feedback'
-export ActiveFilters from './ActiveFilters' // redundant
-export FilterTag from './FilterTag'
+// export ActiveFilters from './ActiveFilters' // redundant
 
 export SearchInput from './SearchInput'
-export SearchSuggestions from './SearchSuggestions'
   export SearchTag from './SearchTag'
   export SearchFilters from './SearchFilters'
-    export SearchFilterGroup from './SearchFilterGroup'
-
+    export SearchFiltersGroup from './SearchFiltersGroup'
+      export FilterTag from './FilterTag'
 
 export ResultsPreview from './ResultsPreview'

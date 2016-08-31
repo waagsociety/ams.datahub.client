@@ -1,4 +1,5 @@
-import axios from "axios";
+import { history } from 'react-router'
+import axios from 'axios'
 
 export const filter = {
 
@@ -13,6 +14,8 @@ export const filter = {
   }),
 
   findByMetaData: dispatch => payload => {
+
+    // history.push()
     
     const { key, value } = payload
     dispatch({ type: 'filter-toggle', payload })

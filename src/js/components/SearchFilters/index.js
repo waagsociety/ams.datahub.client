@@ -1,10 +1,12 @@
 import React from 'react'
-import { SearchFilterGroup, Feedback, SearchTag } from '../'
+import { Feedback, SearchFiltersGroup, SearchTag } from '../'
 import { createFilterGroups } from './actions'
 
 export default function SearchFilters({ props, content }) {
 
-  const { groups, match, value, error, loading } = props.store.filter  
+  const { filter } = props.store
+  const { groups, match, value, error, loading } = filter
+
   const filters = createFilterGroups(groups, content).filter(group => group.match)
   const className = [ 'content tags', !!value && 'suggestions' || 'selection' ].join(' ')
 
@@ -14,8 +16,8 @@ export default function SearchFilters({ props, content }) {
     <section className='search group'>
       <SearchTag props={props} />
     </section>
-    { filters.map((group, i) => 
-      <SearchFilterGroup key={i} props={props} content={group} />
+    { filters.map(group => 
+      <SearchFiltersGroup key={group.key} props={props} content={group} />
     )}
   </div>
 
