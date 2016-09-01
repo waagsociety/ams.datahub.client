@@ -29,6 +29,42 @@ body,
     width: 100%;
 }
 
+body { padding-top: 90px }
+
+nav.page {
+    color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 30px;
+    height: 90px;
+    background: white;
+}
+
+nav.page ul { 
+    padding: inherit;
+    position: absolute;
+    right: 0;
+}
+
+nav.page li {
+    display: inline-block;
+}
+
+nav.page a.logo {
+    font-weight: 600;
+}
+
+nav.page a { 
+    font-size: 20px;
+    display: block;
+    margin: 26px 0;
+    padding: 10px;
+}
+
+nav.page a.active { color: #9291FB }
+
 #Browse {
     background-image: url(map.png);
     background-size: cover;

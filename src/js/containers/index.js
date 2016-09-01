@@ -1,3 +1,5 @@
+export GlobalNavigation from './GlobalNavigation'
+
 export MapBox from './MapBox'
 export SearchPanel from './SearchPanel'
 export ResultPanel from './ResultPanel'

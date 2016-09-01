@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
 import { filter, results } from '../../store'
-import { SearchPanel, ResultPanel, MapBox } from '../../containers'
+import { GlobalNavigation, SearchPanel, ResultPanel, MapBox } from '../../containers'
 import { ResultsPreview } from '../../components'
 import handlers from './events'
 
@@ -25,6 +25,7 @@ export default class Browse extends React.Component {
     const { onSubmit, onChange, onTest } = handlers(props)
 
     return <form id='Browse' className='page' method='get' action='/' onSubmit={onSubmit} onChange={onChange} >
+      <GlobalNavigation />
       <SearchPanel props={props} />
       <ResultsPreview props={props} />
     </form>
