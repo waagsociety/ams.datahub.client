@@ -1,0 +1,15 @@
+import React from 'react'
+
+export default function ({ props }) {
+
+  console.log(props)
+
+  return <section class='body content'>
+    <header>
+      <h1>Title</h1>
+      <p>Description</p>
+    </header>
+  </section>
+
+
+}

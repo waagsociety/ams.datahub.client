@@ -2,6 +2,7 @@
 html { color: #eee }
 html { background: #000 }
 
+.content { color: #000 }
 
 /* .menu */
 .menu { color: #000 }
@@ -17,11 +18,12 @@ html { background: #000 }
 /* .panel */
 .panel.floating { background: transparent }
 .panel { background: hsl(240, 20%, 15%) }
-.panel .group { background: hsl(240, 20%, 15%) }
-
-.panel .feedback { background: hsl(240, 20%, 15%) }
-
 .panel .group h1 { border-color: hsla(240, 20%, 20%, 0.9)  }
+
+
+/* .tags */
+.tags { color: #fff }
+.tags .group { background: hsl(240, 20%, 15%) }
 
 
 /*. tag */

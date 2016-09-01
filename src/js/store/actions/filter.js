@@ -1,4 +1,4 @@
-import { history } from 'react-router'
+// import { history } from 'react-router'
 import axios from 'axios'
 
 export const filter = {
@@ -14,8 +14,6 @@ export const filter = {
   }),
 
   findByMetaData: dispatch => payload => {
-
-    // history.push()
     
     const { key, value } = payload
     dispatch({ type: 'filter-toggle', payload })
@@ -35,10 +33,6 @@ export const filter = {
   },
 
   tempInit: value => dispatch => {
-
-    // findByMetaData((response) => { 
-    //   console.log('Find by metadata POST:', response.response.substr(0, 50) + ' ...') 
-    // })
 
     const key = 'dc.type', value = 'dataset'
 

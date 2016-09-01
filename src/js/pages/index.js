@@ -1,2 +1,2 @@
 export Browse from './Browse'
-export Results from './Results'
+export Article from './Article'

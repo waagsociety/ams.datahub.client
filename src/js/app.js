@@ -1,20 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
 import store from './store'
-import { Browse, Results } from './pages'
+import { Browse, Article } from './pages'
 
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 const basepath = location.pathname // use location.pathname as the application entry point
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Router history={history}>
-			<Route path={basepath} component={Browse}></Route>
-      <Route path={basepath + '#10673/1035'} component={Results}></Route>
+		<Router history={history} domain={'abc'}>
+			<Route path={basepath} component={Browse} ></Route>
+      <Route path={basepath + ':x/:y'} component={Article} ></Route>
 		</Router>
 	</Provider>,
 document.querySelector('#app'))

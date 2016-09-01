@@ -18,3 +18,4 @@ export default createStore(
 // Actions
 export { view } from './actions/view'
 export { filter } from './actions/filter'
+export { article } from './actions/article'
