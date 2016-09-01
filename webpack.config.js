@@ -3,9 +3,15 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
+<<<<<<< HEAD
   context: path.join(__dirname, 'src'),
   devtool: debug ? 'inline-sourcemap' : null,
   entry: './js/app.js',
+=======
+  context: __dirname + '/src',
+  devtool: debug ? "inline-sourcemap" : null,
+  entry: "./js/app.js",
+>>>>>>> nathanuphoff/master
   module: {
     loaders: [
       {
@@ -42,8 +48,13 @@ module.exports = {
     }],
   },
   output: {
+<<<<<<< HEAD
     path: __dirname + '/src/',
     filename: 'app.min.js'
+=======
+    path: "/",
+    filename: "app.min.js"
+>>>>>>> nathanuphoff/master
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),
