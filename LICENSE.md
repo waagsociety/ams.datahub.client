@@ -1,4 +1,4 @@
-Copyright (c) 2016 Waag Society
+Copyright (c) 2016 Waag Society 
 
 MIT License:
 
