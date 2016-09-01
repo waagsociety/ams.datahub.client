@@ -1,17 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { tempReducer } from './actions'
+import { Feedback } from '../'
 
 export default function ResultsPreview({ props }) {
 
   const { results, filter } = props.store
   const { localStorage, loading } = results
-  const { search, value, selection, initialised } = filter
-  
+  const { search, value, selection, initialised } = filter  
   const resultList = tempReducer({ results, filter })
-  const className = initialised && loading ? 'loading' : 'done'
 
-  if (search || selection.length) return <div className={className}>
+  const isLoading = !initialised || loading ? 'loading' : 'done'
+  const isVisible = (search || selection.length) ? 'visible' : 'hidden'
+  const className = [ isLoading, isVisible, 'container floating secondary panel' ].join(' ')
+
+  return <div className={className}>
     <header className='menu'>
       <h1>{resultList.length} Results</h1>
     </header>
@@ -23,9 +26,9 @@ export default function ResultsPreview({ props }) {
           <Link to={`#${item.handle}`} ><button className='primary button'>View dataset</button></Link>
         </li>)
       }</ul>
-      <button className='full primary button'>View all results</button>
+      { resultList.length ? <button className='full primary button'>View all results</button> : <Feedback content='Nothing here...'/>
+      }
     </section>
   </div>
-  else return <h1>ResultsPreview</h1>
 
 }

@@ -49,3 +49,10 @@ a {
   height: 4em;
   margin: 0;
 }
+
+.panel.hidden { display: none }
+.panel.visible { display: block }
+
+.panel.loading { opacity: 0.75 }
+.panel.loading { transition: opacity 0.4s 0.2s ease }
+.panel.done { transition: opacity 0.2s ease }

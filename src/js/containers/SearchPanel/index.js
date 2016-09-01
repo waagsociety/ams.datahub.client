@@ -7,7 +7,7 @@ export default function SearchPanel({ props }) {
   const { value, search, suggestions, selection } = filter
   const { focus } = view.SearchInput
 
-  const showSuggestions = focus || value || search
+  const showSuggestions = focus || value || search || !!selection.length
   const filters = value && suggestions || selection
 
 	return <div id='SearchPanel' className='container floating primary panel'>

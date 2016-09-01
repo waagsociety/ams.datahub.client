@@ -14,6 +14,7 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Router history={history}>
 			<Route path={basepath} component={Browse}></Route>
+      <Route path={basepath + '#10673/1035'} component={Results}></Route>
 		</Router>
 	</Provider>,
 document.querySelector('#app'))
