@@ -32,10 +32,11 @@ a {
 
 .results li time {
   color: gray;
+  display: block;
 }
 
 .primary.button {
-  display: block;
+  display: inline-block;
   padding: 0.75em 1em;
   color: white;
   margin: 1em 0 0;
