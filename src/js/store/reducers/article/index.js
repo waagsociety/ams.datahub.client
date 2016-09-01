@@ -4,9 +4,11 @@ export default function(state = initialState, { type, payload }) {
 
   switch(type){
 
-    case 'article-load': {
+    case 'article-fetched': {
 
-      return { ...state }
+      console.log(state, payload)
+
+      return { ...state, content: payload }
 
     }
 
