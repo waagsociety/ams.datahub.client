@@ -20,7 +20,7 @@ export default class Browse extends React.Component {
 
   render() {
 
-    console.log('demotime')
+    console.log('testing 123')
 
     const { props } = this
     const { store } = props
