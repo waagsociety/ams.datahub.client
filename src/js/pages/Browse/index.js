@@ -20,10 +20,12 @@ export default class Browse extends React.Component {
 
   render() {
 
+    console.log('demotime')
+
     const { props } = this
     const { store } = props
     const { onSubmit, onChange, onTest } = handlers(props)
-        
+
     return <form id='Browse' className='page' method='get' action='/' onSubmit={onSubmit} onChange={onChange} >
       <SearchPanel props={props} />
       <ResultsPreview props={props} />
