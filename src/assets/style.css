@@ -61,7 +61,7 @@ li { list-style: none }
     right: 1em; 
     bottom: 1em; 
     left: 1em;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 

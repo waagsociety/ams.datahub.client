@@ -12,9 +12,9 @@ const basepath = location.pathname // use location.pathname as the application e
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Router history={history} domain={'abc'}>
+		<Router history={history}>
 			<Route path={basepath} component={Browse} ></Route>
-      <Route path={basepath + ':x/:y'} component={Article} ></Route>
+      <Route path={basepath + '/:x/:y'} component={Article} ></Route>
 		</Router>
 	</Provider>,
 document.querySelector('#app'))
