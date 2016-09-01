@@ -16,14 +16,14 @@ export default function ResultsPreview({ props }) {
 
   return <div className={className}>
     <header className='menu'>
-      <h1>{resultList.length} Results</h1>
+      <h1>{loading ? 'Loading...' : resultList.length + ' Results'}</h1>
     </header>
     <section className='results content'>
       <ul>{ resultList.map(item => 
         <li key={item.id}>
           <h1>{item.name}</h1>
           <time dateTime={item.lastModified}>{item.lastModified.substr(0,10).split('-').reverse().join('-')}</time>
-          <Link to={`${item.handle}`} ><button className='primary button'>View dataset</button></Link>
+          <Link to={`#${item.handle}`} ><button className='primary button'>View dataset</button></Link>
         </li>)
       }</ul>
       { resultList.length ? <button className='full primary button'>View all results</button> : <Feedback content='Nothing here...'/>

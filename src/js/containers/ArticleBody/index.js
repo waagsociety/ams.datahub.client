@@ -1,8 +1,6 @@
 import React from 'react'
 
-export default function ({ props }) {
-
-  console.log(props)
+export default function ArticleBody({ props }) {
 
   return <section class='body content'>
     <header>
