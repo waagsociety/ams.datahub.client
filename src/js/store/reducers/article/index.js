@@ -6,9 +6,9 @@ export default function(state = initialState, { type, payload }) {
 
     case 'article-fetched': {
 
-      console.log(state, payload)
+      console.log('article-fetched', state, payload)
 
-      return { ...state, content: payload }
+      return { ...state, content: payload, active: true }
 
     }
 

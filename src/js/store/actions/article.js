@@ -19,6 +19,12 @@ export const article = {
           payload: request.data
         })
       })
+      .catch(error => {
+        dispatch({
+          type: 'article-error',
+          payload: error
+        })
+      })
 
     return {
       type: 'article-loading',
@@ -26,5 +32,13 @@ export const article = {
     }
 
   },
+
+  close: () => ({
+    type: 'article-close',
+    payload: {
+      content: null,
+      active: false,
+    }
+  })
 
 }

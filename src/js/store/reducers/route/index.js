@@ -1,5 +1,26 @@
+import { initialState } from './initialise'
 
-export const hashToQuery = (hash) => {
+export default function(state = initialState, { type, payload }) {
+
+  switch (type) {
+
+    case 'route-initialise': {
+
+      const hash = payload
+      const query = hashToQuery(payload) 
+
+      return { ...state, hash, query }
+
+    }
+
+    default: return { ...state }
+
+  }
+  
+}
+
+
+function hashToQuery(hash) {
 
   if (hasProperties(hash)) return decodeURIComponent(hash).split('&').reduce(parameterToProperty, {})
   else return null
@@ -25,7 +46,7 @@ export const hashToQuery = (hash) => {
 
 }
 
-export const queryToHash = (query) => {
+function queryToHash(query) {
 
   if (query) return '#' + Object.keys(query).reduce((hash, key) => {
     const value = query[key].join(',')

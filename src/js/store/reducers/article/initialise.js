@@ -1,6 +1,7 @@
 export const initialState = {
 
   loading: false,
-  content: null
+  content: null,
+  active: false,
 
 }
