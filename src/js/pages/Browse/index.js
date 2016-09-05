@@ -28,7 +28,9 @@ export default class Browse extends React.Component {
     const { store, history } = props
     const { onSubmit, onChange, onTest } = handlers(props)
 
-    if (props.store.route.query.article) return <ArticleBody props={props} />
+
+    const article = store.route && store.route.query
+    if (article) return <ArticleBody props={props} />
 
     return <form id='Browse' className='page' method='post' action='/' onChange={onChange} >
       <GlobalNavigation />
