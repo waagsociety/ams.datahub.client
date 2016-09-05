@@ -28,6 +28,7 @@ export default class Browse extends React.Component {
     const { store, history } = props
     const { onSubmit, onChange, onTest } = handlers(props)
 
+    console.log(store.route)
 
     const article = store.route && store.route.query
     if (article) return <ArticleBody props={props} />

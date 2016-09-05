@@ -1,14 +1,15 @@
 import axios from 'axios'
+import { route } from '../'
 
 export const article = {
 
   load: dispatch => query => {
 
-    const itemID = query.article.join('')
+    const itemId = query.article.join('')
 
     axios({
       method: 'GET',
-      url: `http://138.201.141.84/rest/items/${itemID}?expand=all`,
+      url: `http://138.201.141.84/rest/items/${itemId}?expand=all`,
       headers: { 
         'accept': 'application/json' 
       },

@@ -1,4 +1,4 @@
-import { article } from '../../store'
+import { article, route } from '../../store'
 import { hashToQuery } from '../../pages/Browse/actions'
 
 export const eventHandlers = ({ dispatch, history }) => ({
@@ -10,8 +10,8 @@ export const eventHandlers = ({ dispatch, history }) => ({
     const query = hashToQuery(hash)
 
     history.push({ pathname: hash })
+    dispatch(route.article(dispatch)(hash))
 
-    dispatch(article.load(dispatch)(query))
   },
 
 })

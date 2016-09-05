@@ -281,3 +281,7 @@ svg {
     cursor: default;
     pointer-events: none;
 }
+
+section.body.content {
+    background: white;
+}

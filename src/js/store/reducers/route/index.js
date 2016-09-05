@@ -13,6 +13,11 @@ export default function(state = initialState, { type, payload }) {
 
     }
 
+    case 'route-article': {
+      const query = payload
+      return { state, query }
+    }
+
     default: return { ...state }
 
   }
