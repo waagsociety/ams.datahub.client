@@ -9,19 +9,20 @@ export const route = {
     }
   },
 
-  query: ({ name, value, active }) => {
+  query: (name, value, activate) => {
 
     const query = hashToQuery(location.hash)
     const parameter = query[name] || []
     const isActiveParameter = !!parameter.length
 
     const otherThanValue = item => item !== value
-
-    if (active) query[name] = parameter.filter(otherThanValue)
-    else {
+    
+    if (activate) {
       if (isActiveParameter && parameter.every(otherThanValue)) query[name].push(value)
       else query[name] = [ value ]
     }
+    else query[name] = parameter.filter(otherThanValue)
+    
 
     const hash = queryToHash(query)
     updateLocation(hash)

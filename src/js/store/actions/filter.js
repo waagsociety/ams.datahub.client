@@ -13,6 +13,7 @@ export const filter = {
       type: 'filter-search',
       payload: value,
     }
+    
   },
 
   findByMetaData: dispatch => payload => {

@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import equal from 'deep-equal'
 
-import { route, filter } from '../../store'
+import * as action from '../../store'
 import { GlobalNavigation, SearchPanel, ResultPanel, ArticleBody } from '../../containers'
 
 @connect ((store) => ({ store }))
@@ -12,17 +13,21 @@ export default class Browse extends React.Component {
     const { props } = this
     const { dispatch } = props
 
-    dispatch(filter.tempInit()) // temp search
-    dispatch(route.initialise(location.hash))
+    dispatch(action.filter.tempInit()) // temp search
+    dispatch(action.route.initialise(location.hash))
 
   }
 
   componentDidUpdate() {
     
-    const { store } = this.props
-    const { route, filter } = store
+    const { store, dispatch } = this.props
+    const { route, query } = store
+    const { article } = route.query
 
-    // console.log(store.query)
+    const shouldFetch = route.hash !== query.hash
+    // const activeArticle = article
+    
+    if (shouldFetch) dispatch(action.query.fetch(dispatch)(route.hash))
 
   }
 

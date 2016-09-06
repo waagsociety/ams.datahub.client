@@ -4,11 +4,12 @@ export default function(state = initialState, { type, payload }) {
 
   switch(type){
 
-    case 'article-fetched': {
-
-      console.log('article-fetched', state, payload)
-
-      return { ...state, content: payload, active: true }
+    case 'query-fetch': {
+      const { hash } = payload
+      return {
+        ...state,
+        hash
+      }
 
     }
 

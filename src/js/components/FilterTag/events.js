@@ -4,11 +4,14 @@ export const eventHandlers = ({ dispatch, store }, payload) => ({
 
   toggleActivity({ target }) {
 
-    dispatch(route.query(payload))
+    const { name, value } = target
+    const active = target.checked
+
+    dispatch(route.query(name, value, active))
 
     filter.findByMetaData(dispatch)({ 
       ...payload, 
-      active: target.checked 
+      active: target.checked
     })
 
   },

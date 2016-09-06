@@ -9,14 +9,7 @@ export default function(state = initialState, { type, payload }) {
     }
 
     case 'route-query': {
-
-      // console.log(state)
-
-
-
-      return { ...state }
-
-
+      return { ...state, ...payload }
     }
 
     case 'route-search': {
