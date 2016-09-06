@@ -1,10 +1,10 @@
-import { query, filter } from '../../store'
+import { route, filter } from '../../store'
 
 export const eventHandlers = ({ dispatch, store }, payload) => ({
 
   toggleActivity({ target }) {
 
-    dispatch(query.query(payload))
+    dispatch(route.query(payload))
 
     filter.findByMetaData(dispatch)({ 
       ...payload, 

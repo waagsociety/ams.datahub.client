@@ -1,4 +1,4 @@
-import { view, filter, query } from '../../store'
+import { view, filter, route } from '../../store'
 
 const SearchInput = ({ dispatch, store }) => ({
     
@@ -22,7 +22,7 @@ const SearchInput = ({ dispatch, store }) => ({
 
     if (onEnter){ 
       event.preventDefault()
-      dispatch(query.search(value))
+      dispatch(route.search(value))
       dispatch(filter.search(value))
     }
 

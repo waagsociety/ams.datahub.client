@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { query, filter } from '../../store'
+import { route, filter } from '../../store'
 import { GlobalNavigation, SearchPanel, ResultPanel, ArticleBody } from '../../containers'
 
 @connect ((store) => ({ store }))
@@ -13,14 +13,14 @@ export default class Browse extends React.Component {
     const { dispatch } = props
 
     dispatch(filter.tempInit()) // temp search
-    dispatch(query.initialise(location.hash))
+    dispatch(route.initialise(location.hash))
 
   }
 
   componentDidUpdate() {
     
     const { store } = this.props
-    const { query, filter } = store
+    const { route, filter } = store
 
     // console.log(store.query)
 

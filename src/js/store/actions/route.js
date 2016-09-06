@@ -14,21 +14,21 @@ export const route = {
     const query = hashToQuery(location.hash)
     const isActiveParameter = name in query
 
-    // TODO: make sure isActive/active is working properly
-    const isActive = isActiveParameter && query[name].some(x => x === value)
-
-    if (isActive) query[name] = query[name].filter(x => x !== value)
-    else {
+    if (!active) {
       if (isActiveParameter) query[name].push(value)
       else query[name] = [ value ]
     }
+    else query[name] = (query[name] || []).filter(x => {
+      console.log(x)
+      return x !== value
+    })
 
     const hash = queryToHash(query)
     updateLocation(hash)
 
     return {
       type: 'route-query',
-      payload: { hash, query }
+      payload: { hash, ...query }
     }
 
   },
@@ -43,7 +43,7 @@ export const route = {
 
     return {
       type: 'route-search',
-      payload: { hash, query }
+      payload: { hash, ...query }
     }
 
   },
@@ -73,8 +73,8 @@ function hashToQuery(hash) {
   }
 
   function getProperties(key, value = '') {
-    // created an Object with a sanitised key, and comma separate values
-    return { [key.replace(/\W+/g, '')]: value.split(',') }
+    // created an Object with a sanitised key, and ‘|’-separated values
+    return { [key.replace(/\W+/g, '')]: value.split('|') }
   }
 
 }
@@ -89,8 +89,8 @@ function queryToHash(query) {
     }, [])
 
     if (values.length){
-      const value = query[key].join(',')
-      const parameter = [ encodeURIComponent(key), value ].join('=')
+      const value = query[key].join('|')
+      const parameter = [ key, value ].join('=')
       return [ ...hash, parameter ]
     }
     else return [ ...hash ]
