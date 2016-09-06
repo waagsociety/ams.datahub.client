@@ -12,23 +12,23 @@ export const route = {
   query: ({ name, value, active }) => {
 
     const query = hashToQuery(location.hash)
-    const isActiveParameter = name in query
+    const parameter = query[name] || []
+    const isActiveParameter = !!parameter.length
 
-    if (!active) {
-      if (isActiveParameter) query[name].push(value)
+    const otherThanValue = item => item !== value
+
+    if (active) query[name] = parameter.filter(otherThanValue)
+    else {
+      if (isActiveParameter && parameter.every(otherThanValue)) query[name].push(value)
       else query[name] = [ value ]
     }
-    else query[name] = (query[name] || []).filter(x => {
-      console.log(x)
-      return x !== value
-    })
 
     const hash = queryToHash(query)
     updateLocation(hash)
 
     return {
       type: 'route-query',
-      payload: { hash, ...query }
+      payload: { hash, query }
     }
 
   },
@@ -43,7 +43,7 @@ export const route = {
 
     return {
       type: 'route-search',
-      payload: { hash, ...query }
+      payload: { hash, query }
     }
 
   },
