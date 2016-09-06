@@ -3,13 +3,11 @@ import { route } from '../'
 
 export const article = {
 
-  load: dispatch => query => {
-
-    const itemId = query.article.join('')
+  load: dispatch => id => {
 
     axios({
       method: 'GET',
-      url: `http://138.201.141.84/rest/items/${itemId}?expand=all`,
+      url: `http://138.201.141.84/rest/items/${id}?expand=all`,
       headers: { 
         'accept': 'application/json' 
       },

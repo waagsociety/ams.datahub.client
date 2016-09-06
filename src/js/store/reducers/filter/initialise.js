@@ -10,6 +10,7 @@ export const initialState = {
     }
   }),
   
+  hash: '',
   value: '',
   search: '',
   selection: [],
