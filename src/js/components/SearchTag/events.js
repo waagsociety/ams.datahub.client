@@ -1,11 +1,11 @@
+import { query, filter } from '../../store'
+
 export const eventHandlers = ({ dispatch, store }) => ({
 
   searchQuery({ target }) {
-    const { search, value } = store.filter
-    dispatch({
-      type: 'filter-search',
-      payload: !search && value || '',
-    })
+    const { value } = store.filter
+    dispatch(query.search(value))
+    dispatch(filter.search(value))
   },
 
 })

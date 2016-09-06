@@ -12,14 +12,13 @@ export default class Article extends React.Component {
 
     const { props } = this
     const { dispatch, location } = props
-    dispatch(article.load(dispatch)(location.pathname))
+    // dispatch(article.load(dispatch)(location.pathname))
+    
   }
 
   render() {
 
     const { props } = this
-
-    console.log(this)
 
     return <article id='Article' className='page'>
       <ArticleBody props={props} />

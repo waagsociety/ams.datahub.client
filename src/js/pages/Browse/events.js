@@ -4,10 +4,6 @@ const eventHandlers = ({ dispatch }) => ({
     event.preventDefault() 
   },
 
-  onChange({ target }) {
-    // console.log(target)
-  },
-
   onTest(event) {
     console.log(event)
   }

@@ -27,7 +27,7 @@ export default function ResultsPreview({ props }) {
         <li key={item.id}>
           <h1>{item.name}</h1>
           <time dateTime={item.lastModified}>{item.lastModified.substr(0,10).split('-').reverse().join('-')}</time>
-          <a href={`#article=${item.id}`} className='primary button' onClick={loadArticle}>View dataset</a>
+          <a href={`#article=${item.id}`} className='primary button'>View dataset</a>
         </li>)
       }</ul>
       { resultList.length ? <button className='full primary button'>View all results</button> : <Feedback content='Nothing here...'/>

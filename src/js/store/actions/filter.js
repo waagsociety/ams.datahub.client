@@ -1,4 +1,4 @@
-// import { history } from 'react-router'
+import { query } from '../'
 import axios from 'axios'
 
 export const filter = {
@@ -8,10 +8,12 @@ export const filter = {
     payload: value
   }),
 
-  search: value => ({
-    type: 'filter-search',
-    payload: value
-  }),
+  search: value => {
+    return {
+      type: 'filter-search',
+      payload: value,
+    }
+  },
 
   findByMetaData: dispatch => payload => {
     

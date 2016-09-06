@@ -1,13 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link, browserHistory } from 'react-router'
 
-import { route, filter, results, article } from '../../store'
-import { GlobalNavigation, SearchPanel, ResultPanel, MapBox, ArticleBody } from '../../containers'
-import { ResultsPreview } from '../../components'
-import { hashToQuery, queryToHash } from './actions'
-import handlers from './events'
-
+import { query, filter } from '../../store'
+import { GlobalNavigation, SearchPanel, ResultPanel, ArticleBody } from '../../containers'
 
 @connect ((store) => ({ store }))
 export default class Browse extends React.Component {
@@ -16,28 +11,31 @@ export default class Browse extends React.Component {
 
     const { props } = this
     const { dispatch } = props
-    dispatch(filter.tempInit()) // temp search
 
-    dispatch(route.initialise(dispatch)(location.hash))
+    dispatch(filter.tempInit()) // temp search
+    dispatch(query.initialise(location.hash))
+
+  }
+
+  componentDidUpdate() {
+    
+    const { store } = this.props
+    const { query, filter } = store
+
+    // console.log(store.query)
 
   }
 
   render() {
 
     const { props } = this
-    const { store, history } = props
-    const { onSubmit, onChange, onTest } = handlers(props)
-
-    console.log(store.route)
-
-    const article = store.route && store.route.query
-    if (article) return <ArticleBody props={props} />
-
-    return <form id='Browse' className='page' method='post' action='/' onChange={onChange} >
-      <GlobalNavigation />
-      <SearchPanel props={props} />
-      <ResultsPreview props={props} />
-    </form>
+    const { store } = props
+    
+    return <div id='Browse' className='page'>
+      <GlobalNavigation/>
+      <SearchPanel props={props}/>
+      <ResultPanel props={props}/>
+    </div>
 
   }
 
