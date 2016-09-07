@@ -1,4 +1,4 @@
-import { route, filter } from '../../store'
+import { route, filter, search } from '../../store'
 
 export const eventHandlers = ({ dispatch, store }) => ({
 

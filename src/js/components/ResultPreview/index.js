@@ -4,20 +4,18 @@ import { eventHandlers } from './events'
 
 export default function ResultPreview({ content }) {
 
-  // return <li>x</li>
+  // const keys = [ 'handle', 'title', 'dc.contributor.author' ]
+  // const item = keys.reduce(assignAndJoin(content), {})
 
-  const keys = [ 'handle', 'title', 'dc.contributor.author' ]
-  const item = keys.reduce(assignAndJoin(content), {})
-
-  const {
-    handle,
-    title = 'Untitled', 
-    author = 'Author unknown',
-  } = item
+  // const {
+  //   handle,
+  //   title = 'Untitled', 
+  //   author = 'Author unknown',
+  // } = item
 
   return <li>
-    <h1>{title}</h1>
-    <p>{author}</p>
+    <h1>{item['dc.title']}</h1>
+    <p>{item['dc.description.abstract'] || "No description available"}</p>
     <a href={`#article=x`} className='primary button'>View dataset</a>
   </li>
 

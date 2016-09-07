@@ -5,11 +5,14 @@ import { eventHandlers } from './events'
 export default function SearchTag({ props }) {
   
   const { store } = props
-  const { value, search } = store.filter
+  const { search } = store.route.query
+  const { value } = store.filter
   const { focus } = store.view.SearchInput
   const { searchQuery } = eventHandlers(props)
 
-  const active = !!search
+  const currentValue = (search || []).join('')
+
+  const active = !!currentValue
   const enabled = active || value
 
   const className = [ 
@@ -24,7 +27,7 @@ export default function SearchTag({ props }) {
     <svg className='icon' viewBox='0 0 18 18'>
       <path d='M10,10 l4,4' /><circle cx='7' cy='7' r='4'/>
     </svg>
-    { search || value || "Start typing to search..." }
+    { currentValue || value || "Start typing to search..." }
     <svg className='shortcut' viewBox='0 0 18 18'>
       <path d='M12,4 v7 h-6 m2,-2.5 l-2.5,2.5 l2.5,2.5' />
     </svg>

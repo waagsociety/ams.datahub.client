@@ -3,8 +3,9 @@ import { SearchInput, SearchFilters } from '../../components'
 
 export default function SearchPanel({ props }) {
 
-  const { filter, view } = props.store
-  const { value, search, suggestions, selection } = filter
+  const { filter, view, route } = props.store
+  const { value, suggestions, selection } = filter
+  const { search } = route.query
   const { focus } = view.SearchInput
 
   const showSuggestions = value || search || !!selection.length

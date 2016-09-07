@@ -1,11 +1,4 @@
 import React from 'react'
-// import { Link } from 'react-router'
-
-// import { Feedback } from '../'
-// import { tempReducer } from './actions'
-// import { eventHandlers } from './events'
-
-import { ResultPreview } from '../'
 
 export default function ResultList({ props }) {
 
@@ -24,7 +17,15 @@ export default function ResultList({ props }) {
 
     <section className='results content'>
 
-      <ul>{ docs.map(item => <ResultPreview key={item.handle} content={item}/>) }</ul>
+      <ul>{ docs.map(item => {
+        const title = item['dc.title'] || "Untitled"
+        const author = item['author'] || "Author unknown"
+        return <li key={item.handle}>
+          <h1>{title}</h1>
+          <p>{author}</p>
+          <a href={`#article=x`} className='primary button'>View dataset</a>
+        </li>
+      }) }</ul>
       
       <button className='full primary button'>View all results</button>
 

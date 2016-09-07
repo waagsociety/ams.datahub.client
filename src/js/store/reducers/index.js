@@ -1,4 +1,4 @@
-export { routerReducer as routing } from 'react-router-redux'
+// export { routerReducer as routing } from 'react-router-redux'
 
 export view from './view'
 export route from './route' // new filter
