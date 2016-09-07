@@ -24,7 +24,6 @@ export default class Browse extends React.Component {
     const { route, search, dataset } = store
     const { query, hash } = route
 
-
     if (query.article) { // Open a dataset
       
       const id = parseFloat(query.article.join(''))        
@@ -51,7 +50,7 @@ export default class Browse extends React.Component {
 
     let page = ''
     if (!!search.hash) page = 'search'
-    
+
 
     switch (page) {
 

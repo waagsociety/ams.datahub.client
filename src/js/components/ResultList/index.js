@@ -1,17 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
 
-import { Feedback } from '../'
-import { tempReducer } from './actions'
-import { eventHandlers } from './events'
+// import { Feedback } from '../'
+// import { tempReducer } from './actions'
+// import { eventHandlers } from './events'
 
-export default function ResultsPreview({ props }) {
+import { ResultPreview } from '../'
+
+export default function ResultList({ props }) {
 
   const { content } = props.store.search
   const { docs = [], numFound = 0, loading } = content
 
   const title = loading && 'Loading' || numFound + ' Results found'
-  const className = [ 'container floating secondary panel' ].join(' ')
+  const loadClass = loading && 'loading'
+  const className = [ loadClass, 'container floating secondary panel' ].join(' ')
 
   return <div className={className}>
     
@@ -21,15 +24,11 @@ export default function ResultsPreview({ props }) {
 
     <section className='results content'>
 
-      <ul>{
-        docs.map(item => <li key={item.handle}>{item.title.join('')}</li>)
-      }</ul>
+      <ul>{ docs.map(item => <ResultPreview key={item.handle} content={item}/>) }</ul>
       
       <button className='full primary button'>View all results</button>
 
     </section>
-
-    
 
   </div>
 

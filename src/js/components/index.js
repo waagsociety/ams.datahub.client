@@ -7,4 +7,5 @@ export SearchInput from './SearchInput'
     export SearchFiltersGroup from './SearchFiltersGroup'
       export FilterTag from './FilterTag'
 
-export ResultsPreview from './ResultsPreview'
+export ResultList from './ResultList'
+  export ResultPreview from './ResultPreview'
