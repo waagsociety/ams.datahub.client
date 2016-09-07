@@ -13,24 +13,45 @@ export default class Browse extends React.Component {
     const { props } = this
     const { dispatch } = props
 
-    dispatch(action.filter.tempInit()) // temp search
+    // dispatch(action.filter.tempInit()) // temp search
     dispatch(action.route.initialise(location.hash))
 
   }
 
-  componentDidUpdate() {
-    
+  componentDidUpdate() { // Router
+
     const { store, dispatch } = this.props
-    const { route, fetch, query } = store
-    const { article } = route.query
+    const { route, search, dataset } = store
+    const { query, hash } = route
 
+    if (hash) { // We’re onto something
 
+      if (query.article) { // Open a dataset
+        
+        const id = parseFloat(query.article.join(''))        
+        if (typeof id === 'number') {
+          console.log('Dataset', dataset)
+        }
+        else {
+          console.log('Dataset could not be identified') 
+          // -> todo: re-route to query
+        }
 
-    const shouldFetch = route.hash !== query.hash
-    // const activeArticle = article
+      }
+      else { // Open a search query
+        
+        if (search.hash !== hash) { // not in cache
+          dispatch(action.search.fetch(dispatch)(hash))
+        }
+        // else console.log(search)
+
+      }
+
+    }
+    else { // Homepage
+      console.log('We’re home')
+    }
     
-    // if (shouldFetch) dispatch(action.query.fetch(dispatch)(route.hash))
-
   }
 
   render() {

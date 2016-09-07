@@ -7,16 +7,35 @@ import { eventHandlers } from './events'
 
 export default function ResultsPreview({ props }) {
 
-  const { results, filter } = props.store
-  const { localStorage, loading } = results
-  const { search, value, selection, initialised } = filter  
-  const resultList = tempReducer({ results, filter })
+  const { content } = props.store.search
+  const { docs, numFound } = content
 
-  const { loadArticle } = eventHandlers(props)
+  const resultList = docs || []
+  // console.log(resultList)
+  
+  const className = [ 'container floating secondary panel' ].join(' ')
 
-  const isLoading = !initialised || loading ? 'loading' : 'done'
-  const isVisible = (search || selection.length) ? 'visible' : 'hidden'
-  const className = [ isLoading, isVisible, 'container floating secondary panel' ].join(' ')
+  return <div className={className}>
+    
+    <header className='menu'>
+      <h1>ResultsPreview</h1>
+    </header>
+
+    <section className='results content'>
+
+      <ul>{
+        resultList.map(item => <li key={item.handle}>{item.title.join('')}</li>)
+      }</ul>
+      
+      <button className='full primary button'>View all results</button>
+      
+    </section>
+
+    
+
+  </div>
+
+  
 
   return <div className={className}>
     <header className='menu'>
