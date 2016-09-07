@@ -19,4 +19,4 @@ export default createStore(
 export { view } from './actions/view'
 export { filter } from './actions/filter'
 export { route } from './actions/route'
-export { fetch } from './actions/fetch'
+export { search } from './actions/search' // new filter

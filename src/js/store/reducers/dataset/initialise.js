@@ -1,10 +1,11 @@
 export const initialState = {
   
-  content: [],
-  hash: '',
+  id: null,
+  content: {},
+  cache: [],
 
+  active: false,
   loading: false,
   error: false,
-  match: false,
-
+  
 }
