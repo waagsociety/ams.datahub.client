@@ -6,8 +6,8 @@ export default function ResultPreview({ content }) {
 
   const keys = [ 'handle', 'title', 'dc.contributor.author' ]
   const item = keys.reduce(assignAndJoin(content), {})
-  
-  const { 
+
+  const {
     title = 'Untitled', 
     author = 'Author unknown',
   } = item

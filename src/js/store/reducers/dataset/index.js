@@ -4,13 +4,8 @@ export default function(state = initialState, { type, payload }) {
 
   switch(type){
 
-    case 'query-fetch': {
-      const { hash } = payload
-      return {
-        ...state,
-        hash
-      }
-
+    case 'dataset-loading': {
+      return { ...state, ...payload }
     }
 
     default: return { ...state }
