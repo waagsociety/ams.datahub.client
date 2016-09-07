@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export const query = {
+export const fetch = {
 
-  fetch: dispatch => hash => {
+  query: dispatch => hash => {
 
     const query = 'fiets'
     const method = 'get'
@@ -11,7 +11,7 @@ export const query = {
     axios({ method, url })
       .then(request => {
         console.log(request.data)
-        dispatch(query.load(request))
+        dispatch(fetch.load(request))
       })
       .catch(error => ({
         type: 'query-error',

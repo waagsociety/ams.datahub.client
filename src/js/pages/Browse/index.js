@@ -21,13 +21,15 @@ export default class Browse extends React.Component {
   componentDidUpdate() {
     
     const { store, dispatch } = this.props
-    const { route, query } = store
+    const { route, fetch, query } = store
     const { article } = route.query
+
+
 
     const shouldFetch = route.hash !== query.hash
     // const activeArticle = article
     
-    if (shouldFetch) dispatch(action.query.fetch(dispatch)(route.hash))
+    // if (shouldFetch) dispatch(action.query.fetch(dispatch)(route.hash))
 
   }
 
