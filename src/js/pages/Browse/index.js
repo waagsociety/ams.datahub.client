@@ -40,7 +40,7 @@ export default class Browse extends React.Component {
       if (hash) dispatch(action.search.fetch(dispatch)(route)) // Search-query in place
       else dispatch(action.search.clear()) // We’re home
     }
-    
+  
   }
 
   render() {

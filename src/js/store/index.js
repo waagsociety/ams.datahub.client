@@ -20,3 +20,4 @@ export { view } from './actions/view'
 export { filter } from './actions/filter'
 export { route } from './actions/route'
 export { search } from './actions/search' // new filter
+export { query } from './actions/query'

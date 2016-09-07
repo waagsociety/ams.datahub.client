@@ -6,3 +6,4 @@ export filter from './filter'
 export search from './search' // new results
 export dataset from './dataset'
 export results from './results'
+export query from './query'
