@@ -24,32 +24,22 @@ export default class Browse extends React.Component {
     const { route, search, dataset } = store
     const { query, hash } = route
 
-    if (hash) { // We’re onto something
 
-      if (query.article) { // Open a dataset
-        
-        const id = parseFloat(query.article.join(''))        
-        if (typeof id === 'number') {
-          console.log('Dataset', dataset)
-        }
-        else {
-          console.log('Dataset could not be identified') 
-          // -> todo: re-route to query
-        }
-
+    if (query.article) { // Open a dataset
+      
+      const id = parseFloat(query.article.join(''))        
+      if (typeof id === 'number') {
+        console.log('Dataset', dataset)
       }
-      else { // Open a search query
-        
-        if (search.hash !== hash) { // not in cache
-          dispatch(action.search.fetch(dispatch)(hash))
-        }
-        // else console.log(search)
-
+      else {
+        console.log('Dataset could not be identified') 
+        // -> todo: re-route to query
       }
 
     }
-    else { // Homepage
-      console.log('We’re home')
+    else if (search.hash !== hash) {
+      if (hash) dispatch(action.search.fetch(dispatch)(route)) // Search-query in place
+      else dispatch(action.search.clear()) // We’re home
     }
     
   }
@@ -57,13 +47,32 @@ export default class Browse extends React.Component {
   render() {
 
     const { props } = this
-    const { store } = props
+    const { search, dataset } = props.store
+
+    let page = ''
+    if (!!search.hash) page = 'search'
     
-    return <div id='Browse' className='page'>
-      <GlobalNavigation/>
-      <SearchPanel props={props}/>
-      <ResultPanel props={props}/>
-    </div>
+
+    switch (page) {
+
+      case 'search': return <div id='Browse' className='page'>
+        <GlobalNavigation/>
+        <SearchPanel props={props}/>
+        <ResultPanel props={props}/>
+      </div>
+
+      default: return <div id='Browse' className='page'>
+        <GlobalNavigation/>
+        <SearchPanel props={props}/>
+      </div>
+
+    }
+    
+    // return <div id='Browse' className='page'>
+    //   <GlobalNavigation/>
+    //   <SearchPanel props={props}/>
+    //   searchQuery ? <ResultPanel props={props}/> : <h1>No</h1>
+    // </div>
 
   }
 

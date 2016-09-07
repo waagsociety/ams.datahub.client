@@ -8,27 +8,25 @@ import { eventHandlers } from './events'
 export default function ResultsPreview({ props }) {
 
   const { content } = props.store.search
-  const { docs, numFound } = content
+  const { docs = [], numFound = 0, loading } = content
 
-  const resultList = docs || []
-  // console.log(resultList)
-  
+  const title = loading && 'Loading' || numFound + ' Results found'
   const className = [ 'container floating secondary panel' ].join(' ')
 
   return <div className={className}>
     
     <header className='menu'>
-      <h1>ResultsPreview</h1>
+      <h1>{title}</h1>
     </header>
 
     <section className='results content'>
 
       <ul>{
-        resultList.map(item => <li key={item.handle}>{item.title.join('')}</li>)
+        docs.map(item => <li key={item.handle}>{item.title.join('')}</li>)
       }</ul>
       
       <button className='full primary button'>View all results</button>
-      
+
     </section>
 
     
@@ -36,7 +34,7 @@ export default function ResultsPreview({ props }) {
   </div>
 
   
-
+  // obsolete (reference)
   return <div className={className}>
     <header className='menu'>
       <h1>{loading ? 'Loading...' : resultList.length + ' Results'}</h1>

@@ -19,6 +19,10 @@ export default function(state = initialState, { type, payload }) {
       return {  ...state, ...payload }
     }
 
+    case 'search-clear': {
+      return { ...initialState }
+    }
+
     default: return { ...state }
 
   }

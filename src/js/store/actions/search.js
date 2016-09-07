@@ -2,13 +2,14 @@ import axios from 'axios'
 
 export const search = {
 
-  fetch: dispatch => hash => {
+  fetch: dispatch => route => {
     
-    // console.log('search query action', hash)
+    const { hash, query } = route
 
-    const query = 'fiets'
+    const searchQuery = query.search.join('')
+
     const method = 'get'
-    const url = `http://138.201.141.84/solr/search/select?q=dc.subject:(fie*)&wt=json`
+    const url = `http://138.201.141.84/solr/search/select?q=dc.subject:(${searchQuery}*)&wt=json`
 
     axios({ method, url })
       .then(request => {
@@ -18,11 +19,9 @@ export const search = {
         dispatch(search.error(error))
       })
 
-    const payload = {  hash, loading: true, active: true }
-
     return {
       type: 'search-fetch',
-      payload,
+      payload: { hash, loading: true, active: true }
     }
 
   },
@@ -46,6 +45,11 @@ export const search = {
       payload: { error, loading: false },
     // }
 
+  }),
+
+  clear: () => ({
+    type: 'search-clear',
+    payload: null
   }),
 
 }
