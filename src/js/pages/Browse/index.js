@@ -51,7 +51,7 @@ export default class Browse extends React.Component {
     let page = ''
     if (!!search.hash) page = 'search'
 
-
+    // <ResultPanel props={props}/>
     switch (page) {
 
       case 'search': return <div id='Browse' className='page'>
