@@ -5,11 +5,10 @@ export const search = {
   fetch: dispatch => route => {
     
     const { hash, query } = route
-
     const searchQuery = query.search.join('')
 
     const method = 'get'
-    const url = `http://138.201.141.84/solr/search/select?q=dc.subject:(${searchQuery}*)&wt=json`
+    const url = `http://138.201.141.84/solr/search/select?q=(${searchQuery}*)&wt=json`
 
     axios({ method, url })
       .then(request => {
