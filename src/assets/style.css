@@ -239,7 +239,14 @@ input {
 
 .tag { 
     padding-left: 2.5em;
+    padding-right: 2.5em;
     position: relative;
+}
+
+.tag .count { 
+    position: absolute;
+    right: 1em;
+    line-height: 1.2;
 }
 
 .tag svg {

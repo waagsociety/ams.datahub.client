@@ -1,3 +1,4 @@
 export const SearchInput = {
-  focus: false
+  focus: false,
+  value: '',
 }

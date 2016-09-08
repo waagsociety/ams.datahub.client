@@ -1,4 +1,4 @@
-import { view, filter, route } from '../../store'
+import { view, route } from '../../store'
 
 const SearchInput = ({ dispatch, store }) => ({
     
@@ -8,22 +8,23 @@ const SearchInput = ({ dispatch, store }) => ({
   },
 
   fetchSuggestions({ target }) {
-    dispatch(filter.suggestions(target.value || ''))
+    const value = target.value || ''
+    dispatch(view.SearchInput({ value }))
   },
 
   clearInput() {
-    dispatch(filter.suggestions(''))
+    dispatch(view.SearchInput({ value: '' }))
   },
 
   fetchQuery(event) {
     
-    const { value } = store.filter
+    const { value } = event.target
     const onEnter = event.keyCode === 13
 
     if (onEnter){ 
       event.preventDefault()
       dispatch(route.search(value))
-      dispatch(filter.search(value))
+      dispatch(view.SearchInput({ value }))
     }
 
   },

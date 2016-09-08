@@ -6,9 +6,11 @@ export default function SearchTag({ props }) {
   
   const { store } = props
   const { search } = store.route.query
-  const { value } = store.filter
+  const { value } = store.view.SearchInput
   const { focus } = store.view.SearchInput
   const { searchQuery } = eventHandlers(props)
+
+  console.log(store.view.SearchInput)
 
   const currentValue = (search || []).join('')
 
@@ -22,7 +24,7 @@ export default function SearchTag({ props }) {
     'tag'
   ].join(' ').trim()
 
-  return <label className={className} disabled={!enabled}>
+  return <label className={className} disabled={!enabled} title={currentValue || `Press enter to search for “${value}”`}>
     <input type='checkbox' name='search' checked={active} value={value} onChange={searchQuery}/>
     <svg className='icon' viewBox='0 0 18 18'>
       <path d='M10,10 l4,4' /><circle cx='7' cy='7' r='4'/>

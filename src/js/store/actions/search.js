@@ -5,7 +5,7 @@ export const search = {
   fetch: dispatch => route => {
     
     const { hash, query } = route
-    const searchQuery = query.search.join('')
+    const searchQuery = (query.search || []).join('')
 
     const method = 'get'
     const url = `http://138.201.141.84/solr/search/select?q=(${searchQuery}*)&wt=json`
@@ -33,30 +33,33 @@ export const search = {
 
     const fields = [{
       name: 'Author',
+      field: 'author',
       key: 'author',
       tags: {},
     }, {
       name: 'Publisher',
-      key: 'dc.publisher',
+      field: 'dc.publisher',
+      key: 'publisher',
       tags: {},
     }, {
       name: 'Type',
-      key: 'dc.type',
+      field: 'dc.type',
+      key: 'type',
       tags: {},
     }]
 
     const metadata = docs.reduce((result, dataset)  => {
       
-      return fields.map(kind => {
-        const { key } = kind
-        const tagsInDataset = dataset[key]
+      return fields.map(group => {
+        const { field } = group
+        const tagsInDataset = dataset[field]
 
         if (tagsInDataset) tagsInDataset.forEach(tag => {
-          const count = kind.tags[tag] || 0
-          kind.tags[tag] = count + 1
+          const count = group.tags[tag] || 0
+          group.tags[tag] = count + 1
         })
 
-        return kind
+        return group
 
       })
     }, fields)

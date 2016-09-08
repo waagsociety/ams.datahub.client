@@ -11,11 +11,9 @@ export default class Browse extends React.Component {
   componentWillMount() {
 
     const { props } = this
-    const { dispatch } = props
+    const { dispatch, store } = props
 
-    // dispatch(action.filter.tempInit()) // temp search
     dispatch(action.route.initialise(location.hash))
-
 
     // fetch test suite
     const value = 'fiets'
@@ -24,7 +22,7 @@ export default class Browse extends React.Component {
       q: value,
       wt: 'json',
     }
-
+    
     const url = [ basepath, parameters ].reduce(joinUrlWithParameters)
 
     function joinUrlWithParameters(url, parameters) {
@@ -35,10 +33,10 @@ export default class Browse extends React.Component {
       return (key) => [ key, parameters[key] ].join('=')
     }
     
-    fetch(url)
-      .then(request => request.json())
-      .then(({ response }) => console.log('response', response))
-      .catch(error => console.log('error', error))
+    // fetch(url)
+    //   .then(request => request.json())
+    //   .then(({ response }) => console.log('response', response))
+    //   .catch(error => console.log('error', error))
 
 
 
