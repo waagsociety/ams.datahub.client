@@ -17,7 +17,6 @@ export default createStore(
 
 // Actions
 export { view } from './actions/view'
-// export { filter } from './actions/filter'
 export { route } from './actions/route'
-export { search } from './actions/search' // new filter
+export { search } from './actions/search'
 export { query } from './actions/query'
