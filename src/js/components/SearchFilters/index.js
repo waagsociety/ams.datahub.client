@@ -12,13 +12,7 @@ export default function SearchFilters({ props, content }) {
     <section className='search group'>
       <SearchTag props={props} />
     </section>
-    { 
-    metadata.map(({ name, key, tags }) =>
-    <section key={key} class='group'> 
-      <h1>{name}</h1>
-      { Object.keys(tags).map(key => <li key={key}>{ key }, {tags[key]}</li> )}
-    </section>
-    )}
+    { metadata.map(group => <SearchFiltersGroup key={group.key} props={props} content={group}/>) }
   </div>
 
 
