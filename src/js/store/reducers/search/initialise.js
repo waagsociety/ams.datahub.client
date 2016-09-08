@@ -1,6 +1,7 @@
 export const initialState = {
   
   content: [],
+  metadata: [],
   hash: '',
 
   loading: false,

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import equal from 'deep-equal'
+import axios from 'axios'
 
 import * as action from '../../store'
 import { GlobalNavigation, SearchPanel, ResultPanel, ArticleBody } from '../../containers'
@@ -15,6 +15,33 @@ export default class Browse extends React.Component {
 
     // dispatch(action.filter.tempInit()) // temp search
     dispatch(action.route.initialise(location.hash))
+
+
+    // fetch test suite
+    const value = 'fiets'
+    const basepath = 'http://138.201.141.84/solr/search/select?'
+    const parameters = {
+      q: value,
+      wt: 'json',
+    }
+
+    const url = [ basepath, parameters ].reduce(joinUrlWithParameters)
+
+    function joinUrlWithParameters(url, parameters) {
+      return url + Object.keys(parameters).map(mapParamtersToQuery(parameters)).join('&')
+    }
+
+    function mapParamtersToQuery(parameters) {
+      return (key) => [ key, parameters[key] ].join('=')
+    }
+    
+    fetch(url)
+      .then(request => request.json())
+      .then(({ response }) => console.log('response', response))
+      .catch(error => console.log('error', error))
+
+
+
 
   }
 
