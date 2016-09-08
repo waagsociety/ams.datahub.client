@@ -11,7 +11,9 @@ export default function SearchFilters({ props }) {
     <section className='search group'>
       <SearchTag props={props} />
     </section>
-    { metadata.map(group => <SearchFiltersGroup key={group.key} props={props} content={group}/>) }
+    { metadata.map(group =>
+      <SearchFiltersGroup key={group.key} props={props} content={group}/>) 
+    }
   </div>
 
 }

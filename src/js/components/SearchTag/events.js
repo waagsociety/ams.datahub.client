@@ -3,8 +3,10 @@ import { route } from '../../store'
 export const eventHandlers = ({ dispatch, store }) => ({
 
   searchQuery({ target }) {
-    const { value, name } = target
-    dispatch(route.search(value))
+    const { checked } = target
+    const { value } = store.view.SearchInput
+    const update = checked && value ? '' : value
+    dispatch(route.search(update))
   },
 
 })

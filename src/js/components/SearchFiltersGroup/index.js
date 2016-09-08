@@ -6,7 +6,7 @@ export default function SearchFilterGroup({ props, content }) {
   const { name, key, tags } = content
   const tagData = Object.keys(tags)
 
-  return <section  className='group'>
+  return <section className='group'>
     <h1>{name}</h1>
     <ul>{ 
       tagData.map(value => <li key={value}>

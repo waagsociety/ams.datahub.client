@@ -1,35 +1,29 @@
 import React from 'react'
+import classNames from 'classnames'
 import { Feedback } from '../'
 import { eventHandlers } from './events'
 
 export default function SearchTag({ props }) {
   
   const { store } = props
-  const { search } = store.route.query
-  const { value } = store.view.SearchInput
-  const { focus } = store.view.SearchInput
+  const { view, route } = store
+  const { value = '', focus } = view.SearchInput
+  const { search = [] } = route.query
   const { searchQuery } = eventHandlers(props)
 
-  console.log(store.view.SearchInput)
+  const activeValue = search.join('')
+  const searchValue = activeValue || value 
+  const className = classNames('tag', { 
+    enabled: searchValue,
+    active: activeValue,
+  });
 
-  const currentValue = (search || []).join('')
-
-  const active = !!currentValue
-  const enabled = active || value
-
-  const className = [ 
-    active ? 'active' : '', 
-    enabled ? 'enabled' : 'disabled',
-    focus && !!value ? 'focus' : '',
-    'tag'
-  ].join(' ').trim()
-
-  return <label className={className} disabled={!enabled} title={currentValue || `Press enter to search for “${value}”`}>
-    <input type='checkbox' name='search' checked={active} value={value} onChange={searchQuery}/>
+  return <label className={className} disabled={!searchValue}>
+    <input type='checkbox' name='search' value={activeValue} onClick={searchQuery} />
     <svg className='icon' viewBox='0 0 18 18'>
       <path d='M10,10 l4,4' /><circle cx='7' cy='7' r='4'/>
     </svg>
-    { currentValue || value || "Start typing to search..." }
+    { searchValue || "Start typing to search..." }
     <svg className='shortcut' viewBox='0 0 18 18'>
       <path d='M12,4 v7 h-6 m2,-2.5 l-2.5,2.5 l2.5,2.5' />
     </svg>

@@ -1,5 +1,22 @@
 import axios from 'axios'
 
+const fieldIndex = [{
+  name: 'Author',
+  field: 'author',
+  key: 'author',
+  tags: [],
+}, {
+  name: 'Publisher',
+  field: 'dc.publisher',
+  key: 'publisher',
+  tags: [],
+}, {
+  name: 'Type',
+  field: 'dc.type',
+  key: 'type',
+  tags: [],
+}]
+
 export const search = {
 
   fetch: dispatch => route => {
@@ -30,23 +47,7 @@ export const search = {
     const { response } = request.data
     const content = response
     const { docs } = content
-
-    const fields = [{
-      name: 'Author',
-      field: 'author',
-      key: 'author',
-      tags: {},
-    }, {
-      name: 'Publisher',
-      field: 'dc.publisher',
-      key: 'publisher',
-      tags: {},
-    }, {
-      name: 'Type',
-      field: 'dc.type',
-      key: 'type',
-      tags: {},
-    }]
+    const fields = fieldIndex.map(item => ({ ...item, tags: {} }))
 
     const metadata = docs.reduce((result, dataset)  => {
       
