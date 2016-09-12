@@ -16,7 +16,7 @@ export default function FilterTag({ props, content }) {
   })
 
   return <label className={className} style={getCountPadding(count)} title={value}>
-    <input type='checkbox' name={name} value={value} checked={false} onClick={toggleActivity}/>
+    <input type='checkbox' name={name} value={value} checked={isActive} onChange={toggleActivity}/>
     <svg viewBox='0 0 18 18'><path d="M9,5 v8 M5,9 h8" /></svg>
     {value}
     <span className='count'>{count}</span>

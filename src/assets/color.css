@@ -37,6 +37,10 @@ html { background: #000 }
 
 .tag.focus svg.shortcut { color: #fff }
 
+.tag .count { color: gray }
+.tag.active .count,
+.tag:hover .count { color: inherit }
+
 
 .tag { background: hsl(240, 20%, 5%) }
 .tag.active { background: hsl(252, 50%, 48%) }

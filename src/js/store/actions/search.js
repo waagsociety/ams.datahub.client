@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+const basepath = 'http://138.201.141.84/solr/search/select?wt=json&q='
+
+const searchKey = 'search'
+
 const fieldIndex = [{
   name: 'Author',
   field: 'author',
@@ -17,18 +21,36 @@ const fieldIndex = [{
   tags: [],
 }]
 
+const fieldMap = fieldIndex.reduce((result, { key, value, field }) => ({
+  ...result, 
+  [key]: { value, field },
+}), {})
+
 export const search = {
 
   fetch: dispatch => route => {
     
     const { hash, query } = route
-    const searchQuery = (query.search || []).join('')
+    const searchQuery = (query[searchKey] || []).join('')
+
+    console.log(query)
+
+    const x = basepath + Object.keys(query).map(value => {
+      if (value === searchKey) value = `title:(${searchQuery}*) OR dc.description.abstract:(${searchQuery})`
+      else if (value in fieldMap && query[value].length) {
+        value = `${fieldMap[value].field}:(${query[value].join(' OR ')})`
+      }
+      return value
+    }, basepath).join(' AND ')
 
     const method = 'get'
-    const url = `http://138.201.141.84/solr/search/select?q=(${searchQuery}*)&wt=json`
+    const url = `http://138.201.141.84/solr/search/select?wt=json&q=title:(${searchQuery}*) OR dc.description.abstract:(${searchQuery})`
 
-    axios({ method, url })
+    console.log(x)
+
+    axios({ method, url: decodeURIComponent(x) })
       .then(request => {
+        // console.log(request.data.response.docs[0])
         dispatch(search.load(request))
       })
       .catch(error => {
