@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const basepath = 'http://138.201.141.84/solr/search/select?wt=json&q='
+const basepath = 'http://138.201.141.84/solr/search/select?wt=json&rows=1000&q='
 
 const searchKey = 'search'
 
 const fieldIndex = [{
   name: 'Author',
-  field: 'author',
+  field: 'dc.contributor.author',
   key: 'author',
   tags: [],
 }, {
@@ -38,13 +38,14 @@ export const search = {
       let x = ''
       if (key === searchKey) x = `(title:(${searchQuery}*) OR dc.description.abstract:(${searchQuery}*))`
       else if (key in fieldMap && query[key].join('')) {
-        x = `${fieldMap[key].field}:("${query[key].join(' OR ')}")`
+        x = `${fieldMap[key].field}:(${query[key].map(string => '"' + string + '"').join(' OR ')})`
       }
       if (x) result.push(x)
       return result
     }, [])
 
     url = basepath + url.join(' AND ')
+    console.log(url)
     // hard coded   
     // const url = `http://138.201.141.84/solr/search/select?wt=json&q=title:(${searchQuery}*) OR dc.description.abstract:(${searchQuery})`
 
