@@ -11,18 +11,16 @@ article section {
   left: 0;
   right: 32em;
   bottom: 0;
-  padding-left: 32em;
+  /*padding-left: 32em;*/
   border-right: 1px solid #ddd;
 }
 
-#dataset section { padding: 2.5em 1em 5em }
-
-
-
-#article #searchPanel .content  {
-  display: none;
-  opacity: 0;
+#dataset section { 
+  padding: 2.5em 40px 5em;
+  margin: 0 auto;
+  display: block;
 }
+
 
 #dataset h1 {
   font-weight: 600;

@@ -63,7 +63,6 @@ export default class Browse extends React.Component {
 
       case 'article': return <div id='article' className='page container'>
         <GlobalNavigation/>
-        <SearchPanel props={props}/>
         <Dataset props={props}/>
         <ResultPanel props={props}/>
       </div>

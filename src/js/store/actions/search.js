@@ -1,33 +1,7 @@
 import axios from 'axios'
+import { fieldIndex, domain } from '../../config'
 
-const basepath = 'http://138.201.141.84/solr/search/select?wt=json&q='
-
-const fieldIndex = [
-  {
-    name: 'Subject',
-    field: 'dc.subject',
-    key: 'subject',
-    tags: [],
-  },
-  {
-    name: 'Author',
-    field: 'dc.contributor.author',
-    key: 'author',
-    tags: [],
-  }, 
-  {
-    name: 'Publisher',
-    field: 'dc.publisher',
-    key: 'publisher',
-    tags: [],
-  }, 
-  {
-    name: 'Type',
-    field: 'dc.type',
-    key: 'type',
-    tags: [],
-  }
-]
+const basepath = domain + 'solr/search/select?wt=json&q='
 
 const fieldMap = fieldIndex.reduce((result, { key, value, field }) => ({
   ...result, 

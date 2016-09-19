@@ -13,6 +13,10 @@ a {
   bottom: 0;
 }
 
+#article .secondary .content ul {
+  padding-bottom: 2em;
+}
+
 #article .results ul {
   max-height: 100%;
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { eventHandlers } from './events'
+import { fieldIndex, domain } from '../../config'
 
 export default function Dataset({ props }) {
 
@@ -22,6 +23,19 @@ export default function Dataset({ props }) {
   const description = meta['dc.description.abstract'].map((content, i) => {
     return <p key={i}>{content}</p>
   })
+
+  const fieldMeta = fieldIndex.reduce((result, item) => {
+
+    const { field } = item
+    if (field in meta){ 
+      console.log(item)
+      result.push(item)
+    }
+
+    return result
+  }, []) 
+  
+  console.log(fieldMeta)
 
   return <article id='dataset' className='content'>
     <section className='body content'>
