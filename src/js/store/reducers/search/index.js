@@ -12,6 +12,10 @@ export default function(state = initialState, { type, payload }) {
       return {  ...state, ...payload }
     }
 
+     case 'search-meta': {
+      return {  ...state, ...payload }
+    }
+
     case 'search-error': {
       return {  ...state, ...payload }
     }

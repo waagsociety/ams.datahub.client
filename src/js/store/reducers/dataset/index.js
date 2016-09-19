@@ -8,6 +8,10 @@ export default function(state = initialState, { type, payload }) {
       return { ...state, ...payload }
     }
 
+    case 'dataset-loaded': {
+      return { ...state, ...payload }
+    }
+
     default: return { ...state }
 
   }

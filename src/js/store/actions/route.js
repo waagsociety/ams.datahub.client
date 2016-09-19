@@ -49,6 +49,37 @@ export const route = {
 
   },
 
+  update: hash => {
+
+    const query = hashToQuery(hash)
+    updateLocation(hash)
+
+    return {
+      type: 'route-query',
+      payload: { hash, query }
+    }
+
+  },
+
+  remove: parameter => {
+
+    const queryParameters = hashToQuery(location.hash)
+    const query = Object.keys(queryParameters).reduce((result, name) => {
+      if (name !== parameter) result[name] = queryParameters[name]
+      return result 
+    }, {})
+
+    const hash = queryToHash(query)
+
+    updateLocation(hash)
+
+    return {
+      type: 'route-query',
+      payload: { hash, query }
+    }
+
+  },
+
 }
 
 // Methods

@@ -9,14 +9,19 @@ export default function FilterTag({ props, content }) {
   const { toggleActivity } = eventHandlers(props, content)
   const { query } = route
 
-  const isActive = key in query && query[key].find(tag => value === tag)
+  let active = false
+  const queryKey = query[key] || []
+  // console.log(queryKey, value)
+  active = queryKey.includes(value)
+  // console.log(value, active)
+  // if (active) console.log(value)
 
   const className = classNames('tag', {
-    active: isActive
+    active: active
   })
 
   return <label className={className} style={getCountPadding(count)} title={value}>
-    <input type='checkbox' name={name} value={value} checked={isActive} onChange={toggleActivity}/>
+    <input type='checkbox' name={name} value={value} checked={active} onChange={toggleActivity}/>
     <svg viewBox='0 0 18 18'><path d="M9,5 v8 M5,9 h8" /></svg>
     {value}
     <span className='count'>{count}</span>

@@ -8,22 +8,23 @@ export default function ResultList({ props }) {
   const title = loading && 'Loading' || numFound + ' Results found'
   const loadClass = loading && 'loading'
   const className = [ loadClass, 'container floating secondary panel' ].join(' ')
-
+  
   return <div className={className}>
     
     <header className='menu'>
       <h1>{title}</h1>
     </header>
-
     <section className='results content'>
 
       <ul>{ docs.map(item => {
         const title = item['dc.title'] || "Untitled"
         const author = item['author'] || "Author unknown"
-        return <li key={item.handle}>
+        const id = item['search.resourceid']
+
+        return <li key={id}>
           <h1>{title}</h1>
           <p>{author}</p>
-          <a href={`#article=x`} className='primary button'>View dataset</a>
+          <a href={`#article=${id}`} className='primary button'>View dataset</a>
         </li>
       }) }</ul>
       

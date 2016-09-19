@@ -1,61 +1,84 @@
 import axios from 'axios'
 
-const basepath = 'http://138.201.141.84/solr/search/select?wt=json&rows=1000&q='
+const basepath = 'http://138.201.141.84/solr/search/select?wt=json&q='
 
-const searchKey = 'search'
-
-const fieldIndex = [{
-  name: 'Author',
-  field: 'dc.contributor.author',
-  key: 'author',
-  tags: [],
-}, {
-  name: 'Publisher',
-  field: 'dc.publisher',
-  key: 'publisher',
-  tags: [],
-}, {
-  name: 'Type',
-  field: 'dc.type',
-  key: 'type',
-  tags: [],
-}]
+const fieldIndex = [
+  {
+    name: 'Subject',
+    field: 'dc.subject',
+    key: 'subject',
+    tags: [],
+  },
+  {
+    name: 'Author',
+    field: 'dc.contributor.author',
+    key: 'author',
+    tags: [],
+  }, 
+  {
+    name: 'Publisher',
+    field: 'dc.publisher',
+    key: 'publisher',
+    tags: [],
+  }, 
+  {
+    name: 'Type',
+    field: 'dc.type',
+    key: 'type',
+    tags: [],
+  }
+]
 
 const fieldMap = fieldIndex.reduce((result, { key, value, field }) => ({
   ...result, 
   [key]: { value, field },
 }), {})
 
+const fieldIndexMap = fieldIndex.reduce((map, item, index) => {
+  map[item.field] = index
+  return map
+}, {})
+
+const fieldList = fieldIndex.map(x => x.field).join(',')
+const fieldParameter = '&fl=' + fieldList + '&facet.field=' + fieldList + '&group.facet=true'
+
 export const search = {
 
   fetch: dispatch => route => {
-    
+        
     const { hash, query } = route
-    const searchQuery = (query[searchKey] || []).join('')
     
     const method = 'get'
-    let url = Object.keys(query).reduce((result, key) => {
-      let x = ''
-      if (key === searchKey) x = `(title:(${searchQuery}*) OR dc.description.abstract:(${searchQuery}*))`
-      else if (key in fieldMap && query[key].join('')) {
-        x = `${fieldMap[key].field}:(${query[key].map(string => '"' + string + '"').join(' OR ')})`
+    const searchValue = (query['search'] || []).join('')
+    const searchQuery = `(title:(*${searchValue}*) OR dc.description.abstract:(*${searchValue}*))`
+
+    // Load searchQuery
+    const searchParameters = Object.keys(query).reduce((result, key) => {
+      let parameter = ''
+      if (key in fieldMap && query[key].join('')) {
+        parameter = `${fieldMap[key].field}:(${query[key].map(string => '"' + string + '"_s').join(' OR ')})`
       }
-      if (x) result.push(x)
+      if (parameter) result.push(parameter)
       return result
-    }, [])
+    }, [ searchQuery ]).join(' AND ')
 
-    url = basepath + url.join(' AND ')
-    console.log(url)
-    // hard coded   
-    // const url = `http://138.201.141.84/solr/search/select?wt=json&q=title:(${searchQuery}*) OR dc.description.abstract:(${searchQuery})`
-
-    axios({ method, url })
+    const searchURL = basepath + searchParameters
+    axios({ method, url: searchURL })
       .then(request => {
-        // console.log(request.data.response.docs[0])
         dispatch(search.load(request))
       })
       .catch(error => {
         dispatch(search.error(error))
+      })
+
+    // Load metdata filters
+    const filterURL = basepath + searchQuery + fieldParameter + '&rows=5000'
+    axios({ method, url: filterURL })
+      .then(request => {
+        dispatch(search.loadMeta(request))
+      })
+      .catch(error => {
+        console.log('group error', error)
       })
 
     return {
@@ -68,30 +91,46 @@ export const search = {
   load: request => {
 
     const { response } = request.data
-    const content = response
-    const { docs } = content
-    const fields = fieldIndex.map(item => ({ ...item, tags: {} }))
-
-    const metadata = docs.reduce((result, dataset)  => {
-      
-      return fields.map(group => {
-        const { field } = group
-        const tagsInDataset = dataset[field]
-
-        if (tagsInDataset) tagsInDataset.forEach(tag => {
-          const count = group.tags[tag] || 0
-          group.tags[tag] = count + 1
-        })
-
-        return group
-
-      })
-    }, fields)
-
     return {
       type: 'search-load',
-      payload: { content, metadata, loading: false, match: true }
+      payload: { content: response, loading: false, match: true }
     }
+
+  },
+
+  loadMeta: request => {
+
+    const { docs } = request.data.response
+
+    const metadata = fieldIndex.map(item => ({ ...item, tags: {} }))
+
+    const x = docs.reduce((metadata, item) => {
+
+      fieldIndex.forEach(group => {
+        
+        const { field } = group
+        const filters = field && field in item && item[field]
+
+        if (Array.isArray(filters)) {           
+            const groupIndex = fieldIndexMap[field]
+            filters.forEach(filter => {
+              const filterCount = metadata[groupIndex].tags[filter]
+              if (filterCount) metadata[groupIndex].tags[filter] += 1 
+              else metadata[groupIndex].tags[filter] = 1
+            })
+        }
+
+      })
+
+      return metadata
+
+    }, metadata)
+
+    return {
+      type: 'search-meta',
+      payload: { metadata: x }
+    }
+
 
   },
 

@@ -2,7 +2,7 @@ export const initialState = {
   
   id: null,
   content: {},
-  cache: [],
+  cache: {},
 
   active: false,
   loading: false,

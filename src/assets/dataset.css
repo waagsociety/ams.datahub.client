@@ -1,0 +1,35 @@
+article {
+  background: white;
+}
+
+#dataset {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-left: 32em;
+}
+
+#dataset section {
+  padding: 2.5em 40px 5em;
+}
+
+#dataset h1 {
+  font-weight: 600;
+  font-size: 200%;
+  line-height: 1.2;
+  margin: 0 0 1em;
+}
+
+p {
+  max-width: 56em;
+  margin: 1em 0;
+  font-size: 112.5%;
+  line-height: 1.6;
+}
+
+.button.close {
+  background: red;
+  display: none;
+}

@@ -4,14 +4,7 @@ import { eventHandlers } from './events'
 
 export default function ResultPreview({ content }) {
 
-  // const keys = [ 'handle', 'title', 'dc.contributor.author' ]
-  // const item = keys.reduce(assignAndJoin(content), {})
-
-  // const {
-  //   handle,
-  //   title = 'Untitled', 
-  //   author = 'Author unknown',
-  // } = item
+  console.log(content)
 
   return <li>
     <h1>{item['dc.title']}</h1>
