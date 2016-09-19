@@ -65,10 +65,16 @@ nav.page a {
 
 nav.page a.active { color: #9291FB }
 
-#Browse {
+.container {
     background-image: url(map.png);
     background-size: cover;
     background-position: center;
+}
+
+#article { background: white }
+
+#article .content .full.button {
+    display: none;
 }
 
 li { list-style: none }
@@ -80,9 +86,7 @@ li { list-style: none }
 
 .panel { position: relative }
 
-#Browse {
-    position: relative;
-}
+.container { position: relative }
 
 .secondary.panel {
     position: absolute;

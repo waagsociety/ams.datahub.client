@@ -1,9 +1,11 @@
 import React from 'react'
+import { eventHandlers } from './events'
 
 export default function ResultList({ props }) {
 
   const { content } = props.store.search
   const { docs = [], numFound = 0, loading } = content
+  const { viewData } = eventHandlers(props)
 
   const title = loading && 'Loading' || numFound + ' Results found'
   const loadClass = loading && 'loading'
@@ -24,7 +26,7 @@ export default function ResultList({ props }) {
         return <li key={id}>
           <h1>{title}</h1>
           <p>{author}</p>
-          <a href={`#article=${id}`} className='primary button'>View dataset</a>
+          <a href={`#article=${id}`} onClick={viewData} className='primary button'>View dataset</a>
         </li>
       }) }</ul>
       

@@ -36,7 +36,7 @@ export const route = {
 
   search: value => {
     
-    const query = hashToQuery(location.hash)
+    const query = { search: [ value ] }
     query.search = [ value ]
     const hash = queryToHash(query)
 

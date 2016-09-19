@@ -34,10 +34,11 @@ export default class Browse extends React.Component {
     }
     else {
       if (dataset.active) dispatch(action.dataset.activity(false))
-      if (search.hash !== hash) {
-        if (hash) dispatch(action.search.fetch(dispatch)(route)) // Search-query in place
-        else dispatch(action.search.clear()) // We’re home
-      }
+    }
+
+    if (search.hash !== hash) {
+      if (hash) dispatch(action.search.fetch(dispatch)(route)) // Search-query in place
+      else dispatch(action.search.clear()) // We’re home
     }
   
   }
@@ -54,19 +55,20 @@ export default class Browse extends React.Component {
 
     switch (page) {
 
-      case 'search': return <div id='Browse' className='page'>
+      case 'search': return <div id='search' className='page container'>
         <GlobalNavigation/>
         <SearchPanel props={props}/>
         <ResultPanel props={props}/>
       </div>
 
-      case 'article': return <div id='Browse' className='page'>
+      case 'article': return <div id='article' className='page container'>
         <GlobalNavigation/>
         <SearchPanel props={props}/>
         <Dataset props={props}/>
+        <ResultPanel props={props}/>
       </div>
 
-      default: return <div id='Browse' className='page'>
+      default: return <div id='browse' className='page container'>
         <GlobalNavigation/>
         <SearchPanel props={props}/>
       </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { eventHandlers } from './events'
 
 export default function ResultPreview({ content }) {
