@@ -153,9 +153,14 @@ li { list-style: none }
     padding: 1rem 1.5rem 1.25rem;
 }
 
+.metadata header,
 .group h1 {
     font-size: 100%;
     text-transform: uppercase;
+    padding: 1em 0;
+}
+
+.group h1 {
     background: rgba(30,30,45,0.9);
     border-bottom-width: 1px;
     padding: 1em 5%;

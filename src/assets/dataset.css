@@ -21,6 +21,12 @@ article section {
   display: block;
 }
 
+article .tag {
+  background: silver;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+
 
 #dataset h1 {
   font-weight: 600;

@@ -1,5 +1,6 @@
 import React from 'react'
 import { eventHandlers } from './events'
+import { SearchFiltersGroup } from '../../components'
 import { fieldIndex, domain } from '../../config'
 
 export default function Dataset({ props }) {
@@ -26,23 +27,27 @@ export default function Dataset({ props }) {
 
   const fieldMeta = fieldIndex.reduce((result, item) => {
 
-    const { field } = item
-    if (field in meta){ 
-      console.log(item)
-      result.push(item)
+    const { field, key } = item
+    if (field in meta && meta[field].length){
+      item.tags = meta[field]
+      result.push(<li key={field}>
+        <header>{item.name}</header>
+        <ul className='group'>{ meta[field].map((filter, i) => 
+          <li key={i}><a className='tag' href={`#${key}=${filter}`}>{filter}</a></li>
+        )}</ul>
+      </li>)
     }
-
     return result
+
   }, []) 
   
-  console.log(fieldMeta)
-
   return <article id='dataset' className='content'>
     <section className='body content'>
       <button className='close button' type='button' onClick={closeDataset}>Close</button>
       <header>
         <h1>{name}</h1>
         {description}
+        <ul className='metadata'>{fieldMeta}</ul>
       </header>
     </section>
   </article>
