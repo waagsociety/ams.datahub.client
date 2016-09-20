@@ -55,11 +55,12 @@ export default function Dataset({ props }) {
   console.log(meta)
 
   return <article id='dataset' className='content'>
+    <button className='close button' type='button' onClick={closeDataset}>Close</button>
     <section className='body content'>
-      <button className='close button' type='button' onClick={closeDataset}>Close</button>
       <h1>{name}</h1>
       {description}
-      <footer className='container'>
+    </section>
+    <footer className='container'>
         <ul className='metadata related'>
           <li>
             <header>Issued</header>
@@ -71,8 +72,7 @@ export default function Dataset({ props }) {
           </li>
         </ul>
         <ul className='metadata fields'>{fieldMeta}</ul>
-      </footer>
-    </section>
+    </footer>
   </article>
 
 }
