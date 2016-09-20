@@ -44,11 +44,13 @@ export default function Dataset({ props }) {
   return <article id='dataset' className='content'>
     <section className='body content'>
       <button className='close button' type='button' onClick={closeDataset}>Close</button>
-      <header>
+      <header className="datasetheader">
         <h1>{name}</h1>
         {description}
-        <ul className='metadata'>{fieldMeta}</ul>
       </header>
+      <section className='footercontainer'>
+        <ul className='metadata'>{fieldMeta}</ul>
+      </section>
     </section>
   </article>
 

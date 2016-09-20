@@ -16,15 +16,26 @@ article section {
 }
 
 #dataset section { 
-  padding: 2.5em 40px 5em;
+  /*padding: 2.5em 40px 5em;*/
   margin: 0 auto;
   display: block;
 }
+#dataset .datasetheader{
+  padding: 2.5em 40px 5em;
+}
+.footercontainer{
+  padding: 2.5em 40px 5em;
+}
+.metadata{
+  width: 50%;
+}
+
 
 article .tag {
-  background: silver;
+  background: hsl(252, 50%, 48%);
   padding-left: 0.75em;
   padding-right: 0.75em;
+  color: white;
 }
 
 
