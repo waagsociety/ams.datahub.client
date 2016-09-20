@@ -41,18 +41,22 @@ export default function Dataset({ props }) {
 
   }, [])
 
-  const leftPadZero = value => value.length < 2 ? '0' + value : value
-
-  const issued = meta['dc.date.issued'].reduce((result, date) => {
+  const reduceDate = dates => dates.reduce((result, date) => {
+    
+    const leftPadZero = value => value.length < 2 ? '0' + value : value
     const dateObject = new Date(date)
+
     return {
       date: dateObject,
       day: leftPadZero(dateObject.getDate().toString()),
       month: leftPadZero((dateObject.getMonth() + 1).toString()),
       year: dateObject.getFullYear().toString(),
     }
+
   }, {})
-  console.log(meta)
+
+  const issued = reduceDate(meta['dc.date.issued'])
+  const published = reduceDate(meta['dc.date.available'])
 
   return <article id='dataset' className='body content'>
     <button className='close button' type='button' onClick={closeDataset}>Close</button>
@@ -69,8 +73,8 @@ export default function Dataset({ props }) {
             <time dateTime={issued.date}>{issued.day}.{issued.month}.{issued.year}</time>
           </li>
           <li>
-            <header>Created</header>
-            <time dateTime={issued.date}>{issued.day}.{issued.month}.{issued.year}</time>
+            <header>Published</header>
+            <time dateTime={published.date}>{published.day}.{published.month}.{published.year}</time>
           </li>
         </ul>
         <ul className='metadata fields'>{fieldMeta}</ul>
