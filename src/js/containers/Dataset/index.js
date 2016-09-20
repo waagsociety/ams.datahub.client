@@ -13,7 +13,9 @@ export default function Dataset({ props }) {
   if (dataset.loading || !atCurrentDataset) return <h1>Loading</h1>
 
   const { closeDataset } = eventHandlers(props)
-  const { name, metadata = [] } = dataset.content
+  const { name, metadata = [], bitstreams } = dataset.content
+
+  console.log(dataset.content)
 
   const meta = metadata.reduce((result, { key, value }) => {
     const data = result[key] || []
@@ -57,6 +59,11 @@ export default function Dataset({ props }) {
 
   const issued = reduceDate(meta['dc.date.issued'])
   const published = reduceDate(meta['dc.date.available'])
+  const repository = meta['dc.identifier.uri'][0]
+
+  const files = bitstreams.length ? <ul>{
+    bitstreams.map((file, i) => <li key={i}>File</li>)
+  }</ul> : <p>There are no files linked to this dataset.</p>
 
   return <article id='dataset' className='body content'>
     <button className='close button' type='button' onClick={closeDataset}>Close</button>
@@ -65,6 +72,10 @@ export default function Dataset({ props }) {
     </header>
     <section className='paddinglr'>
       {description}
+    </section>
+    <section className='paddinglr files'>
+      <h1>Files</h1>
+      {files}
     </section>
     <footer className='padding'>
         <ul className='metadata related'>
@@ -75,6 +86,10 @@ export default function Dataset({ props }) {
           <li>
             <header>Published</header>
             <time dateTime={published.date}>{published.day}.{published.month}.{published.year}</time>
+          </li>
+          <li>
+            <header>Repository</header>
+            <a className='tag' target='_blank' href={repository}>View in dSpace</a>
           </li>
         </ul>
         <ul className='metadata fields'>{fieldMeta}</ul>
