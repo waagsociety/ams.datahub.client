@@ -66,7 +66,7 @@ export default function Dataset({ props }) {
   }</ul> : <p>There are no files linked to this dataset.</p>
 
   return <article id='dataset' className='body content'>
-    <button className='close button' type='button' onClick={closeDataset}>Close</button>
+    <button className='close button' type='button' onClick={closeDataset}><i className="fa fa-times" aria-hidden="true"></i></button>
     <header className='datasetheader'>
       <h1>{name}</h1>
     </header>
@@ -79,15 +79,15 @@ export default function Dataset({ props }) {
       <ul className='metadata related'>
         <li>
           <header>Issued</header>
-          <time dateTime={issued.date}>{issued.day}.{issued.month}.{issued.year}</time>
+          <time dateTime={issued.date}><i className="fa fa-clock-o" aria-hidden="true"></i> {issued.day}.{issued.month}.{issued.year}</time>
         </li>
         <li>
           <header>Published</header>
-          <time dateTime={published.date}>{published.day}.{published.month}.{published.year}</time>
+          <time dateTime={published.date}><i className="fa fa-clock-o" aria-hidden="true"></i> {published.day}.{published.month}.{published.year}</time>
         </li>
         <li>
           <header>Repository</header>
-          <a className='tag' target='_blank' href={repository}>View in dSpace</a>
+          <a className='primary button' target='_blank' href={repository}><i className="fa fa-external-link" aria-hidden="true"></i> View in dSpace</a>
         </li>
       </ul>
     </footer>
