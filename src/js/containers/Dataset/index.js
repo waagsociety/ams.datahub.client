@@ -72,13 +72,10 @@ export default function Dataset({ props }) {
     </header>
     <section className='datasetbody'>
       {description}
-    </section>
-    <section className='files'>
-      <h2>Files</h2>
       {files}
     </section>
-    <footer>
-      <h2>Metadata</h2>
+    <footer className='datasetfooter'>
+      <ul className='metadata fields'>{fieldMeta}</ul>
       <ul className='metadata related'>
         <li>
           <header>Issued</header>
@@ -93,7 +90,6 @@ export default function Dataset({ props }) {
           <a className='tag' target='_blank' href={repository}>View in dSpace</a>
         </li>
       </ul>
-      <ul className='metadata fields'>{fieldMeta}</ul>
     </footer>
   </article>
 

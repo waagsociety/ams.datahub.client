@@ -22,13 +22,22 @@ article section {
   display: block;
 }
 #dataset .datasetheader{
-  padding: 2.5em 40px 5em;
+  padding: 2.5em 40px 0;
 }
-.footercontainer{
-  padding: 2.5em 40px 5em;
+#dataset .datasetbody{
+  padding: 0 40px 2.5em;
 }
-.metadata{
+.datasetfooter{
+  padding: 2.5em 40px 5em;
+  background: #F5F5F6;
+  display: flex;
+}
+.metadata.related,
+.metadata.fields{
   width: 50%;
+}
+.metadata.related li{
+  margin-bottom: 1em;
 }
 
 
