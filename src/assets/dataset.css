@@ -1,7 +1,7 @@
 article section {
-  background: green;
+  /*background: green;*/
   /*border-right: 1px solid #ddd;*/
-  min-height: 100%;
+  /*min-height: 100%;*/
 }
 
 #dataset {
