@@ -67,17 +67,17 @@ export default function Dataset({ props }) {
 
   return <article id='dataset' className='body content'>
     <button className='close button' type='button' onClick={closeDataset}>Close</button>
-    <header className='padding'>
+    <header className='datasetheader'>
       <h1>{name}</h1>
     </header>
-    <section className='paddinglr'>
+    <section className='datasetbody'>
       {description}
     </section>
-    <section className='paddinglr files'>
+    <section className='files'>
       <h2>Files</h2>
       {files}
     </section>
-    <footer className='padding'>
+    <footer>
       <h2>Metadata</h2>
       <ul className='metadata related'>
         <li>

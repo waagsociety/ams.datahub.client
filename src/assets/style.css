@@ -303,15 +303,4 @@ section.body.content {
 
 
 /* Standard layout */
-.smallpadding{
-    padding: 1em;
-}
-.padding{
-    padding: 2em;
-}
-.paddinglr{
-    padding: 0 2em;
-}
-.bigpadding{
-    padding: 3em;
-}
+
