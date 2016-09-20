@@ -73,9 +73,9 @@ export default function Dataset({ props }) {
     <section className='datasetbody'>
       {description}
       {files}
+      <a className='primary button' target='_blank' href={repository}><i className="fa fa-external-link" aria-hidden="true"></i> View in dSpace</a>
     </section>
-    <footer className='datasetfooter'>
-      <ul className='metadata fields'>{fieldMeta}</ul>
+    <section className="datasetinformation">
       <ul className='metadata related'>
         <li>
           <header>Issued</header>
@@ -85,11 +85,10 @@ export default function Dataset({ props }) {
           <header>Published</header>
           <time dateTime={published.date}><i className="fa fa-clock-o" aria-hidden="true"></i> {published.day}.{published.month}.{published.year}</time>
         </li>
-        <li>
-          <header>Repository</header>
-          <a className='primary button' target='_blank' href={repository}><i className="fa fa-external-link" aria-hidden="true"></i> View in dSpace</a>
-        </li>
       </ul>
+    </section>
+    <footer className='datasetfooter'>
+      <ul className='metadata fields'>{fieldMeta}</ul>
     </footer>
   </article>
 

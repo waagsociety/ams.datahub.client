@@ -27,17 +27,32 @@ article section {
 #dataset .datasetbody{
   padding: 0 40px 2.5em;
 }
+.datasetinformation{
+  padding: 0 40px 2.5em;
+  /*box-shadow: inset 0 1px 0 0 rgba(192,192,192,0.4)*/
+}
 .datasetfooter{
   padding: 2.5em 40px 5em;
   background: #F5F5F6;
-  display: flex;
 }
 .metadata.related,
 .metadata.fields{
-  width: 50%;
+  width: 100%;
+}
+.metadata.fields{
+  display: flex;
+  flex-wrap: wrap;
+}
+.metadata.fields > li{
+  max-width: calc(25% - 40px);
+  margin-right: 40px;
+}
+.metadata.related{
+  display: flex;
 }
 .metadata.related li{
   margin-bottom: 1em;
+  margin-right: 40px;
 }
 
 
@@ -68,16 +83,15 @@ p {
   background: linear-gradient(135deg, hsl(265, 70%, 66%), hsl(208, 70%, 66%));
   position: absolute;
   color: white;
-  right: 0em;
+  right: 0;
   border-radius: 0 0 0 20%;
   width: 2.5em;
   height: 2.5em;
-  top: 0em;
+  top: 0;
   transform-origin: top right;
   transition: transform .15s ease-out;
 }
 .button.close:hover{
-  transform: scale(1.2);
   cursor: pointer;
 }
 
