@@ -41,12 +41,14 @@ export default function Dataset({ props }) {
 
   }, [])
 
+  const leftPadZero = value => value.length < 2 ? '0' + value : value
+
   const issued = meta['dc.date.issued'].reduce((result, date) => {
     const dateObject = new Date(date)
     return {
       date: dateObject,
-      day: dateObject.getDate().toString(),
-      month: (dateObject.getMonth() + 1).toString(),
+      day: leftPadZero(dateObject.getDate().toString()),
+      month: leftPadZero((dateObject.getMonth() + 1).toString()),
       year: dateObject.getFullYear().toString(),
     }
   }, {})
@@ -55,15 +57,21 @@ export default function Dataset({ props }) {
   return <article id='dataset' className='content'>
     <section className='body content'>
       <button className='close button' type='button' onClick={closeDataset}>Close</button>
-      <header className="datasetheader">
-        <h1>{name}</h1>
-        {description}
-        <h2>Issued</h2>
-        <time dateTime={issued.date}>{issued.day}.{issued.month}.{issued.year}</time>
-      </header>
-      <section className='footercontainer'>
-        <ul className='metadata'>{fieldMeta}</ul>
-      </section>
+      <h1>{name}</h1>
+      {description}
+      <footer className='container'>
+        <ul className='metadata related'>
+          <li>
+            <header>Issued</header>
+            <time dateTime={issued.date}>{issued.day}.{issued.month}.{issued.year}</time>
+          </li>
+          <li>
+            <header>Created</header>
+            <time dateTime={issued.date}>{issued.day}.{issued.month}.{issued.year}</time>
+          </li>
+        </ul>
+        <ul className='metadata fields'>{fieldMeta}</ul>
+      </footer>
     </section>
   </article>
 
