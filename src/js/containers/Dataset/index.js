@@ -39,14 +39,28 @@ export default function Dataset({ props }) {
     }
     return result
 
-  }, []) 
-  
+  }, [])
+
+  const issued = meta['dc.date.issued'].reduce((result, date) => {
+    const dateObject = new Date(date)
+    return {
+      date: dateObject,
+      day: dateObject.getDate().toString(),
+      month: (dateObject.getMonth() + 1).toString(),
+      year: dateObject.getFullYear().toString(),
+    }
+  }, {})
+  console.log(meta)
+
   return <article id='dataset' className='content'>
     <section className='body content'>
       <button className='close button' type='button' onClick={closeDataset}>Close</button>
       <header>
         <h1>{name}</h1>
         {description}
+        <h2>Issued</h2>
+        <time dateTime={issued.date}>{issued.day}.{issued.month}.{issued.year}</time>
+        <h2>Metadata</h2>
         <ul className='metadata'>{fieldMeta}</ul>
       </header>
     </section>
