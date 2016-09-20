@@ -63,7 +63,7 @@ export default function Dataset({ props }) {
 
   const files = bitstreams.length ? <ul>{
     bitstreams.map((file, i) => <li key={i}>File</li>)
-  }</ul> : <p>There are no files linked to this dataset.</p>
+  }</ul> : []
 
   return <article id='dataset' className='body content'>
     <button className='close button' type='button' onClick={closeDataset}><i class="fa fa-times" aria-hidden="true"></i> close</button>
