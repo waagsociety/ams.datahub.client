@@ -74,25 +74,26 @@ export default function Dataset({ props }) {
       {description}
     </section>
     <section className='paddinglr files'>
-      <h1>Files</h1>
+      <h2>Files</h2>
       {files}
     </section>
     <footer className='padding'>
-        <ul className='metadata related'>
-          <li>
-            <header>Issued</header>
-            <time dateTime={issued.date}>{issued.day}.{issued.month}.{issued.year}</time>
-          </li>
-          <li>
-            <header>Published</header>
-            <time dateTime={published.date}>{published.day}.{published.month}.{published.year}</time>
-          </li>
-          <li>
-            <header>Repository</header>
-            <a className='tag' target='_blank' href={repository}>View in dSpace</a>
-          </li>
-        </ul>
-        <ul className='metadata fields'>{fieldMeta}</ul>
+      <h2>Metadata</h2>
+      <ul className='metadata related'>
+        <li>
+          <header>Issued</header>
+          <time dateTime={issued.date}>{issued.day}.{issued.month}.{issued.year}</time>
+        </li>
+        <li>
+          <header>Published</header>
+          <time dateTime={published.date}>{published.day}.{published.month}.{published.year}</time>
+        </li>
+        <li>
+          <header>Repository</header>
+          <a className='tag' target='_blank' href={repository}>View in dSpace</a>
+        </li>
+      </ul>
+      <ul className='metadata fields'>{fieldMeta}</ul>
     </footer>
   </article>
 
