@@ -20,10 +20,10 @@ export const fieldIndex = [
     key: 'publisher',
     tags: [],
   }, 
-  {
-    name: 'Type',
-    field: 'dc.type',
-    key: 'type',
-    tags: [],
-  }
+  // {
+  //   name: 'Type',
+  //   field: 'dc.type',
+  //   key: 'type',
+  //   tags: [],
+  // }
 ]
