@@ -9,7 +9,7 @@ export default function ResultList({ props }) {
   const { docs = [], numFound = 0, loading } = content
   const { viewData, showAll } = eventHandlers(props)
   
-  const page = parseInt(results[0]) || false
+  const page = parseInt(results && results[0]) || false
   const start = page * 0
   const limit = page * resultsPerPage || initialResults
   const expand = page && !props.store.dataset.active
@@ -21,7 +21,7 @@ export default function ResultList({ props }) {
 
   const data = docs.slice(start, limit)
 
-  // console.log(data.length, resultsPerPage)
+  console.log(data.length, resultsPerPage)
   
   return <div className={className}>
     

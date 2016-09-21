@@ -51,7 +51,6 @@ export default class Browse extends React.Component {
 
     let page = ''
     if (!!query.article) page = 'article'
-    else if (!!query.results) page = 'results'
     else if (!!search.hash) page = 'search'
 
     switch (page) {
@@ -60,12 +59,6 @@ export default class Browse extends React.Component {
         <GlobalNavigation/>
         <SearchPanel props={props}/>
         <ResultPanel props={props}/>
-      </div>
-
-      case 'results': return <div id='search' className='page container'>
-        <GlobalNavigation/>
-        <SearchPanel props={props}/>
-        <ResultBrowser props={props}/>
       </div>
 
       case 'article': return <div id='article' className='page container'>
