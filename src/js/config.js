@@ -19,11 +19,8 @@ export const fieldIndex = [
     field: 'dc.publisher',
     key: 'publisher',
     tags: [],
-  }, 
-  // {
-  //   name: 'Type',
-  //   field: 'dc.type',
-  //   key: 'type',
-  //   tags: [],
-  // }
+  },
 ]
+
+export const initialResults = 10
+export const resultsPerPage = 50

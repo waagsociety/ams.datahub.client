@@ -68,3 +68,22 @@ a {
 .panel.loading { opacity: 0.75 }
 .panel.loading { transition: opacity 0.4s 0.2s ease }
 .panel.done { transition: opacity 0.2s ease }
+
+
+
+.secondary.panel.expanded {
+  width: auto;
+  left: 31em;
+}
+
+.secondary.panel.expanded:before {
+  content: '';
+  background: red;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
