@@ -8,8 +8,16 @@ export const eventHandlers = ({ dispatch }) => ({
     dispatch(route.update(location.hash + href))
   },
 
-  showAll(event) {
+  showAll() {
     dispatch(route.replace({ results: [1] }))
+  },
+
+  skipPage(page) {
+    return event => dispatch(route.replace({ results: [page] }))
+  },
+
+  closeResults() {
+    dispatch(route.remove('results'))
   },
 
 })

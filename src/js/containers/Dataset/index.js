@@ -66,7 +66,9 @@ export default function Dataset({ props }) {
   }</ul> : []
 
   return <article id='dataset' className='body content'>
-    <button className='close button' type='button' onClick={closeDataset}><i class="fa fa-times" aria-hidden="true"></i> close</button>
+    <button className='close button' type='button' onClick={closeDataset}>
+      <i class="fa fa-times" aria-hidden="true"></i> close
+    </button>
     <header className='datasetheader'>
       <h1>{name}</h1>
     </header>

@@ -7,11 +7,13 @@ export default function ResultList({ props }) {
   const { content } = props.store.search
   const { results } = props.store.route.query
   const { docs = [], numFound = 0, loading } = content
-  const { viewData, showAll } = eventHandlers(props)
+  const { viewData, showAll, skipPage, closeResults } = eventHandlers(props)
   
-  const page = parseInt(results && results[0]) || false
-  const start = page * 0
-  const limit = page * resultsPerPage || initialResults
+  const pageCount = Math.ceil(numFound / resultsPerPage)
+  let page = parseInt(results && results[0]) || false
+  if (page > pageCount) page = pageCount
+  const start = page && (page - 1) * resultsPerPage || 0
+  const limit = ((page - 1) * resultsPerPage) + resultsPerPage || initialResults
   const expand = page && !props.store.dataset.active
 
   const title = loading && 'Loading' || numFound + ' Results found'
@@ -21,10 +23,18 @@ export default function ResultList({ props }) {
 
   const data = docs.slice(start, limit)
 
-  console.log(data.length, resultsPerPage)
+  const pageination = <footer className='pages full primary'>
+    <header>{page} / {pageCount}</header>
+    <button className='previous' type='button' disabled={page <= 1} onClick={skipPage(page - 1)}>Previous</button>
+    <button className='next' type='button' disabled={page >= pageCount} onClick={skipPage(page + 1)}>Next</button>
+  </footer>
   
   return <div className={className}>
     
+    <button className='close' type='button' onClick={closeResults} hidden={!expand}>
+      <i class="fa fa-times" aria-hidden="true"></i> close
+    </button>
+
     <header className='menu'>
       <h1>{title}</h1>
     </header>
@@ -42,7 +52,10 @@ export default function ResultList({ props }) {
         </li>
       }) }</ul>
       
-      <button className='full primary button' onClick={showAll}>View all results</button>
+      { expand 
+        ? pageination
+        : <button className='full primary button' onClick={showAll}>View all results</button>
+      }
 
     </section>
 

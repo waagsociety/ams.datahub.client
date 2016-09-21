@@ -55,7 +55,14 @@ a {
   cursor: pointer;
 }
 
+.results ul li:last-child { border: none }
 
+.pages {
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.full.pages,
 .full.button {
   width: 100%;
   height: 4em;
@@ -75,6 +82,49 @@ a {
   width: auto;
   left: 31em;
 }
+
+footer.full {
+  position: relative;
+  text-align: center;
+  padding: 1em;
+}
+
+footer.full header {
+  font-size: 112.5%;
+  line-height: 1.5;
+}
+
+
+
+.expanded .close {
+  color: black;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  padding: 0.75em 1em 1em;
+  margin: 1.2em 1em;
+  z-index: 1000;
+  border: 1px solid #eee;
+  cursor: pointer;
+}
+
+button.previous,
+button.next {
+   width: 25%;
+   height: 100%;
+   top: 0;
+   position: absolute;
+   cursor: pointer;
+   padding: 0.5em;
+}
+
+button.previous[disabled],
+button.next [disabled] {
+  opacity: 0.5;
+}
+
+button.previous { left: 0 }
+button.next { right: 0 }
 
 .secondary.panel.expanded:before {
   content: '';
