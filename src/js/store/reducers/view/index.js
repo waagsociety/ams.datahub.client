@@ -10,8 +10,8 @@ export default function(state = initialState, { type, payload }) {
     }
 
     case 'view-FilterGroup': {
-      console.log(payload)
-      return { ...state }
+      const FilterGroup = { ...state.FilterGroup, ...payload }
+      return { ...state, FilterGroup }
     }
 
     default: return { ...state }
