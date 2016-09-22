@@ -27,8 +27,7 @@ export default function Dataset({ props }) {
 
   const source = (meta['dc.source'] || []).map((content, i) => {
     return <a className='primary button' key={i} href={content} target='_blank'>
-      <i className="fa fa-external-link" aria-hidden="true"></i> 
-      View Source
+      <i className="fa fa-external-link" aria-hidden="true"></i> View Source
     </a>
   })
 
