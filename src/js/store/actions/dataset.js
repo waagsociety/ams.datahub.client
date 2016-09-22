@@ -1,11 +1,13 @@
 import axios from 'axios'
 
+import { domain } from '../../config'
+
 export const dataset = {
 
   fetch: dispatch => id => {
 
     axios({
-      url: `http://138.201.141.84/rest/items/${id}?expand=all`,
+      url: `${domain}/rest/items/${id}?expand=all`,
       method: 'get',
     }).then(request => {
       dispatch(dataset.loaded(request.data))
