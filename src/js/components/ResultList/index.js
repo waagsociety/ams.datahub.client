@@ -22,12 +22,18 @@ export default function ResultList({ props }) {
   const className = [ expandClass, loadClass, 'container floating secondary panel' ].join(' ')
 
   const data = docs.slice(start, limit)
+  
+  const pageInput = <label className='pagenumber'>
+    <input type="number" defaultValue={page} name="page" max={pageCount} onKeyUp={skipPage}/>
+  </label>
 
   const pageination = <footer className='pages full primary'>
-    <header>{page} / {pageCount}</header>
-    <button className='previous' type='button' disabled={page <= 1} onClick={skipPage(page - 1)}>Previous</button>
-    <button className='next' type='button' disabled={page >= pageCount} onClick={skipPage(page + 1)}>Next</button>
+    <header className='pagenumber'>{page} / {pageCount}</header>
+    <button className='previous' type='button' value={page - 1} disabled={page <= 1} onClick={skipPage}>Previous</button>
+    <button className='next' type='button' value={page + 1} disabled={page >= pageCount} onClick={skipPage}>Next</button>
   </footer>
+
+  const log = event => console.log(event)
   
   return <div className={className}>
     
@@ -38,10 +44,10 @@ export default function ResultList({ props }) {
     <header className='menu'>
       <h1>{title}</h1>
     </header>
-    <section className='results content'>
+    <section className='results content' scrollY='0'>
 
-      <ul>{ data.map(item => {
-        const title = item['dc.title'] || "Untitled"
+      <ul>{ data.map((item, i) => {
+        const title = item['title'] || "Untitled"
         const author = item['author'] || "Author unknown"
         const id = item['search.resourceid']
 

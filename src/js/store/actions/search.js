@@ -37,7 +37,7 @@ export const search = {
     }, [ searchQuery ]).join(' AND ')
 
     const searchURL = basepath + searchParameters
-    axios({ method, url: searchURL + '&rows=1000' })
+    axios({ method, url: searchURL + '&rows=10000&fl=author,title,search.resourceid' })
       .then(request => {
         dispatch(search.load(request))
       })
@@ -46,7 +46,7 @@ export const search = {
       })
 
     // Load metdata filters
-    const filterURL = basepath + searchQuery + fieldParameter + '&rows=5000'
+    const filterURL = basepath + searchQuery + searchParameters + fieldParameter + '&rows=10000'
     axios({ method, url: filterURL })
       .then(request => {
         dispatch(search.loadMeta(request))

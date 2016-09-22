@@ -1,5 +1,5 @@
 
-export const domain = 'http://138.201.141.84/'
+export const domain = 'http://amsdatahub.waag.org/dspace/'
 
 export const fieldIndex = [
   {

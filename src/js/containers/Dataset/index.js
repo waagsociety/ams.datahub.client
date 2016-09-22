@@ -15,8 +15,6 @@ export default function Dataset({ props }) {
   const { closeDataset } = eventHandlers(props)
   const { name, metadata = [], bitstreams } = dataset.content
 
-  console.log(dataset.content)
-
   const meta = metadata.reduce((result, { key, value }) => {
     const data = result[key] || []
     result[key] = data.concat([ value ])

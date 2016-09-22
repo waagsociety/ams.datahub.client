@@ -13,10 +13,13 @@ export default function SearchFilterGroup({ props, content }) {
   return <section className='group'>
     <h1>{name}</h1>
     <ul>{ 
-      sortedTagData.map((value, i) => <li key={i}>
+      sortedTagData.filter(hasContents).map((value, i) => <li key={i}>
         <FilterTag props={props} content={{ name, key, value, count: tags[value] }}/>
       </li>)
     }</ul>
+    <button>A button</button>
   </section>
 
 }
+
+const hasContents = value => !!value

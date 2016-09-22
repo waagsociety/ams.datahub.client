@@ -11,10 +11,7 @@ export default function FilterTag({ props, content }) {
 
   let active = false
   const queryKey = query[key] || []
-  // console.log(queryKey, value)
   active = queryKey.includes(value)
-  // console.log(value, active)
-  // if (active) console.log(value)
 
   const className = classNames('tag', {
     active: active
