@@ -115,6 +115,9 @@ footer.full {
 footer.full header {
   font-size: 112.5%;
   line-height: 1.5;
+  z-index: -1;
+  width: 10em;
+  margin: 0 auto;
 }
 
 
@@ -139,10 +142,11 @@ button.next {
    position: absolute;
    cursor: pointer;
    padding: 0.5em;
+   z-index: 100;
 }
 
 button.previous[disabled],
-button.next [disabled] {
+button.next[disabled] {
   opacity: 0.5;
 }
 
