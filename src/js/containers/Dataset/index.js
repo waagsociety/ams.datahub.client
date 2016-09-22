@@ -25,6 +25,13 @@ export default function Dataset({ props }) {
     return <p key={i}>{content}</p>
   })
 
+  const source = (meta['dc.source'] || []).map((content, i) => {
+    return <a className='primary button' key={i} href={content} target='_blank'>
+      <i className="fa fa-external-link" aria-hidden="true"></i> 
+      View Source
+    </a>
+  })
+
   const fieldMeta = fieldIndex.reduce((result, item) => {
 
     const { field, key } = item
@@ -72,8 +79,8 @@ export default function Dataset({ props }) {
     </header>
     <section className='datasetbody'>
       {description}
-      {files}
-      <a className='primary button' target='_blank' href={repository}><i className="fa fa-external-link" aria-hidden="true"></i> View in dSpace</a>
+      {files} 
+      {source}
     </section>
     <section className="datasetinformation">
       <ul className='metadata related'>

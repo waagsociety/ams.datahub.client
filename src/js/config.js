@@ -8,12 +8,12 @@ export const fieldIndex = [
     key: 'subject',
     tags: [],
   },
-  {
-    name: 'Source',
-    field: 'dc.source',
-    key: 'source',
-    tags: [],
-  },
+  // {
+  //   name: 'Source',
+  //   field: 'dc.source',
+  //   key: 'source',
+  //   tags: [],
+  // },
   {
     name: 'Author',
     field: 'dc.contributor.author',
