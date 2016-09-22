@@ -21,7 +21,7 @@ export default function Dataset({ props }) {
     return result
   }, {})
 
-  const description = meta['dc.description.abstract'].map((content, i) => {
+  const description = (meta['dc.description.abstract'] || []).map((content, i) => {
     return <p key={i}>{content}</p>
   })
 

@@ -5,4 +5,9 @@ export const view = {
     payload,
   }),
 
+  FilterGroup: (payload) => ({
+    type: 'view-FilterGroup',
+    payload,
+  }),
+
 }

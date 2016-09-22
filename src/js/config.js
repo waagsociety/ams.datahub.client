@@ -9,6 +9,12 @@ export const fieldIndex = [
     tags: [],
   },
   {
+    name: 'Source',
+    field: 'dc.source',
+    key: 'source',
+    tags: [],
+  },
+  {
     name: 'Author',
     field: 'dc.contributor.author',
     key: 'author',
@@ -24,3 +30,4 @@ export const fieldIndex = [
 
 export const initialResults = 10
 export const resultsPerPage = 50
+export const initialFiltersPerGroup = 8

@@ -9,6 +9,11 @@ export default function(state = initialState, { type, payload }) {
       return { ...state, SearchInput }
     }
 
+    case 'view-FilterGroup': {
+      console.log(payload)
+      return { ...state }
+    }
+
     default: return { ...state }
 
   }

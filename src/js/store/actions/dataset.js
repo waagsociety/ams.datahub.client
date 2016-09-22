@@ -7,7 +7,7 @@ export const dataset = {
   fetch: dispatch => id => {
 
     axios({
-      url: `${domain}/rest/items/${id}?expand=all`,
+      url: `${domain}rest/items/${id}?expand=all`,
       method: 'get',
     }).then(request => {
       dispatch(dataset.loaded(request.data))

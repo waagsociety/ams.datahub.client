@@ -164,10 +164,17 @@ li { list-style: none }
 .group h1 {
     background: rgba(30,30,45,0.9);
     border-bottom-width: 1px;
-    padding: 1em 5%;
+    padding: 1em 0;
+    margin: 0 0.5em 1em 0; 
 }
 
-.group ul { padding: 1rem 1.5rem }
+.group {
+    padding: 0 1em 1.5em 1.5em;
+}
+
+.group ul { 
+    display: inline;
+}
 
 .group li { 
     display: inline-block;
@@ -188,7 +195,7 @@ li { list-style: none }
 }
 
 .tag {
-    line-height: 1.4;
+    line-height: 1.2;
     white-space: nowrap;
     text-overflow: ellipsis;
     height: 2.5rem;
@@ -250,7 +257,7 @@ input {
 
 .tag .count { 
     background: rgba(0,0,0,0.2);
-    padding: 0.25em 0.325em 0.125em;
+    padding: 0.25em 0.325em;
     margin-top: -.125em;
     position: absolute;
     right: 0.75em;
@@ -280,6 +287,12 @@ input {
 
 .tag.focus {
     padding-right: 2em;
+}
+
+.tag.more {
+    background: hsl(240, 20%, 25%);
+    opacity: 0.9;
+    padding: 0 1em;
 }
 
 

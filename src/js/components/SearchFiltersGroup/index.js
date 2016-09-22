@@ -1,13 +1,16 @@
 import React from 'react'
 import { FilterTag } from '../'
+import { initialFiltersPerGroup } from '../../config'
+import { eventHandlers } from './events'
 
 export default function SearchFilterGroup({ props, content }) {
 
   const { name, key, tags } = content
   const tagData = Object.keys(tags)
   const amount = tagData.length
+  const { focusGroup } = eventHandlers(props)
 
-  const sortedTagData = tagData.sort((a, b) => tags[a] < tags[b] ? 1 : -1 ).slice(0, 8)
+  const sortedTagData = tagData.sort((a, b) => tags[a] < tags[b] ? 1 : -1 ).slice(0, initialFiltersPerGroup)
   const moreTags = sortedTagData.length < tagData.length
 
   return <section className='group'>
@@ -17,7 +20,12 @@ export default function SearchFilterGroup({ props, content }) {
         <FilterTag props={props} content={{ name, key, value, count: tags[value] }}/>
       </li>)
     }</ul>
-    <button>A button</button>
+    { amount > initialFiltersPerGroup 
+      ? <button className='tag more' type='button' value={key} onClick={focusGroup}>{
+        `Show ${amount - initialFiltersPerGroup} more`
+      }</button> 
+      : [] 
+    }
   </section>
 
 }
