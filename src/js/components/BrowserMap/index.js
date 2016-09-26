@@ -30,10 +30,10 @@ class BrowserMap extends Component {
         map.setPitch(map.getPitch() + 0.3);
       }
     });
-    // map.on('load', () => {
-    //   mapActions.addSources(map);
-    //   mapActions.addGemeente(map);
-    // });
+    map.on('load', () => {
+      mapActions.addSources(map);
+      mapActions.addGemeente(map);
+    });
   }
   render() {
     return (

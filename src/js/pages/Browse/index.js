@@ -40,7 +40,7 @@ export default class Browse extends React.Component {
   }
 
   render() {
-    const { props } = this
+    const { props } = this;
     const { search, dataset, route } = props.store;
     const { query } = route;
 
@@ -63,6 +63,7 @@ export default class Browse extends React.Component {
         return (
           <div id='article' className='page container'>
             <GlobalNavigation />
+            <BrowserMap />
             <Dataset props={props} />
             <ResultPanel props={props} />
           </div>

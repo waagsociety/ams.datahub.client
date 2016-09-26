@@ -1,14 +1,11 @@
 function loadMapMouseEvents(map, fillId, hoverId, code, addWijk, addBuurt) {
   map.on('click', (e) => {
     const features = map.queryRenderedFeatures(e.point, { layers: [fillId] });
-    console.log(map.getBounds())
-    console.log(e.lngLat)
 
     if (!features.length) return;
     const feature = features[0];
 
     if (addWijk) addWijken(map, feature.properties[code]);
-    if (addBuurt) addBuurten(map, feature.properties[code]);
   });
 
   // When the user moves their mouse over the page, we look for features
@@ -48,44 +45,6 @@ export function addSources(map) {
     type: 'geojson',
     data: '../../assets/data/gemeenten.geojson',
   });
-}
-
-export function addBuurten(map, wkCode) {
-  map.addLayer({
-    id: `buurten-fills-${wkCode}`,
-    type: 'fill',
-    source: 'buurten',
-    paint: {
-      'fill-color': '#3DE3CF',
-      'fill-opacity': 0.1,
-      'fill-outline-color': '#fff',
-    },
-    filter: ['==', 'wk_code', wkCode],
-  });
-
-  map.addLayer({
-    id: `buurten-hover-${wkCode}`,
-    type: 'fill',
-    source: 'buurten',
-    paint: {
-      'fill-color': '#3DE3CF',
-      'fill-opacity': 0.5,
-    },
-    filter: ['==', 'wk_code', wkCode],
-  });
-
-  map.addLayer({
-    id: `buurten-borders-${wkCode}`,
-    type: 'line',
-    source: 'buurten',
-    paint: {
-      'line-color': '#2AA293',
-      'line-width': 2,
-    },
-    filter: ['==', 'wk_code', wkCode],
-  });
-
-  loadMapMouseEvents(map, `buurten-fills-${wkCode}`, `buurten-hover-${wkCode}`, 'bu_code', false, false);
 }
 
 export function addWijken(map, gmCode) {
