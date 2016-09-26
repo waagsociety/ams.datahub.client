@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-
 import * as action from '../../store'
 import { GlobalNavigation, SearchPanel, ResultPanel, ResultBrowser, Dataset } from '../../containers'
 import BrowserMap from '../../components/BrowserMap'
