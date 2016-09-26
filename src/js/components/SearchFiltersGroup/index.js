@@ -22,7 +22,7 @@ export default function SearchFilterGroup({ props, content }) {
         <FilterTag props={props} content={{ name, key, value, count: tags[value] }}/>
       </li>)
     }</ul>
-    { !focus && amount > initialFiltersPerGroup 
+    { amount > initialFiltersPerGroup
       ? <button className='tag more' type='button' value={key} onClick={focusGroup}>{
         `Show ${amount - initialFiltersPerGroup} more`
       }</button> 
