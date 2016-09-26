@@ -49,6 +49,7 @@ input::-webkit-inner-spin-button {
   padding: 1em 0;
   border-bottom-width: 1px;
   border-color: #eee;
+  overflow: hidden;
 }
 
 .loading .menu h1 { color: gray }

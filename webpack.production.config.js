@@ -9,6 +9,11 @@ module.exports = {
     path: __dirname + '/dist',
     filename: 'app.min.js',
   },
+  resolve: {
+    alias: {
+      webworkify: 'webworkify-webpack',
+    },
+  },
   module: {
     loaders: [
       {
@@ -18,7 +23,7 @@ module.exports = {
         query: {
           presets: ['react', 'es2015', 'stage-0'],
           plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
-        }
+        },
       },
       {
         test: /\.json$/,

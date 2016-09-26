@@ -6,6 +6,16 @@ module.exports = {
   context: path.join(__dirname, 'src'),
   devtool: debug ? 'inline-sourcemap' : null,
   entry: './js/app.js',
+  output: {
+    path: __dirname + '/src/',
+    filename: 'app.min.js'
+  },
+  resolve: {
+    root: path.resolve(__dirname),
+    alias: {
+      webworkify: 'webworkify-webpack',
+    },
+  },
   module: {
     loaders: [
       {
@@ -15,7 +25,7 @@ module.exports = {
         query: {
           presets: ['react', 'es2015', 'stage-0'],
           plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
-        }
+        },
       },
       {
         test: /\.json$/,
@@ -40,10 +50,6 @@ module.exports = {
       loader: 'transform',
       query: 'brfs',
     }],
-  },
-  output: {
-    path: __dirname + '/src/',
-    filename: 'app.min.js'
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),

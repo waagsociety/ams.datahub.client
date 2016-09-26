@@ -65,12 +65,6 @@ nav.page a {
 
 nav.page a.active { color: #9291FB }
 
-.container {
-    background-image: url(map.png);
-    background-size: cover;
-    background-position: center;
-}
-
 #article { background: white }
 
 #article .content .full.button {
