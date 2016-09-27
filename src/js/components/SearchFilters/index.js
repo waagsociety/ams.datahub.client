@@ -17,6 +17,7 @@ export default function SearchFilters({ props }) {
 
   else return <div className={'content tags'}>
       <section className='search group' hidden={!showSearchTag}>
+        <h1>Search</h1>
         <SearchTag props={props} />
       </section>
       { metadata.filter(({ tags }) => !!Object.keys(tags).length).map(group =>
