@@ -39,6 +39,7 @@ export default class Browse extends React.Component {
   }
 
   render() {
+
     const { props } = this;
     const { search, dataset, route } = props.store;
     const { query } = route;
@@ -51,7 +52,7 @@ export default class Browse extends React.Component {
       case 'search':
         return (
           <div id='search' className='page container'>
-            <BrowserMap />
+            <BrowserMap props={props} />
             <SearchPanel props={props} />
             <ResultPanel props={props} />
           </div>
@@ -60,7 +61,7 @@ export default class Browse extends React.Component {
       case 'article':
         return (
           <div id='article' className='page container'>
-            <BrowserMap />
+            <BrowserMap props={props} />
             <Dataset props={props} />
             <ResultPanel props={props} />
           </div>
@@ -69,7 +70,7 @@ export default class Browse extends React.Component {
       default:
         return (
           <div id='browse' className='page container'>
-          <BrowserMap />
+          <BrowserMap props={props} />
           <SearchPanel props={props} />
           </div>
         );

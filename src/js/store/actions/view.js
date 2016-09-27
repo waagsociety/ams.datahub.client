@@ -10,4 +10,8 @@ export const view = {
     payload,
   }),
 
+  noWebGL: () => ({
+    type: 'view-noWebGL',
+  }),
+
 }

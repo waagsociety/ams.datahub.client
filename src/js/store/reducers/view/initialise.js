@@ -6,3 +6,5 @@ export const SearchInput = {
 export const FilterGroup = {
   focus: null,
 }
+
+export const noWebGL = false

@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import mapboxgl from 'mapbox-gl';
 import * as mapActions from './actions.js';
+import { view } from '../../store'
 
 class BrowserMap extends Component {
+
   componentDidMount() {
+
+    const { props } = this;
+    const { dispatch } = props.props;
+
     if (!mapboxgl.supported()) {
       alert('Your browser does not support Mapbox GL');
-      // TODO - Dispatch view nowebgl
+      dispatch({ type: 'view-noWebGL', payload: true });
     } else {
       mapboxgl.accessToken = 'pk.eyJ1IjoibWFydGlud2FhZyIsImEiOiJjaWo0NWt6ZWYwMDE0dXlrcm0yenVkNDR5In0.0I9xJzLubP9g3V_NTt1PhA';
 
