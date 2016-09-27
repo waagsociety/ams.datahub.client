@@ -29,8 +29,6 @@ body,
     width: 100%;
 }
 
-body { padding-top: 90px }
-
 nav.page {
     color: black;
     position: fixed;
