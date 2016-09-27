@@ -5,6 +5,7 @@ export const eventHandlers = ({ dispatch }) => ({
 
   focusGroup({ target }) {
     dispatch(view.FilterGroup({ focus: target.value }))
+    dispatch(view.SearchInput({ value: '' }))
   },
 
 })

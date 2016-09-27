@@ -1,6 +1,6 @@
 import { view, route } from '../../store'
 
-const SearchInput = ({ dispatch, store }) => ({
+const SearchInput = ({ dispatch, store }, focus) => ({
     
   storeFocus({ target }) {
     const focus = (target === document.activeElement)
@@ -23,7 +23,7 @@ const SearchInput = ({ dispatch, store }) => ({
 
     if (onEnter){ 
       event.preventDefault()
-      dispatch(route.search(value))
+      if (!focus) dispatch(route.search(value))
       dispatch(view.SearchInput({ value }))
     }
 
