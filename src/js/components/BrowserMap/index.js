@@ -6,6 +6,7 @@ class BrowserMap extends Component {
   componentDidMount() {
     if (!mapboxgl.supported()) {
       alert('Your browser does not support Mapbox GL');
+      // TODO - Dispatch view nowebgl
     } else {
       mapboxgl.accessToken = 'pk.eyJ1IjoibWFydGlud2FhZyIsImEiOiJjaWo0NWt6ZWYwMDE0dXlrcm0yenVkNDR5In0.0I9xJzLubP9g3V_NTt1PhA';
 
