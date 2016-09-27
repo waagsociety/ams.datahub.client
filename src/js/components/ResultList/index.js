@@ -4,8 +4,9 @@ import { resultsPerPage, initialResults } from '../../config'
 
 export default function ResultList({ props }) {
 
-  const { content } = props.store.search
-  const { results } = props.store.route.query
+  const { search, route } = props.store
+  const { content } = search
+  const { results } = route.query
   const { docs = [], numFound = 0, loading } = content
   const { viewData, showAll, skipPage, closeResults } = eventHandlers(props)
   

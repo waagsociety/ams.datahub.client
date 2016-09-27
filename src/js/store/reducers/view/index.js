@@ -14,6 +14,11 @@ export default function(state = initialState, { type, payload }) {
       return { ...state, FilterGroup }
     }
 
+    case 'view-noWebGL': {
+      const noWebGL = true
+      return { ...state, noWebGL }
+    }
+
     default: return { ...state }
 
   }
