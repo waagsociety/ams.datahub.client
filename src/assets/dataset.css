@@ -104,7 +104,6 @@ p {
   width: auto;
   padding: 1.1em;
   display: flex;
-  top: 90px;
   transform-origin: top right;
   border-left: 1px solid #eee;
   border-bottom: 1px solid #eee;
