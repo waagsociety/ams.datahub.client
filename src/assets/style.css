@@ -272,11 +272,16 @@ input {
     right: 0.5em;
 }
 
-.tag.active svg {
-    transform: rotate(45deg);
-}
 
-.search .tag.active svg { transform: none }
+
+.tag.active svg { transform: rotate(45deg) }
+
+.tag svg.secondary { 
+    transform: none;
+    right: 0.5em;
+    position: absolute;
+    left: auto;
+}
 
 .tag.focus {
     padding-right: 2em;
