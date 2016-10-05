@@ -6,7 +6,7 @@ export const eventHandlers = ({ dispatch, store }) => ({
     const { checked } = target
     const { value } = store.view.SearchInput
     const update = checked && value ? '' : value
-    dispatch(route.search(update))
+    dispatch(route.remove('search'))
   },
 
 })

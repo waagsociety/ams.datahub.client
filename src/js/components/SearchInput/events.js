@@ -23,8 +23,8 @@ const SearchInput = ({ dispatch, store }, focus) => ({
 
     if (onEnter){ 
       event.preventDefault()
-      if (!focus) dispatch(route.search(value))
-      dispatch(view.SearchInput({ value }))
+      if (!focus) dispatch(route.replace({ search: [value] }))
+      dispatch(view.SearchInput({ value: '' }))
     }
 
   },

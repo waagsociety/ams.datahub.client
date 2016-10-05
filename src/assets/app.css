@@ -1,4 +1,4 @@
-* { 
+/** { 
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -79,3 +79,4 @@ label input[type=checkbox] { display: none }
 .fixed.primary.panel { left: 1em }
 
 body { margin: 0 }
+*/

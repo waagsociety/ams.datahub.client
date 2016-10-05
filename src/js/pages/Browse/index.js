@@ -41,8 +41,10 @@ export default class Browse extends React.Component {
   render() {
 
     const { props } = this;
-    const { search, dataset, route } = props.store;
+    const { search, dataset, route, view } = props.store;
     const { query } = route;
+
+    const hasResults = route.query.results !== undefined
 
     let page = '';
     if (!!query.article) page = 'article';
@@ -51,7 +53,7 @@ export default class Browse extends React.Component {
     switch (page) {
       case 'search':
         return (
-          <div id='search' className='page container'>
+          <div id='search' className={`page container ${hasResults ? 'cover' : 'aside' }`}>
             <BrowserMap props={props} />
             <SearchPanel props={props} />
             <ResultPanel props={props} />

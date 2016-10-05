@@ -81,11 +81,13 @@ li { list-style: none }
 
 .container { position: relative }
 
+.primary.panel { z-index: 6 }
 .secondary.panel {
     position: absolute;
     right: 0;
     bottom: 0;
     top: 0;
+    z-index: 5;
 }
 
 .panel .content {
@@ -121,8 +123,14 @@ li { list-style: none }
     display: flex;
 }
 
-.panel {
-    padding: 1em;
+.panel { padding: 1em }
+
+.panel.expanded { padding: 0 }
+
+.panel.expanded .content {
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
 
 /* containers */
@@ -271,8 +279,6 @@ input {
     left: auto;
     right: 0.5em;
 }
-
-
 
 .tag.active svg { transform: rotate(45deg) }
 

@@ -104,7 +104,7 @@ input::-webkit-inner-spin-button {
 
 .secondary.panel.expanded {
   width: auto;
-  left: 31em;
+  left: 32em;
 }
 
 footer.full {
@@ -122,19 +122,7 @@ footer.full header {
 }
 
 
-
-/*.expanded .close {
-  color: black;
-  position: absolute;
-  right: 1em;
-  top: 1em;
-  padding: 0.75em 1em 1em;
-  margin: 1.2em 1em;
-  z-index: 1000;
-  border: 1px solid #eee;
-  cursor: pointer;
-}*/
-
+.group .close,
 .expanded .close {
   /*background: linear-gradient(135deg, hsl(265, 70%, 66%), hsl(208, 70%, 66%));*/
   position: fixed;
@@ -148,6 +136,16 @@ footer.full header {
   border-left: 1px solid #eee;
   border-bottom: 1px solid #eee;
   transition: transform .15s ease-out;
+  cursor: pointer;
+}
+
+.group .close {
+  position: absolute;
+  color: white;
+}
+
+.group .close + h1 {
+  height: 3.5em;
 }
 
 button.previous,
@@ -169,14 +167,36 @@ button.next[disabled] {
 button.previous { left: 0 }
 button.next { right: 0 }
 
-.secondary.panel.expanded:before {
-  content: '';
-  background: red;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: -1;
+.secondary.panel.expanded {
+  background-color: white;
 }
 
+.secondary.panel.expanded header.menu {
+  top: 1em;
+}
+
+
+#search.cover #map {
+  display: none;
+}
+
+#search.cover .primary.panel {
+  background-color: white;
+}
+
+#search.cover .primary.panel,
+#search.cover .primary.panel .content {
+  padding: 0;
+}
+
+#search.cover .primary.panel div.menu {
+  margin-top: 1em;
+  /*box-shadow: inset 0 -1px 0 0 #aaa;*/
+}
+
+#search.cover .primary.panel .content {
+  background: hsl(240, 20%, 15%);
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

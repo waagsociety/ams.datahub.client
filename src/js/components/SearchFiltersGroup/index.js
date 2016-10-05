@@ -23,7 +23,9 @@ export default function SearchFilterGroup({ props, content }) {
   const moreTags = sortedTagData.length < tagData.length
 
   return <section className='group'>
-    { focus ? <button className='close' type='button' value='' onClick={focusGroup}>Close</button> : [] }
+    { focus ? <button className='close' type='button' value='' onClick={focusGroup}>
+      <i class="fa fa-times" aria-hidden="true"></i> close
+    </button> : [] }
     <h1>{name}</h1>
     <ul>{ 
       filteredTagData.filter(hasContents).map((value, i) => <li key={i}>

@@ -18,23 +18,26 @@ export default function ResultList({ props }) {
   const expand = page && !props.store.dataset.active
 
   const title = loading && 'Loading' || numFound + ' Results found'
+  const viewMore = numFound > initialResults
+  const moreCount = viewMore ? numFound - initialResults : numFound
+  const moreText = viewMore ? `View ${moreCount} more results` : 'Expand result list'
   const loadClass = loading && 'loading'
   const expandClass = expand && 'expanded'
   const className = [ expandClass, loadClass, 'container floating secondary panel' ].join(' ')
 
   const data = docs.slice(start, limit)
-  
+
   const pageInput = <label className='pagenumber'>
     <input type="number" defaultValue={page} name="page" max={pageCount} onKeyUp={skipPage}/>
   </label>
 
-  const pageination = <footer className='pages full primary'>
-    <header className='pagenumber'>{page} / {pageCount}</header>
-    <button className='previous' type='button' value={page - 1} disabled={page <= 1} onClick={skipPage}>Previous</button>
-    <button className='next' type='button' value={page + 1} disabled={page >= pageCount} onClick={skipPage}>Next</button>
-  </footer>
-
-  const log = event => console.log(event)
+  const pageination = pageCount > 1 
+    ? <footer className='pages full primary'>
+        <header className='pagenumber'>{page} / {pageCount}</header>
+        <button className='previous' type='button' value={page - 1} disabled={page <= 1} onClick={skipPage}>Previous</button>
+        <button className='next' type='button' value={page + 1} disabled={page >= pageCount} onClick={skipPage}>Next</button>
+      </footer>
+    : []
   
   return <div className={className}>
     
@@ -55,13 +58,13 @@ export default function ResultList({ props }) {
         return <li key={id}>
           <h1>{title}</h1>
           <p>{author}</p>
-          <a href={`#article=${id}`} onClick={viewData} className='primary button'>View dataset</a>
+          <a href={`#article=${id}`} onClick={viewData(id)} className='primary button'>View dataset</a>
         </li>
       }) }</ul>
       
       { expand 
         ? pageination
-        : <button className='full primary button' onClick={showAll}>View all results</button>
+        : <button className='full primary button' onClick={showAll}>{moreText}</button>
       }
 
     </section>
