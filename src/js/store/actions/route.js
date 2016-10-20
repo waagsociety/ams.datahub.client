@@ -65,7 +65,7 @@ export const route = {
     const initialQuery = hashToQuery(location.hash)
 
     const query = { ...initialQuery, ...parameter }
-    console.log(query)
+    // console.log(query)
     const hash = queryToHash(query)
     updateLocation(hash)
     return {
