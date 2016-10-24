@@ -5,7 +5,7 @@ export const eventHandlers = ({ dispatch }) => ({
   viewData(id) {
     return event => {
       event.preventDefault()
-      dispatch(route.replace({ article: [id] }))
+      dispatch(route.replace({ item: [id] }))
     }
   },
 

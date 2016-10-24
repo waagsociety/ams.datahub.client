@@ -17,7 +17,7 @@ export default function(state = initialState, { type, payload }) {
       return { ...state, ...payload }
     }
 
-    case 'route-article': {
+    case 'route-item': {
       const query = payload
       return { state, query }
     }

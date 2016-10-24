@@ -1,6 +1,6 @@
 export const eventHandlers = ({ dispatch }) => ({
 
-  loadArticle: event => {
+  loadItem: event => {
 
     event.preventDefault()
     const hash = event.target.getAttribute('href')

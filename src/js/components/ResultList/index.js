@@ -58,7 +58,7 @@ export default function ResultList({ props }) {
         return <li key={id}>
           <h1>{title}</h1>
           <p>{author}</p>
-          <a href={`#article=${id}`} onClick={viewData(id)} className='primary button'>View dataset</a>
+          <a href={`#item=${id}`} onClick={viewData(id)} className='primary button'>View dataset</a>
         </li>
       }) }</ul>
       

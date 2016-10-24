@@ -2,10 +2,10 @@ import { route } from '../../store'
 
 export const eventHandlers = ({ dispatch }) => ({
 
-  closeDataset: event => {
+  closeItem: event => {
 
     event.preventDefault()
-    dispatch(route.remove('article'))
+    dispatch(route.remove('item'))
 
   },
 
