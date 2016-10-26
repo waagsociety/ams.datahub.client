@@ -6,7 +6,7 @@ export default function ResultPreview({ content }) {
   return <li>
     <h1>{item['dc.title']}</h1>
     <p>{item['dc.description.abstract'] || "No description available"}</p>
-    <a href={`#item=x`} className='primary button'>View dataset</a>
+    <a href={`#item=x`} className='primary button'>View >{item['dcterms.type']}</a>
   </li>
 
 

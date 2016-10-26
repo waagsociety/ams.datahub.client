@@ -3,11 +3,12 @@ import { fieldIndex } from '../../config'
 
 export default function(metadata) {
 
-  let { title, abstract, reference, dspace } = metadata
-  console.log(metadata)
+  let { title, description, reference, dspace } = metadata
+
+  console.log(description)
 
   title = title.join('')
-  abstract = abstract.map((text, i) => <p key={i}>{text}</p>)
+  // abstract = abstract.map((text, i) => <p key={i}>{text}</p>)
   reference = reference.map((link, i) => {
     return <a className='primary button' key={i} href={link} target='_blank'>
       <i className="fa fa-external-link" aria-hidden="true"></i> View Source
@@ -47,7 +48,6 @@ export default function(metadata) {
 
     <header className='datasetheader'>
       <h1>{title}</h1>
-      {abstract}
     </header>
 
     <section className='datasetbody'>

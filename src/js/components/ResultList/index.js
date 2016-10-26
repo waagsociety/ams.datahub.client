@@ -6,7 +6,7 @@ export default function ResultList({ props }) {
 
   const { search, route } = props.store
   const { content } = search
-  const { results } = route.query
+  const { results, item } = route.query
   const { docs = [], numFound = 0, loading } = content
   const { viewData, showAll, skipPage, closeResults } = eventHandlers(props)
   
@@ -26,6 +26,7 @@ export default function ResultList({ props }) {
   const className = [ expandClass, loadClass, 'container floating secondary panel' ].join(' ')
 
   const data = docs.slice(start, limit)
+  const itemID = item && parseInt(item[0])
 
   const pageInput = <label className='pagenumber'>
     <input type="number" defaultValue={page} name="page" max={pageCount} onKeyUp={skipPage}/>
@@ -54,10 +55,12 @@ export default function ResultList({ props }) {
         const title = item['title'] || "Untitled"
         // const author = item['author'] || "Author unknown"
         const id = item['search.resourceid']
+        const type = item['dcterms.type'] || "item"
+        const isActive = id === itemID
 
-        return <li key={id}>
+        return <li className={isActive ? 'active' : ''} key={id}>
           <h1>{title}</h1>
-          <a href={`#item=${id}`} onClick={viewData(id)} className='primary button'>View dataset</a>
+          <a href={`#item=${id}`} onClick={viewData(id)} className='primary button'>View {type}</a>
         </li>
       }) }</ul>
       

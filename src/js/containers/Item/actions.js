@@ -10,25 +10,37 @@ export function getItemType(content) {
 
 }
 
-export function getMetadata(content) {
-
-  const { metadata = [] } = content
-  // console.log(metadata)
+export function mapMetadata(metadata) {
 
   const scheme = {
+
     'dc.title': 'title',
-    'dcterms.abstract': 'abstract',
-    'dcterms.type': 'type',
-    'dc.subject': 'subject',
+    
+    'dc.description': 'description',
+    'dc.description.abstract': 'description',
+    'dcterms.abstract': 'description',
+
+    'dc.creator': 'creator',    
+    'dc.publisher': 'creator',
+    'dc.source': 'source',
+
     'dc.contributor.author': 'author',
-    'dc.publisher': 'publisher',
-    'dcat.landingPage': 'reference',
+    'dc.identifier.uri': 'dspace',
+    'dc.value.sponsorship': 'sponsor',    
+    'dcat.keyword': 'keyword',
+
+    'dcterms.type': 'type',
+    'dcterms.license': 'license',
+    
+    'dcterms.created': 'created',
+    'dcterms.modified': 'modified',
+    'dc.date.available': 'available',
+    'dcterms.temporal': 'temporal',
+    
     'ams.relatedDataset': 'relatedDataset',
     'ams.relatedProject': 'relatedProject',
     'ams.relatedPaper': 'relatedPaper',
-    'dc.date.available': 'available',
-    'dc.identifier.uri': 'dspace',
-    'dc.value.sponsorship': 'sponsor',
+
   }
 
   const keys = Object.keys(scheme)
