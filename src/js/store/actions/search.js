@@ -24,7 +24,7 @@ export const search = {
     
     const method = 'get'
     const searchValue = (query['search'] || []).join('')
-    const searchQuery = `(title:(*${searchValue}*) OR dc.description.abstract:(*${searchValue}*))`
+    const searchQuery = `(title:(*${searchValue}*) OR dc.description.abstract:(*${searchValue}*) OR dc.subject:(*${searchValue}*))`
 
     // Load searchQuery
     const searchParameters = Object.keys(query).reduce((result, key) => {
@@ -37,9 +37,8 @@ export const search = {
     }, [ searchQuery ]).join(' AND ')
 
     const searchURL = basepath + searchParameters
-    axios({ method, url: searchURL + '&rows=10000&fl=author,title,search.resourceid,dcterms.type' })
+    axios({ method, url: searchURL + '&rows=10000&fl=title,search.resourceid,dcterms.type' })
       .then(request => {
-        // console.log(request)
         dispatch(search.load(request))
       })
       .catch(error => {

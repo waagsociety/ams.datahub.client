@@ -10,7 +10,6 @@ export const dataset = {
       url: `${domain}rest/items/${id}?expand=all`,
       method: 'get',
     }).then(request => {
-      // console.log('request', request)
       dispatch(dataset.loaded(request.data))
     }).catch(error => {
       dataset.error(error)

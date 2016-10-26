@@ -27,7 +27,9 @@ export default class Browse extends React.Component {
     if (query.item) { // Open a dataset
       const id = query.item.join('');
       if (!dataset.active) dispatch(action.dataset.activity(true));
-      if (dataset.id !== id) dispatch(action.dataset.fetch(dispatch)(id));
+      if (dataset.id !== id) {
+        dispatch(action.dataset.fetch(dispatch)(id));
+      }
     } else {
       if (dataset.active) dispatch(action.dataset.activity(false));
     }
@@ -50,11 +52,13 @@ export default class Browse extends React.Component {
     if (!!query.item) page = 'item';
     else if (!!search.hash) page = 'search';
 
+    // <BrowserMap props={props} />
+
     switch (page) {
       case 'search':
         return (
           <div id='search' className={`page container ${hasResults ? 'cover' : 'aside' }`}>
-            <BrowserMap props={props} />
+            
             <SearchPanel props={props} />
             <ResultPanel props={props} />
           </div>
@@ -63,7 +67,7 @@ export default class Browse extends React.Component {
       case 'item':
         return (
           <div id='article' className='page container'>
-            <BrowserMap props={props} />
+
             <Item props={props} />
             <ResultPanel props={props} />
           </div>
@@ -72,7 +76,7 @@ export default class Browse extends React.Component {
       default:
         return (
           <div id='browse' className='page container'>
-          <BrowserMap props={props} />
+
           <SearchPanel props={props} />
           </div>
         );

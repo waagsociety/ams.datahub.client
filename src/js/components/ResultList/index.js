@@ -52,12 +52,11 @@ export default function ResultList({ props }) {
 
       <ul>{ data.map((item, i) => {
         const title = item['title'] || "Untitled"
-        const author = item['author'] || "Author unknown"
+        // const author = item['author'] || "Author unknown"
         const id = item['search.resourceid']
 
         return <li key={id}>
           <h1>{title}</h1>
-          <p>{author}</p>
           <a href={`#item=${id}`} onClick={viewData(id)} className='primary button'>View dataset</a>
         </li>
       }) }</ul>
