@@ -20,20 +20,25 @@ export function mapMetadata(metadata) {
     'dc.description.abstract': 'description',
     'dcterms.abstract': 'description',
 
-    'dc.creator': 'creator',    
-    'dc.publisher': 'creator',
+    'dc.publisher': 'publisher',
     'dc.source': 'source',
-
+    
+    'dc.creator': 'author', 
     'dc.contributor.author': 'author',
+
     'dc.identifier.uri': 'dspace',
+    'dcat.landingPage': 'reference',
     'dc.value.sponsorship': 'sponsor',    
+    
     'dcat.keyword': 'keyword',
+    'dc.subject': 'subject',
 
     'dcterms.type': 'type',
     'dcterms.license': 'license',
     
     'dcterms.created': 'created',
     'dcterms.modified': 'modified',
+    'dcterms.issued': 'issued',
     'dc.date.available': 'available',
     'dcterms.temporal': 'temporal',
     

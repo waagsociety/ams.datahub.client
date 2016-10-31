@@ -5,6 +5,7 @@ import { fieldIndex, domain } from '../../config'
 import { 
   ItemHeader,
   ItemInformation,
+  ItemFilters,
 } from '../../components'
 
 export default function Item({ props }) {
@@ -25,13 +26,13 @@ export default function Item({ props }) {
     title,
     abstract,
     description,
-    creator,
     publisher,
     source,
 
     author,
     dspace,
-    sponsor,
+    reference,
+    // sponsor,
     keyword,
 
     type,
@@ -54,41 +55,32 @@ export default function Item({ props }) {
       : result
   }, {})
 
-  if (item.content.metadata) console.log(actualData)
+  if (item.content.metadata) console.log(actualData, data)
 
   return <article id='dataset' className='body content'>
     
     <button className='close button' type='button' onClick={closeItem}>
       <i class="fa fa-times" aria-hidden="true"></i> close
-    </button>    
+    </button>   
 
-    {ItemHeader({ title, creator, description })}
+    {ItemHeader({ 
+      title, 
+      publisher, 
+      description, 
+      author, 
+      dspace, 
+      reference 
+    })}
 
-    <section className='datasetbody'>
-      
-    </section>
-
-    {ItemInformation({ created, modified, available }, { temporal, license })}
-
-    <footer className='datasetfooter'>
-
-      <ul className='metadata fields'></ul>
-
-    </footer>
+    {ItemInformation({ 
+      created, 
+      modified, 
+      available 
+    }, { 
+      temporal, 
+      license 
+    })}
 
   </article>
 
 }
-
-//  <section className="datasetinformation">
-//     <ul className='metadata related'>
-//       <li>
-//         <header>Issued</header>
-//         <time dateTime={issued.date}><i className="fa fa-clock-o" aria-hidden="true"></i> {issued.day}.{issued.month}.{issued.year}</time>
-//       </li>
-//       <li>
-//         <header>Published</header>
-//         <time dateTime={published.date}><i className="fa fa-clock-o" aria-hidden="true"></i> {published.day}.{published.month}.{published.year}</time>
-//       </li>
-//     </ul>
-//   </section>
