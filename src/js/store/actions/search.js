@@ -37,7 +37,7 @@ export const search = {
     }, [ searchQuery ]).join(' AND ')
 
     const searchURL = basepath + searchParameters
-    axios({ method, url: searchURL + '&rows=10000&fl=title,search.resourceid,dcterms.type' })
+    axios({ method, url: searchURL + '&rows=10000&fl=title,handle,search.resourceid,dcterms.type' })
       .then(request => {
         dispatch(search.load(request))
       })

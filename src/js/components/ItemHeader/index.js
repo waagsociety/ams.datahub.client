@@ -2,9 +2,12 @@ import React from 'react'
 
 function Authors(content) {
 
-  if (content.length) return <ul className="authors">
+  if (content.length) return <section>
+    <header>{content.length > 1 ? 'Authors' : 'Author'}</header>
+    <ul className="authors">
     { content.map((value, i) => <li key={i}>{value}</li>) }
-  </ul>
+    </ul>
+  </section>
   else return []
 
 }
@@ -18,7 +21,7 @@ export default function ItemHeader({ title, publisher, author, description, dspa
 
   return <header className='datasetheader'>
     <h1>{title}</h1>
-    <h2>{publisher.filter(item => !!item).join(', ')}</h2>
+    <h2 className="publisher">{publisher.filter(item => !!item).join(', ')}</h2>
     
     {Authors(author)}
 

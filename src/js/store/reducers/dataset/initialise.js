@@ -1,8 +1,9 @@
 export const initialState = {
   
   id: null,
+  handle: null,
   content: {},
-  cache: {},
+  related: {},
 
   active: false,
   loading: false,

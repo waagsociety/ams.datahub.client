@@ -11,6 +11,7 @@ export const dataset = {
       method: 'get',
     }).then(request => {
       dispatch(dataset.loaded(request.data))
+      dispatch(dataset.fetchRelated(dispatch)(request.data.handle))
     }).catch(error => {
       dataset.error(error)
     })
@@ -41,6 +42,27 @@ export const dataset = {
       type: 'dataset-error',
       payload: { error },
     }
+  },
+
+  fetchRelated: dispatch => handle => {
+
+    console.log('FETCH RELATED:', handle);
+
+    // axios({
+    //   url: `${domain}rest/items/${id}?expand=all`,
+    //   method: 'get',
+    // }).then(request => {
+    //   console.log(request);
+    //   dispatch(dataset.loaded(request.data))
+    // }).catch(error => {
+    //   dataset.error(error)
+    // })
+
+    return {
+      type: 'related-loading',
+      payload: { related: { loading: true } },
+    }
+
   },
 
 }

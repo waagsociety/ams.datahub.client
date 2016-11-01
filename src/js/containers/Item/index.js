@@ -19,8 +19,6 @@ export default function Item({ props }) {
     { key: 'dc.description', value: "Hello" },
   ])
 
-  // console.log(item.content.metadata)
-
   const {
     
     title,
@@ -55,7 +53,7 @@ export default function Item({ props }) {
       : result
   }, {})
 
-  if (item.content.metadata) console.log(actualData, data)
+  // if (item.content.metadata) console.log(actualData)
 
   return <article id='dataset' className='body content'>
     

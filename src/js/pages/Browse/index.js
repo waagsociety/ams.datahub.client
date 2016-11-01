@@ -28,7 +28,7 @@ export default class Browse extends React.Component {
       const id = query.item.join('');
       if (!dataset.active) dispatch(action.dataset.activity(true));
       if (dataset.id !== id) {
-        dispatch(action.dataset.fetch(dispatch)(id));
+        dispatch(action.dataset.fetch(dispatch)(id))
       }
     } else {
       if (dataset.active) dispatch(action.dataset.activity(false));

@@ -53,7 +53,6 @@ export default function ResultList({ props }) {
 
       <ul>{ data.map((item, i) => {
         const title = item['title'] || "Untitled"
-        // const author = item['author'] || "Author unknown"
         const id = item['search.resourceid']
         const type = item['dcterms.type'] || "item"
         const isActive = id === itemID
