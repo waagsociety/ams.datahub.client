@@ -12,7 +12,7 @@ export default function RelatedPanel({ props }) {
       <h1>Related</h1>
       
     </header>
-    <section className='results content'>
+    <section className='content'>
 
       {ItemRelated(related)}
 
