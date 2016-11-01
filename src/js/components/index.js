@@ -11,5 +11,6 @@ export ResultList from './ResultList'
 
 export ItemArticle from './ItemArticle'
 export ItemHeader from './ItemHeader'
+export ItemRelated from './ItemRelated'
 export ItemInformation from './ItemInformation'
 export ItemFilters from './ItemFilters'

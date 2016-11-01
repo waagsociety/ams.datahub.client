@@ -1,7 +1,5 @@
 import axios from 'axios'
-import { fieldIndex, domain } from '../../config'
-
-const basepath = domain + 'solr/search/select?wt=json&q='
+import { fieldIndex, domain, solr } from '../../config'
 
 const fieldMap = fieldIndex.reduce((result, { key, value, field }) => ({
   ...result, 
@@ -36,7 +34,7 @@ export const search = {
       return result
     }, [ searchQuery ]).join(' AND ')
 
-    const searchURL = basepath + searchParameters
+    const searchURL = solr + searchParameters
     axios({ method, url: searchURL + '&rows=10000&fl=title,handle,search.resourceid,dcterms.type' })
       .then(request => {
         dispatch(search.load(request))
@@ -46,7 +44,7 @@ export const search = {
       })
 
     // Load metdata filters
-    const filterURL = basepath + searchQuery + searchParameters + fieldParameter + '&rows=10000'
+    const filterURL = solr + searchQuery + searchParameters + fieldParameter + '&rows=10000'
     axios({ method, url: filterURL })
       .then(request => {
         dispatch(search.loadMeta(request))

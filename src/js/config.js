@@ -1,6 +1,8 @@
 
 export const domain = 'http://amsdatahub.waag.org/dspace/'
 
+export const solr = domain + 'solr/search/select?wt=json&q='
+
 export const fieldIndex = [
   {
     name: 'Type',

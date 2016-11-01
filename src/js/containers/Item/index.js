@@ -4,6 +4,7 @@ import { getItemType, mapMetadata } from './actions'
 import { fieldIndex, domain } from '../../config'
 import { 
   ItemHeader,
+  ItemRelated,
   ItemInformation,
   ItemFilters,
 } from '../../components'
@@ -53,7 +54,9 @@ export default function Item({ props }) {
       : result
   }, {})
 
-  // if (item.content.metadata) console.log(actualData)
+  if (item.content.metadata) {
+    // console.log('lala', item)
+  }
 
   return <article id='dataset' className='body content'>
     
@@ -78,6 +81,8 @@ export default function Item({ props }) {
       temporal, 
       license 
     })}
+
+    {ItemRelated(item.related)}
 
   </article>
 

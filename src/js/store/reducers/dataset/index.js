@@ -12,6 +12,14 @@ export default function(state = initialState, { type, payload }) {
       return { ...state, ...payload }
     }
 
+    case 'related-loading': {
+      return { ...state, ...payload }
+    }
+
+    case 'related-loaded': {
+      return { ...state, ...payload }
+    }
+
     default: return { ...state }
 
   }

@@ -119,7 +119,7 @@ function hashToQuery(hash) {
 
   function getProperties(key, value = '') {
     // created an Object with a sanitised key, and ‘|’-separated values
-    return { [key.replace(/\W+/g, '')]: value.split('|') }
+    return { [key.replace(/\W+/g, '')]: value.split('||') }
   }
 
 }
@@ -134,7 +134,7 @@ function queryToHash(query) {
     }, [])
 
     if (values.length){
-      const value = query[key].join('|')
+      const value = query[key].join('||')
       const parameter = [ key, value ].join('=')
       return [ ...hash, parameter ]
     }
