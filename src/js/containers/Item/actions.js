@@ -31,6 +31,7 @@ export function mapMetadata(metadata) {
     'dc.value.sponsorship': 'sponsor',    
     
     'dcat.keyword': 'keyword',
+    'dcat.theme': 'theme',
     'dc.subject': 'subject',
 
     'dcterms.type': 'type',

@@ -2,7 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import * as action from '../../store'
-import { GlobalNavigation, SearchPanel, ResultPanel, ResultBrowser, Item } from '../../containers'
+import { 
+  GlobalNavigation, 
+  SearchPanel, 
+  ResultPanel, 
+  ResultBrowser, 
+  RelatedPanel, 
+  Item 
+} from '../../containers'
 import BrowserMap from '../../components/BrowserMap'
 
 @connect ((store) => ({ store }))
@@ -69,7 +76,7 @@ export default class Browse extends React.Component {
           <div id='article' className='page container'>
 
             <Item props={props} />
-            <ResultPanel props={props} />
+            <RelatedPanel props={props} />
           </div>
         );
 
@@ -77,7 +84,7 @@ export default class Browse extends React.Component {
         return (
           <div id='browse' className='page container'>
 
-          <SearchPanel props={props} />
+            <SearchPanel props={props} />
           </div>
         );
     }

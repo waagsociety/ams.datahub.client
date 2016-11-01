@@ -3,12 +3,11 @@ import React from 'react'
 export default function ItemInformation(dates, strings) {
 
   const { created, modified, available } = dates
-  const { temporal, license } = strings
+  const { temporal, license, keyword, theme } = strings
 
   dates = [
     { name: "Created", value: created[0] },
     { name: "Modified", value: modified[0] },
-    // { name: "Available", value: available[0] },
   ].filter(item => !!item.value ).map(item => {
     var date = new Date(item.value)
     item.value = toHumanDate(date)
@@ -16,9 +15,11 @@ export default function ItemInformation(dates, strings) {
   })
 
   strings = [
-    { name: "Temporal", value: temporal[0] },
-    { name: "License", value: license[0] },
-  ].filter(item => !!item.value)
+    { name: "Temporal", value: temporal.join(', ') },
+    { name: "License", value: license.join(', ') },
+    { name: "Theme", value: theme.join(', ') },
+    { name: "Keywords", value: keyword.join(', ') },
+  ].filter(item => !!item.value.length)
 
   return <section className='datasetinformation'>
     <ul className='metadata related'>{

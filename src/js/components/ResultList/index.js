@@ -49,7 +49,7 @@ export default function ResultList({ props }) {
     <header className='menu'>
       <h1>{title}</h1>
     </header>
-    <section className='results content' scrollY='0'>
+    <section className='results content'>
 
       <ul>{ data.map((item, i) => {
         const title = item['title'] || "Untitled"

@@ -31,7 +31,7 @@ export default function Item({ props }) {
     author,
     dspace,
     reference,
-    // sponsor,
+    theme,
     keyword,
 
     type,
@@ -76,13 +76,13 @@ export default function Item({ props }) {
     {ItemInformation({ 
       created, 
       modified, 
-      available 
+      available, 
     }, { 
       temporal, 
-      license 
+      license,
+      keyword,
+      theme,
     })}
-
-    {ItemRelated(item.related)}
 
   </article>
 
