@@ -22,16 +22,6 @@ a {
   margin: 0 1.5em;
 }
 
-header.datasetheader .button { margin-right: 1em }
-
-#dataset section {
-  padding-top: 2.5em;
-}
-
-ul.authors {
-  display: inline-block;
-}
-
 #article .results ul {
   max-height: 100%;
 }

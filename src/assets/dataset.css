@@ -124,6 +124,20 @@ p {
   padding: 0;
 }
 
+header.datasetheader .button { margin-right: 1em }
+
+#dataset header.datasetheader h2 {
+  font-size: 1.25em;
+  font-weight: normal;
+}
+
+#dataset section {
+  padding-top: 2.5em;
+}
+
+ul.authors li {
+  /*display: inline-block;*/
+}
 
 
 
