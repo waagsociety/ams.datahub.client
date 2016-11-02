@@ -8,6 +8,7 @@ export default function() {
     id: 'map',
     accessToken,
     style: 'mapbox://styles/martinwaag/ciqrtw6n4000lcbni674v4vl0',
+    // style: 'mapbox://styles/mapbox/light-v8',
     popup: null,
     center: [4.820902482840296, 52.3749057570665],
     zoom: [9],

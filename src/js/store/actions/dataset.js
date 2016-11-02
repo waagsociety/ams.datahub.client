@@ -49,10 +49,14 @@ export const dataset = {
     const { handle, metadata } = data
     const fields = [ 'ams.relatedDataset', 'ams.relatedProject', 'ams.relatedPaper' ]
 
-    let query = `(ams.relatedDataset:(${handle}) OR ams.relatedProject:(${handle}) OR ams.relatedPaper:(${handle}))`
+
+
+    let query = `(ams.relatedDataset:("${handle}") OR ams.relatedProject:("${handle}") OR ams.relatedPaper:("${handle}"))`
     
+    console.info(handle, query)
+
     const inlineHandles = metadata.reduce((result, { key, value }) => {
-      if (fields.indexOf(key) >= 0) result.push(value)
+      if (fields.indexOf(key) >= 0) result.push(`"${value}"`)
       return result
     }, [])
 
