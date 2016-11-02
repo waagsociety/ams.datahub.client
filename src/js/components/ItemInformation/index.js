@@ -11,7 +11,7 @@ export default function ItemInformation(dates, strings) {
   ].filter(item => !!item.value ).map(item => {
     const value = item.value.toUpperCase()
     var date = new Date(value)
-    console.log(date, value)
+    // console.log(date, value)
     item.value = toHumanDate(date)
     return item
   })
