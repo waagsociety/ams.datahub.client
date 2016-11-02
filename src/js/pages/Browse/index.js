@@ -8,7 +8,8 @@ import {
   ResultPanel, 
   ResultBrowser, 
   RelatedPanel, 
-  Item 
+  Item,
+  Map
 } from '../../containers'
 import BrowserMap from '../../components/BrowserMap'
 
@@ -65,7 +66,7 @@ export default class Browse extends React.Component {
       case 'search':
         return (
           <div id='search' className={`page container ${hasResults ? 'cover' : 'aside' }`}>
-            
+            <Map/>
             <SearchPanel props={props} />
             <ResultPanel props={props} />
           </div>
@@ -74,7 +75,7 @@ export default class Browse extends React.Component {
       case 'item':
         return (
           <div id='article' className='page container'>
-
+            <Map/>
             <Item props={props} />
             <RelatedPanel props={props} />
           </div>
@@ -83,7 +84,7 @@ export default class Browse extends React.Component {
       default:
         return (
           <div id='browse' className='page container'>
-
+            <Map/>
             <SearchPanel props={props} />
           </div>
         );
