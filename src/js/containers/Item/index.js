@@ -55,7 +55,7 @@ export default function Item({ props }) {
   }, {})
 
   if (item.content.metadata) {
-    // console.log('lala', item)
+    // console.log('item', actualData)
   }
 
   return <article id='dataset' className='body content'>

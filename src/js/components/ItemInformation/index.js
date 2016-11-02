@@ -9,7 +9,9 @@ export default function ItemInformation(dates, strings) {
     { name: "Created", value: created[0] },
     { name: "Modified", value: modified[0] },
   ].filter(item => !!item.value ).map(item => {
-    var date = new Date(item.value)
+    const value = item.value.toUpperCase()
+    var date = new Date(value)
+    console.log(date, value)
     item.value = toHumanDate(date)
     return item
   })
