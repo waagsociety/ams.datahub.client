@@ -13,7 +13,7 @@ function Authors(content) {
 }
 
 function Ref(url) {
-  if (url.length) return <a href={url} className="external button" target="_blank">View Website</a>
+  if (url.length) return <a href={url} className="external button" target="_blank">View Source</a>
   else return []
 }
 
