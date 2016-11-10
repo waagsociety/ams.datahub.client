@@ -17,7 +17,7 @@ export default function Item({ props }) {
 
   const data = mapMetadata(item.content.metadata || [
     { key: 'dc.title', value: "Loading..." },
-    { key: 'dc.description', value: "Hello" },
+    { key: 'dc.description', value: "" },
   ])
 
   const {
@@ -54,9 +54,7 @@ export default function Item({ props }) {
       : result
   }, {})
 
-  if (item.content.metadata) {
-    // console.log('item', actualData)
-  }
+  // if (item.content.metadata) console.log('item', actualData)
 
   return <article id='dataset' className='body content'>
     

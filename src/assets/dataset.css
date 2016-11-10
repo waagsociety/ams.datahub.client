@@ -4,6 +4,10 @@ article section {
   /*min-height: 100%;*/
 }
 
+#article #map {
+  opacity: 0;
+}
+
 #dataset {
   background: white;
   position: absolute;
