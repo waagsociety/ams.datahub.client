@@ -11,6 +11,12 @@ export const fieldIndex = [
     tags: [],
   },
   {
+    name: 'Location',
+    field: 'dcterms.spatial',
+    key: 'location',
+    tags: [],
+  },
+  {
     name: 'Subject',
     field: 'dc.subject',
     key: 'subject',

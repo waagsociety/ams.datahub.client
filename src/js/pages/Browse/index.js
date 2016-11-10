@@ -9,9 +9,11 @@ import {
   ResultBrowser, 
   RelatedPanel, 
   Item,
-  Map
+  MapBox
 } from '../../containers'
 import BrowserMap from '../../components/BrowserMap'
+
+const Map = MapBox
 
 @connect ((store) => ({ store }))
 export default class Browse extends React.Component {
@@ -66,26 +68,26 @@ export default class Browse extends React.Component {
       case 'search':
         return (
           <div id='search' className={`page container ${hasResults ? 'cover' : 'aside' }`}>
-            <Map/>
-            <SearchPanel props={props} />
-            <ResultPanel props={props} />
+            <Map props={props}/>
+            <SearchPanel props={props}/>
+            <ResultPanel props={props}/>
           </div>
         );
 
       case 'item':
         return (
           <div id='article' className='page container'>
-            <Map/>
-            <Item props={props} />
-            <RelatedPanel props={props} />
+            <Map props={props}/>
+            <Item props={props}/>
+            <RelatedPanel props={props}/>
           </div>
         );
 
       default:
         return (
           <div id='browse' className='page container'>
-            <Map/>
-            <SearchPanel props={props} />
+            <Map props={props}/>
+            <SearchPanel props={props}/>
           </div>
         );
     }

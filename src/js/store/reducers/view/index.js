@@ -19,6 +19,11 @@ export default function(state = initialState, { type, payload }) {
       return { ...state, noWebGL }
     }
 
+    case 'view-mapbox': {
+      const mapbox = { ...state.mapbox, ...payload }
+      return { ...state, mapbox }
+    }
+
     default: return { ...state }
 
   }

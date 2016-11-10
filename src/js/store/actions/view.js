@@ -14,4 +14,9 @@ export const view = {
     type: 'view-noWebGL',
   }),
 
+  Map: payload => ({
+    type: 'view-mapbox',
+    payload,
+  }),
+
 }

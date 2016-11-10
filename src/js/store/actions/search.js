@@ -25,6 +25,7 @@ export const search = {
     // const searchQuery = `(title:(*${searchValue}*) OR dc.description.abstract:(*${searchValue}*) OR dc.subject:(*${searchValue}*))`
 
     const searchQuery = `(${[
+      
       'title', 
       'dc.description.abstract', 
       'dc.subject', 
@@ -33,6 +34,7 @@ export const search = {
       'dc.subject',
       'dc.contributor.author',
       'dc.creator',
+
     ].map(field => {
       return `${field}:(*${searchValue}*)`
     }).join(' OR ')})`

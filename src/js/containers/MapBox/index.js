@@ -30,8 +30,8 @@ export default class MapBox extends React.Component {
       }
     });
 
-    const nav = new mapboxgl.Navigation({ position: 'top-left' }); // position is optional
-    map.addControl(nav);
+    // const nav = new mapboxgl.Navigation({ position: 'top-left' }); // position is optional
+    // map.addControl(nav);
 
     map.on('load', () => {
       mapActions.addSources(map);

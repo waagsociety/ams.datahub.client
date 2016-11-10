@@ -86,10 +86,11 @@ export function addBuurten(map, wkCode) {
   });
 
   loadMapMouseEvents(map, `buurten-fills-${wkCode}`, `buurten-hover-${wkCode}`, 'bu_code', false, false);
+
 }
 
 export function addWijken(map, gmCode) {
-  console.log('wijken added');
+
   map.addLayer({
     id: `wijken-fills-${gmCode}`,
     type: 'fill',
@@ -126,6 +127,7 @@ export function addWijken(map, gmCode) {
 }
 
 export function addGemeente(map) {
+  
   map.addLayer({
     id: 'gemeenten-fills',
     type: 'fill',

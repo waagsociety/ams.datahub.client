@@ -23,7 +23,7 @@ export default function SearchTag({ props }) {
     <svg viewBox='0 0 18 18'>
       <path d="M9,5 v8 M5,9 h8" />
     </svg>
-    { searchValue || "Start typing to search..." }
+    { searchValue || '' }
     <svg className='secondary' viewBox='0 0 18 18'>
       <path d='M10,10 l4,4' /><circle cx='7' cy='7' r='4'/>
     </svg>   

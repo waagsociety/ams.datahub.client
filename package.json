@@ -43,7 +43,8 @@
     "webworkify-webpack": "^1.1.7"
   },
   "devDependencies": {
-    "css-loader": "^0.24.0"
+    "css-loader": "^0.24.0",
+    "json-loader": "^0.5.4"
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot",
