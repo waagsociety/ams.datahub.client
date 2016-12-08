@@ -4,6 +4,23 @@ html { background: #000 }
 
 .content { color: #000 }
 
+#app {
+  overflow: hidden;
+}
+#app:after {
+  content: 'beta';
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  background: #333;
+  padding: 0.25em 8em;
+  position: absolute;
+  top: 1.25em;
+  right: -7.25em;
+  z-index: 10000;
+  transform: rotate(45deg);
+}
+
 /* .menu */
 .menu { color: #000 }
 
