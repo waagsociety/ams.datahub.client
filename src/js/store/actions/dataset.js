@@ -50,27 +50,16 @@ export const dataset = {
     const fields = [ 'ams.relatedDataset', 'ams.relatedProject', 'ams.relatedPaper' ]
 
     let query = `(ams.relatedDataset:("${handle}") OR ams.relatedProject:("${handle}") OR ams.relatedPaper:("${handle}"))`
-    console.log('hello', metadata)
+
     const inlineHandles = metadata.reduce((result, { key, value }) => {
-      if (fields.indexOf(key) >= 0) {
-        result.push(`"${value}"`)
-        // console.log(key, value)
-      }
-        
+      if (fields.indexOf(key) >= 0) result.push(`"${value}"`)        
       return result
     }, [])
-
-    console.info('handles', inlineHandles)
 
     if (inlineHandles.length) {
       query += ` OR handle:(${inlineHandles.reverse().join(' OR ')})`
     }
     const x = solr + `handle:(${inlineHandles.reverse().join(' OR ')})`
-    console.info('solr query:', x)
-    axios({
-      url: x,
-      method: 'get',
-    }).then(console.info)
 
     axios({
       url: solr + query,
@@ -78,7 +67,6 @@ export const dataset = {
     }).then(request => {
 
       const { docs } = request.data.response
-      console.log('related docs', docs)
 
       const data = docs.reduce((result, item) => {
         let type = (item['dcterms.type'] || []).join("")

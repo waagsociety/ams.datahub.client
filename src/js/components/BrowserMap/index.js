@@ -30,7 +30,7 @@ class BrowserMap extends Component {
         maxBounds: bounds,
         minZoom: 8.5,
         attributionControl: false,
-        pitch: 50,
+        pitch: 40,
       });
 
       map.on('zoom', () => {
@@ -41,8 +41,8 @@ class BrowserMap extends Component {
         }
       });
       map.on('load', () => {
-        mapActions.addSources(map);
-        mapActions.addGemeente(map);
+        // mapActions.addSources(map);
+        // mapActions.addGemeente(map);
       });
     }
   }

@@ -101,7 +101,7 @@ li { list-style: none }
 }
 
 .panel .menu + .content {
-    top: 6.6em;
+    top: 5.6em;
 }
 
 .group { max-width: 100% }
@@ -123,7 +123,7 @@ li { list-style: none }
     display: flex;
 }
 
-.panel { padding: 1em }
+/*.panel { padding: 1em }*/
 
 .panel.expanded { padding: 0 }
 

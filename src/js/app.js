@@ -2,6 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import store from './store'
-import { Browse } from './pages'
+import Index from './pages'
 
-ReactDOM.render(<Browse store={store}/>, document.querySelector('#app'))
+ReactDOM.render(<Index store={store}/>, document.querySelector('#app'))

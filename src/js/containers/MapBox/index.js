@@ -5,6 +5,8 @@ import * as mapActions from './actions'
 export default class MapBox extends React.Component {
   
   componentDidMount() {
+
+    console.log('Map it')
     
     mapboxgl.accessToken = 'pk.eyJ1IjoibWFydGlud2FhZyIsImEiOiJjaWo0NWt6ZWYwMDE0dXlrcm0yenVkNDR5In0.0I9xJzLubP9g3V_NTt1PhA'
 
@@ -34,8 +36,8 @@ export default class MapBox extends React.Component {
     // map.addControl(nav);
 
     map.on('load', () => {
-      mapActions.addSources(map);
-      mapActions.addGemeente(map);
+      // mapActions.addSources(map);
+      // mapActions.addGemeente(map);
     });
 
   }

@@ -51,8 +51,14 @@ export const route = {
 
   update: hash => {
 
-    const query = hashToQuery(hash)
-    updateLocation(hash)
+    let query = hashToQuery(hash)
+    if (Object.keys(query).length === 1 && query.results) {
+      query = {}
+      updateLocation('')
+    } 
+    else updateLocation(hash)
+
+    
 
     return {
       type: 'route-query',
