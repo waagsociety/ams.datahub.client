@@ -90,18 +90,19 @@ export const dataset = {
 
   },
 
-  loadedRelated: content => {
-    return {
-      type: 'related-loaded',
-      payload: { related: { content, loading: false, loaded: true, error: null } },
-    }
-  },
+  loadedRelated: content => ({
+    type: 'related-loaded',
+    payload: { related: { content, loading: false, loaded: true, error: null } },
+  }),
 
-  errorRelated: error => {
-    return {
+  errorRelated: error => ({
       type: 'related-error',
       payload: { related: { error } },
-    }
-  },
+  }),
+
+  filterAMS: index => ({
+    type: 'dataset-AMS-filter', 
+    payload: { filterAMS: index }
+  })
 
 }

@@ -4,6 +4,8 @@ export const initialState = {
   handle: null,
   content: {},
   related: {},
+  
+  filterAMS: 0,
 
   active: false,
   loading: false,

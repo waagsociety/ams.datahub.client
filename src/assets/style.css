@@ -1,5 +1,4 @@
 /* Global */
-
 * {
     font-family: 'Helvetica Nue', sans-serif;
     font-size: 100%;
@@ -18,7 +17,6 @@
     border-width: 0;
     outline: 0;
 }
-
 
 html { font-size: 75% }
 
@@ -76,7 +74,6 @@ li { list-style: none }
 
 
 /**/
-
 .panel { position: relative }
 
 .container { position: relative }

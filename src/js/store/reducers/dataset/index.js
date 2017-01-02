@@ -20,6 +20,10 @@ export default function(state = initialState, { type, payload }) {
       return { ...state, ...payload }
     }
 
+    case 'dataset-AMS-filter': {
+      return { ...state, ...payload }
+    }
+
     default: return { ...state }
 
   }

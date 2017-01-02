@@ -58,8 +58,6 @@ export const route = {
     } 
     else updateLocation(hash)
 
-    
-
     return {
       type: 'route-query',
       payload: { hash, query }
@@ -68,16 +66,18 @@ export const route = {
   },
 
   replace: parameter => {
+    
     const initialQuery = hashToQuery(location.hash)
 
     const query = { ...initialQuery, ...parameter }
-    // console.log(query)
     const hash = queryToHash(query)
     updateLocation(hash)
+
     return {
       type: 'route-query',
       payload: { hash, query }
     }
+
   },
 
   remove: parameter => {
@@ -89,7 +89,6 @@ export const route = {
     }, {})
 
     const hash = queryToHash(query)
-
     updateLocation(hash)
 
     return {

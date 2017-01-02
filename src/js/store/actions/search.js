@@ -19,10 +19,15 @@ export const search = {
   fetch: dispatch => route => {
         
     const { hash, query } = route
+
+    console.log(query)
     
     const method = 'get'
     const searchValue = (query['search'] || []).join('')
-    // const searchQuery = `(title:(*${searchValue}*) OR dc.description.abstract:(*${searchValue}*) OR dc.subject:(*${searchValue}*))`
+
+    const filterAMS = !query.scope
+      ? ' AND (location.coll:24 OR location.coll:22 OR location.coll:23)'
+      : ''
 
     const searchQuery = `(${[
       
@@ -37,10 +42,7 @@ export const search = {
 
     ].map(field => {
       return `${field}:(*${searchValue}*)`
-    }).join(' OR ')})`
-
-    // console.info(searchQuery)
-    // console.info(x)
+    }).join(' OR ')})` + filterAMS
 
 
     // Load searchQuery
@@ -51,7 +53,7 @@ export const search = {
       }
       if (parameter) result.push(parameter)
       return result
-    }, [ searchQuery ]).join(' AND ')
+    }, [searchQuery]).join(' AND ')
 
     const searchURL = solr + searchParameters
     axios({ method, url: searchURL + '&rows=10000&fl=title,handle,search.resourceid,dcterms.type' })

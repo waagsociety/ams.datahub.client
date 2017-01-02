@@ -19,6 +19,8 @@ function Ref(url) {
 
 export default function ItemHeader({ title, publisher, author, description, dspace, reference }) {
 
+  console.log(dspace)
+
   return <header className='datasetheader'>
     <h1>{title}</h1>
     <h2 className="publisher">{publisher.filter(item => !!item).join(', ')}</h2>
@@ -27,7 +29,9 @@ export default function ItemHeader({ title, publisher, author, description, dspa
 
     {description.map((text, index) => <p key={index}>{text}</p>)}
 
-    <a className="primary button" href={dspace}>View in dSpace</a>
+    {dspace.map((link, index) => 
+      <a key={index} className="primary button" href={link.replace('/xmlui/', '/jspui/')} target='_blank'>View in dSpace</a>
+    )}
 
     {Ref(reference)}
 
