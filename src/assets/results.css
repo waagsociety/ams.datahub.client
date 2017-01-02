@@ -241,6 +241,7 @@ button.next { right: 0 }
 }
 
 .tabs button {
+  color: white;
   height: 2.5rem;
   width: 100%;
   display: block;
