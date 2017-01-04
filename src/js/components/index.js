@@ -6,6 +6,7 @@ export SearchInput from './SearchInput'
     export SearchFiltersGroup from './SearchFiltersGroup'
       export FilterTag from './FilterTag'
       export Tabs from './Tabs'
+      export Pagination from './Pagination'
 
 export ResultList from './ResultList'
   export ResultPreview from './ResultPreview'

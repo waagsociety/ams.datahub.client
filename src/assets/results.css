@@ -6,8 +6,12 @@ a {
 .results ul {
   background: white;
   color: #000;
-  max-height: calc(100% - 4em);
+  max-height: 100%;
   overflow: auto;
+}
+
+.paginated .results ul {
+  max-height: calc(100% - 4em);
 }
 
 #article .secondary .content {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Pagination } from '../'
 import { eventHandlers } from './events'
 import { resultsPerPage, initialResults } from '../../config'
 
@@ -11,6 +12,8 @@ export default function ResultList({ props }) {
   const { viewData, showAll, skipPage, closeResults } = eventHandlers(props)
   
   const pageCount = Math.ceil(numFound / resultsPerPage)
+  const multiplePages = pageCount > 1
+
   let page = parseInt(results && results[0]) || 1
   if (page > pageCount) page = pageCount
   const start = page && (page - 1) * resultsPerPage || 0
@@ -23,7 +26,9 @@ export default function ResultList({ props }) {
   const moreText = viewMore ? `View ${moreCount} more results` : 'Expand result list'
   const loadClass = loading && 'loading'
   const expandClass = expand ? 'expanded' : ''
-  const className = [ expandClass, loadClass, 'container floating secondary panel' ].join(' ')
+  const paginationClass = multiplePages ? 'paginated' : ''
+
+  const className = [ expandClass, loadClass, paginationClass, 'container floating secondary panel' ].join(' ')
 
   const data = docs.slice(start, limit)
   const itemID = item && parseInt(item[0])
@@ -51,11 +56,7 @@ export default function ResultList({ props }) {
         </li>
       }) }</ul>
       
-      <footer className='pages full primary'>
-        <header className='pagenumber'>{page} / {pageCount}</header>
-        <button className='previous' type='button' value={page - 1} disabled={page <= 1} onClick={skipPage}>Previous</button>
-        <button className='next' type='button' value={page + 1} disabled={page >= pageCount} onClick={skipPage}>Next</button>
-      </footer>
+      { pageCount > 1 ? <Pagination content={{ page, pageCount }} events={{ skipPage }} /> : null }
       
     </section>
 

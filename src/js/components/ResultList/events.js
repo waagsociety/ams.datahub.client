@@ -13,14 +13,8 @@ export const eventHandlers = ({ dispatch }) => ({
     dispatch(route.replace({ results: [1] }))
   },
 
-  skipPage(event) {
-    let { value, min, max } = event.target
-    if (value < min) {
-      console.log(value)
-      value = min
-    }
-
-    dispatch(route.replace({ results: [value] }))
+  skipPage(value) {
+    return event => dispatch(route.replace({ results: [value] }))
   },
 
   closeResults() {
