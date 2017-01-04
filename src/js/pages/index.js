@@ -19,34 +19,32 @@ const Map = MapBox
 export default class Index extends React.Component {
 
   componentWillMount() {
-    
     const { props } = this
     const { dispatch } = props
-
-    dispatch(action.route.initialise(location.hash))
-    onhashchange = _ => dispatch(action.route.update(location.hash))
-
+    dispatch(action.route.initialise())
+    onhashchange = event => dispatch(action.route.initialise())
   }
 
-  componentDidUpdate() { // Router
-    
+  componentDidUpdate() { 
+
+    // Route
     const { store, dispatch } = this.props
     const { route, search, dataset } = store
     const { query, hash } = route
 
     if (query.item) { // Open a dataset
       const id = query.item.join('')
-      // if (!dataset.active) dispatch(action.dataset.activity(true))
       if (dataset.id !== id) dispatch(action.dataset.fetch(dispatch)(id))
-    } 
-    // else {
-    //   if (dataset.active) dispatch(action.dataset.activity(false))
-    // }
-
+    }
+    
     if (search.hash !== hash) {
-      if (hash) dispatch(action.search.fetch(dispatch)(route)) // Search-query in place
+      if (hash) {
+        if (!query.search) location.hash = '' // Return to home if no search is present
+        else dispatch(action.search.fetch(dispatch)(route)) // Search-query in place
+      }
       else dispatch(action.search.clear()) // We’re home
     }
+
   }
 
   render() {

@@ -1,7 +1,7 @@
 export const route = {
 
-  initialise: () => {
-    const hash = location.hash
+  initialise() {
+    const hash = location.hash.replace(/^#/, '')
     const query = hashToQuery(hash)
     return {
       type: 'route-initialise',
@@ -19,44 +19,12 @@ export const route = {
     
     if (activate) {
       if (isActiveParameter && parameter.every(otherThanValue)) query[name].push(value)
-      else query[name] = [ value ]
+      else query[name] = [value]
     }
     else query[name] = parameter.filter(otherThanValue)
-    
 
     const hash = queryToHash(query)
     updateLocation(hash)
-
-    return {
-      type: 'route-query',
-      payload: { hash, query }
-    }
-
-  },
-
-  search: value => {
-    
-    const query = { search: [ value ] }
-    query.search = [ value ]
-    const hash = queryToHash(query)
-
-    updateLocation(hash)
-
-    return {
-      type: 'route-search',
-      payload: { hash, query }
-    }
-
-  },
-
-  update: hash => {
-
-    let query = hashToQuery(hash)
-    if (Object.keys(query).length === 1 && query.results) {
-      query = {}
-      updateLocation('')
-    } 
-    else updateLocation(hash)
 
     return {
       type: 'route-query',

@@ -20,14 +20,15 @@ export const search = {
         
     const { hash, query } = route
 
-    console.log(query)
-    
     const method = 'get'
     const searchValue = (query['search'] || []).join('')
+    const scope = (query.scope || ["ams"])[0]
 
-    const filterAMS = !query.scope
+    const filterAMS = scope === 'ams'
       ? ' AND (location.coll:24 OR location.coll:22 OR location.coll:23)'
       : ''
+
+    console.info(query.scope, !filterAMS)
 
     const searchQuery = `(${[
       
