@@ -28,8 +28,6 @@ export const search = {
       ? ' AND (location.coll:24 OR location.coll:22 OR location.coll:23)'
       : ''
 
-    console.info(query.scope, !filterAMS)
-
     const searchQuery = `(${[
       
       'title', 

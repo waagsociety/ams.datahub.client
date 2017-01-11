@@ -38,8 +38,11 @@ export default class Index extends React.Component {
     }
     
     if (search.hash !== hash) {
-      if (hash) dispatch(action.search.fetch(dispatch)(route)) // Search-query in place
+      
+      if (Object.keys(query).length === 1 && query.scope) location.hash = ''
+      else if (hash) dispatch(action.search.fetch(dispatch)(route)) // Search-query in place
       else dispatch(action.search.clear()) // We’re home
+
     }
 
   }
