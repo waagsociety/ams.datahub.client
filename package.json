@@ -49,7 +49,7 @@
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run clean && NODE_ENV=production webpack --config webpack.production.config.js -p && cp src/index.html dist && cp -R src/assets dist/assets",
+    "build": "npm run clean && NODE_ENV=production webpack --config webpack.production.config.js && cp src/index.html dist && cp -R src/assets dist/assets",
     "clean": "rimraf dist"
   },
   "author": "",
