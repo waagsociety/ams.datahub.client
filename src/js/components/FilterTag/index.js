@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 import { eventHandlers } from './events'
 
 export default function FilterTag({ props, content }) {
@@ -13,9 +12,7 @@ export default function FilterTag({ props, content }) {
   const queryKey = query[key] || []
   active = queryKey.includes(value)
 
-  const className = classNames('tag', {
-    active: active
-  })
+  const className = `tag ${active ? 'active' : ''}`
 
   return <label className={className} style={getCountPadding(count)} title={value}>
     <input type='checkbox' name={name} value={value} checked={active} onChange={toggleActivity}/>

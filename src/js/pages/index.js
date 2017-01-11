@@ -25,22 +25,25 @@ export default class Index extends React.Component {
     onhashchange = event => dispatch(action.route.initialise())
   }
 
-  componentDidUpdate() { 
+  componentDidUpdate() {
+
+
 
     // Route
     const { store, dispatch } = this.props
     const { route, search, dataset } = store
     const { query, hash } = route
 
-    if (query.item) { // Open a dataset
+    if (Object.keys(query).length === 1 && query.scope) location.hash = ''
+
+    else if (query.item) { // Open a dataset
       const id = query.item.join('')
       if (dataset.id !== id) dispatch(action.dataset.fetch(dispatch)(id))
     }
     
-    if (search.hash !== hash) {
+    else if (search.hash !== hash) { 
       
-      if (Object.keys(query).length === 1 && query.scope) location.hash = ''
-      else if (hash) dispatch(action.search.fetch(dispatch)(route)) // Search-query in place
+      if (hash) dispatch(action.search.fetch(dispatch)(route)) // Search-query in place
       else dispatch(action.search.clear()) // We’re home
 
     }
