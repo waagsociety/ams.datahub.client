@@ -17,8 +17,6 @@ const state = {
   center: [longitude, latitude],
 }
 
-function x(e){ console.log(e) }
-
 export default class Map extends Component {
 
    _onZoom(map) {

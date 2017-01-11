@@ -4,7 +4,6 @@ import { fieldIndex } from '../../config'
 function targetBlank(event) {
   event.preventDefault()
   const { target } = event
-  console.log(target.href)
 }
 
 export default function(metadata) {

@@ -19,8 +19,6 @@ function Ref(url) {
 
 export default function ItemHeader({ title, publisher, author, description, dspace, reference }) {
 
-  console.log(dspace)
-
   return <header className='datasetheader'>
     <h1>{title}</h1>
     <h2 className="publisher">{publisher.filter(item => !!item).join(', ')}</h2>

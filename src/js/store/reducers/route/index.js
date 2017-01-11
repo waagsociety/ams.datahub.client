@@ -2,8 +2,6 @@ import { initialState } from './initialise'
 
 export default function(state = initialState, { type, payload }) {
 
-  // if (/^route/.test(type)) console.info(type)
-
   switch (type) {
 
     case 'route-initialise': {

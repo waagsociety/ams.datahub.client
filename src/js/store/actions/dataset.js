@@ -6,6 +6,8 @@ export const dataset = {
 
   fetch: dispatch => id => {
 
+
+
     axios({
       url: `${domain}rest/items/${id}?expand=all`,
       method: 'get',
@@ -59,7 +61,6 @@ export const dataset = {
     if (inlineHandles.length) {
       query += ` OR handle:(${inlineHandles.reverse().join(' OR ')})`
     }
-    const x = solr + `handle:(${inlineHandles.reverse().join(' OR ')})`
 
     axios({
       url: solr + query,

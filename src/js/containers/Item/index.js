@@ -20,8 +20,6 @@ export default function Item({ props }) {
     { key: 'dc.description', value: "" },
   ])
 
-  console.log(data)
-
   const {
     
     title,

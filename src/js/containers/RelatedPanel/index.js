@@ -4,7 +4,6 @@ import { ItemRelated } from '../../components'
 export default function RelatedPanel({ props }) {
 
   const { related } = props.store.dataset
-  // console.info(related.content)
 
   return <div className='container floating secondary panel'>
 
