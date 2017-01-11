@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 import { Feedback } from '../'
 import { eventHandlers } from './events'
 
@@ -13,10 +12,11 @@ export default function SearchTag({ props }) {
 
   const activeValue = search.join('')
   const searchValue = activeValue || value 
-  const className = classNames('tag', { 
-    enabled: searchValue,
-    active: activeValue,
-  });
+  const className = [
+    'tag', 
+    searchValue ? 'enabled' : '', 
+    activeValue ? 'active': '',
+  ].join(' ')
 
   return <label className={className} disabled={!searchValue}>
     <input type='checkbox' name='search' value={activeValue} onClick={searchQuery} />

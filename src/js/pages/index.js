@@ -9,11 +9,11 @@ import {
   ResultBrowser, 
   RelatedPanel, 
   Item,
-  MapBox
+  // MapBox
 } from '../containers'
 
-import BrowserMap from '../components/BrowserMap'
-const Map = MapBox
+// import BrowserMap from '../components/BrowserMap'
+// const Map = MapBox
 
 @connect ((store) => ({ store }))
 export default class Index extends React.Component {
