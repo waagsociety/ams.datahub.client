@@ -9,7 +9,6 @@ html { background: #000 }
   background-image: url(mra.png);
   background-size: cover;
   background-position: center;
-  border-top: 1px solid #ccc;
 }
 
 .page.container:after {
