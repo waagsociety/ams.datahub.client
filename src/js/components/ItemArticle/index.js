@@ -1,5 +1,5 @@
 import React from 'react'
-import { fieldIndex } from '../../config'
+import { fields } from '../../config'
 
 function targetBlank(event) {
   event.preventDefault()
@@ -11,12 +11,13 @@ export default function(metadata) {
   let { title, description, reference, dspace } = metadata
 
   title = title.join('')
-  // abstract = abstract.map((text, i) => <p key={i}>{text}</p>)
+
   reference = reference.map((link, i) => {
     return <a className='primary button' key={i} href='#' onClick={targetBlank} target="_blank">
       <i className="fa fa-external-link" aria-hidden="true"></i> View Source
     </a>
   })
+
   dspace = dspace.map((link, i) => {
     return <a className='secondary button' key={i} href='#' onClick={targetBlank} target="_blank">
       View in dSpace
@@ -24,7 +25,7 @@ export default function(metadata) {
   })
 
 
-  const fields = fieldIndex.reduce((result, item, index) => {
+  const fieldList = fields.tags.reduce((result, item, index) => {
     
     const { key } = item
     const data = metadata[key]
@@ -64,7 +65,7 @@ export default function(metadata) {
 
     <footer className='datasetfooter'>
 
-      <ul className='metadata fields'>{fields}</ul>
+      <ul className='metadata fields'>{fieldList}</ul>
 
     </footer>
 

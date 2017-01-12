@@ -1,40 +1,52 @@
+// domains
+export const domains = {
+  dspace: 'http://amsdatahub.waag.org/dspace',
+  rest: 'http://amsdatahub.waag.org/dspace/rest',
+  solr: 'http://amsdatahub.waag.org/dspace/solr/search/select?wt=json&q=',
+}
 
-export const domain = 'http://amsdatahub.waag.org/dspace/'
+// fields
+export const fields = {
+  related: ['ams.relatedDataset', 'ams.relatedProject', 'ams.relatedPaper'],
+  tags: [
+    {
+      name: 'Type',
+      field: 'dcterms.type',
+      key: 'type',
+      tags: [],
+    },
+    {
+      name: 'Location',
+      field: 'dcterms.spatial',
+      key: 'location',
+      tags: [],
+    },
+    {
+      name: 'Subject',
+      field: 'dc.subject',
+      key: 'subject',
+      tags: [],
+    },
+    {
+      name: 'Author',
+      field: 'dc.creator',
+      key: 'author',
+      tags: [],
+    }, 
+    {
+      name: 'Publisher',
+      field: 'dc.publisher',
+      key: 'publisher',
+      tags: [],
+    },
+  ]
+}
 
-export const solr = domain + 'solr/search/select?wt=json&q='
-
-export const fieldIndex = [
-  {
-    name: 'Type',
-    field: 'dcterms.type',
-    key: 'type',
-    tags: [],
-  },
-  {
-    name: 'Location',
-    field: 'dcterms.spatial',
-    key: 'location',
-    tags: [],
-  },
-  {
-    name: 'Subject',
-    field: 'dc.subject',
-    key: 'subject',
-    tags: [],
-  },
-  {
-    name: 'Author',
-    field: 'dc.creator',
-    key: 'author',
-    tags: [],
-  }, 
-  {
-    name: 'Publisher',
-    field: 'dc.publisher',
-    key: 'publisher',
-    tags: [],
-  },
-]
+// pagination
+export const results = {
+  initialCount: 10,
+  perPage: 50,
+}
 
 export const initialResults = 10
 export const resultsPerPage = 50

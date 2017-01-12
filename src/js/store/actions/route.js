@@ -75,8 +75,9 @@ function updateLocation(hash) {
 
 function hashToQuery(hash) {
 
-  if (hasProperties(hash)) return decodeURIComponent(hash).split('&').reduce(parameterToProperty, {})
-  else return {}
+  return hasProperties(hash)
+    ? decodeURIComponent(hash).split('&').reduce(parameterToProperty, {})
+    : {}
 
   function hasProperties(hash) {
     return /\W+/g.test(hash)

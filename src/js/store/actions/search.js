@@ -1,17 +1,17 @@
 import axios from 'axios'
-import { fieldIndex, domain, solr } from '../../config'
+import { fields, domains } from '../../config'
 
-const fieldMap = fieldIndex.reduce((result, { key, value, field }) => ({
+const fieldMap = fields.tags.reduce((result, { key, value, field }) => ({
   ...result, 
   [key]: { value, field },
 }), {})
 
-const fieldIndexMap = fieldIndex.reduce((map, item, index) => {
+const fieldIndexMap = fields.tags.reduce((map, item, index) => {
   map[item.field] = index
   return map
 }, {})
 
-const fieldList = fieldIndex.map(x => x.field).join(',')
+const fieldList = fields.tags.map(x => x.field).join(',')
 const fieldParameter = '&fl=' + fieldList + '&facet.field=' + fieldList + '&group.facet=true'
 
 export const search = {
@@ -28,8 +28,7 @@ export const search = {
       ? ' AND (location.coll:24 OR location.coll:22 OR location.coll:23)'
       : ''
 
-    const searchQuery = `(${[
-      
+    const searchQuery = `(${[      
       'title', 
       'dc.description.abstract', 
       'dc.subject', 
@@ -38,7 +37,6 @@ export const search = {
       'dc.subject',
       'dc.contributor.author',
       'dc.creator',
-
     ].map(field => {
       return `${field}:(*${searchValue}*)`
     }).join(' OR ')})` + filterAMS
@@ -54,7 +52,7 @@ export const search = {
       return result
     }, [searchQuery]).join(' AND ')
 
-    const searchURL = solr + searchParameters
+    const searchURL = domains.solr + searchParameters
     axios({ method, url: searchURL + '&rows=10000&fl=title,handle,search.resourceid,dcterms.type' })
       .then(request => {
         dispatch(search.load(request))
@@ -64,7 +62,7 @@ export const search = {
       })
 
     // Load metdata filters
-    const filterURL = solr + searchQuery + searchParameters + fieldParameter + '&rows=10000'
+    const filterURL = domains.solr + searchQuery + searchParameters + fieldParameter + '&rows=10000'
     axios({ method, url: filterURL })
       .then(request => {
         dispatch(search.loadMeta(request))
@@ -94,11 +92,11 @@ export const search = {
 
     const { docs } = request.data.response
 
-    const metadata = fieldIndex.map(item => ({ ...item, tags: {} }))
+    const metadata = fields.tags.map(item => ({ ...item, tags: {} }))
 
     const x = docs.reduce((metadata, item) => {
 
-      fieldIndex.forEach(group => {
+      fields.tags.forEach(group => {
         
         const { field } = group
         const filters = field && field in item && item[field]

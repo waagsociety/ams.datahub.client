@@ -9,11 +9,7 @@ import {
   ResultBrowser, 
   RelatedPanel, 
   Item,
-  // MapBox
 } from '../containers'
-
-// import BrowserMap from '../components/BrowserMap'
-// const Map = MapBox
 
 @connect ((store) => ({ store }))
 export default class Index extends React.Component {
@@ -26,9 +22,7 @@ export default class Index extends React.Component {
   }
 
   componentDidUpdate() {
-
-
-
+    
     // Route
     const { store, dispatch } = this.props
     const { route, search, dataset } = store

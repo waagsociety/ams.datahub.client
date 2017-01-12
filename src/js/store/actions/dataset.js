@@ -1,13 +1,24 @@
 import axios from 'axios'
+import { fields, domains } from '../../config'
 
-import { domain, solr } from '../../config'
+const pipe = (...methods) => value =>
+  methods.reduce((result, method) => method(result), value)
+
+const group = separator => data => 
+  `(${data.filter(item => !!item).join(separator)})`
+
+const literalQuery = query => fields => 
+  fields.map(field => `${field}:("${query}")`)
+
+const listQuery = (field, separator) => query =>
+  query.length ? `${field}:(${query.join(separator)})` : ''
 
 export const dataset = {
 
   fetch: dispatch => id => {
 
     axios({
-      url: `${domain}rest/items/${id}?expand=all`,
+      url: `${domains.rest}/items/${id}?expand=all`,
       method: 'get',
     }).then(request => {
       dispatch(dataset.loaded(request.data))
@@ -47,21 +58,21 @@ export const dataset = {
   fetchRelated: dispatch => data => {
     
     const { handle, metadata } = data
-    const fields = [ 'ams.relatedDataset', 'ams.relatedProject', 'ams.relatedPaper' ]
-
-    let query = `(ams.relatedDataset:("${handle}") OR ams.relatedProject:("${handle}") OR ams.relatedPaper:("${handle}"))`
-
+    
+    const relatedFields = fields.related
+    const queryRelated = pipe(literalQuery(handle), group(' OR '))(relatedFields)
+      
     const inlineHandles = metadata.reduce((result, { key, value }) => {
-      if (fields.indexOf(key) >= 0) result.push(`"${value}"`)        
+      if (~relatedFields.indexOf(key)) result.push(`"${value}"`)
       return result
     }, [])
 
-    if (inlineHandles.length) {
-      query += ` OR handle:(${inlineHandles.reverse().join(' OR ')})`
-    }
+    const queryHandles = listQuery('handle', ' OR ')(inlineHandles)
+
+    const query = group(' OR ')([queryRelated, queryHandles])
 
     axios({
-      url: solr + query,
+      url: domains.solr + query,
       method: 'get',
     }).then(request => {
 
@@ -70,6 +81,7 @@ export const dataset = {
       const data = docs.reduce((result, item) => {
         let type = (item['dcterms.type'] || []).join("")
         if (type === 'spatial_data_set') type = 'dataset'
+          console.log(type, item['dcterms.type'])
         if (handle !== item.handle && type in result) result[type].data.push(item)
         return result
       }, { 
@@ -105,3 +117,7 @@ export const dataset = {
   })
 
 }
+
+
+
+
