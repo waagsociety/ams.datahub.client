@@ -7,7 +7,7 @@ export default function ResultList({ props }) {
 
   const { search, route } = props.store
   const { content } = search
-  const { results, item } = route.query
+  const { results, handle } = route.query
   const { docs = [], numFound = 0, loading } = content
   const { viewData, showAll, skipPage, closeResults } = eventHandlers(props)
   
@@ -31,7 +31,7 @@ export default function ResultList({ props }) {
   const className = [ expandClass, loadClass, paginationClass, 'container floating secondary panel' ].join(' ')
 
   const data = docs.slice(start, limit)
-  const itemID = item && parseInt(item[0])
+  const activeHandle = handle && parseInt(handle[0])
 
   const pageInput = <label className='pagenumber'>
     <input type="number" defaultValue={page} name="page" max={pageCount} onKeyUp={skipPage}/>
@@ -46,13 +46,14 @@ export default function ResultList({ props }) {
 
       <ul>{ data.map((item, i) => {
         const title = item['title'] || "Untitled"
-        const id = item['search.resourceid']
+        // const id = item['search.resourceid']
+        const handle = item['handle']
         const type = item['dcterms.type'] || "item"
-        const isActive = id === itemID
+        const isActive = handle === activeHandle
 
-        return <li className={isActive ? 'active' : ''} key={id}>
+        return <li className={isActive ? 'active' : ''} key={handle}>
           <h1>{title}</h1>
-          <a href={`#item=${id}`} onClick={viewData(id)} className='primary button'>View {type}</a>
+          <a href={`#handle=${handle}`} onClick={viewData(handle)} className='primary button'>View {type}</a>
         </li>
       }) }</ul>
       

@@ -12,16 +12,21 @@ export function getItemType(content) {
 
 export function mapMetadata(metadata) {
 
+  // console.log('metadata', metadata)
+
   const scheme = {
 
     'dc.title': 'title',
+    'dc.type': 'type',
+    'dcterms.type.publication': 'publicationType',
     
     'dc.description': 'description',
     'dc.description.abstract': 'description',
     'dcterms.abstract': 'description',
 
     'dc.publisher': 'publisher',
-    'dc.source': 'source',
+    // 'dc.source': 'source',
+    'dcat.downloadURL': 'source',
     
     'dc.creator': 'author', 
     'dc.contributor.author': 'author',
@@ -42,6 +47,11 @@ export function mapMetadata(metadata) {
     'dcterms.issued': 'issued',
     'dc.date.available': 'available',
     'dcterms.temporal': 'temporal',
+
+    'ams.projectPartner': 'projectPartner',
+    'ams.projectMember': 'projectMember',
+    'ams.projectContact': 'projectContact',
+    'ams.projectLeader': 'projectLeader',
     
     'ams.relatedDataset': 'relatedDataset',
     'ams.relatedProject': 'relatedProject',
@@ -50,25 +60,15 @@ export function mapMetadata(metadata) {
   }
 
   const keys = Object.keys(scheme)
-  const structure = keys.reduce((result, key) => {
-    const map = scheme[key]
-    return Object.assign(result, { [map]: [] })
+  return keys.reduce((result, key) => {
+    const normalizedKey = scheme[key]
+    const data = metadata[key]
+    const resultData = result[normalizedKey]
+    if (!resultData || !resultData.length) {
+      result[normalizedKey] = data || []
+    }
+    // else console.log(resultData)
+    return result
   }, {})
-  
-  return metadata.length
-  
-    ? metadata.reduce((result, { key, value }) => {
-        
-        const map = scheme[key]
-        if (map) {
-          const data = result[map]
-          result[map] = data.concat([ value ])
-        }      
-        
-        return result
-
-      }, structure)
-
-    : {}
 
 }

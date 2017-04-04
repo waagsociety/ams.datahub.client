@@ -7,7 +7,7 @@ function RelatedItem(item) {
   const title = item['dc.title']
   
   return <li key={handle}>
-    <a href={`#item=${id}`}>{title}</a>
+    <a href={`#handle=${handle}`}>{title}</a>
   </li>
 
 }

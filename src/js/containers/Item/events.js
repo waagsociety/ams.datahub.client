@@ -5,7 +5,7 @@ export const eventHandlers = ({ dispatch }) => ({
   closeItem: event => {
 
     event.preventDefault()
-    dispatch(route.remove('item'))
+    dispatch(route.remove('handle'))
 
   },
 

@@ -4,22 +4,37 @@ import { mapMetadata } from './actions'
 import {
   ItemHeader,
   ItemInformation,
+  ItemDataset,
+  ItemPublication,
+  ItemProject,
+  ItemTool,
 } from '../../components'
+
+const ItemTypes = {
+  dataset: ItemDataset,
+  publication: ItemPublication,
+  project: ItemProject,
+  tool: ItemTool,
+}
 
 export default function Item({ props }) {
 
   const { store } = props
   const { closeItem } = eventHandlers(props)
-  const { dataset: item } = store
+  const { content } = store.dataset
 
-  const data = mapMetadata(item.content.metadata || [
-    { key: 'dc.title', value: 'Loading...' },
-    { key: 'dc.description', value: '' },
-  ])
+  const size = Object.keys(content).length
+
+  const data = mapMetadata(Object.assign({
+    'dc.title': 'Loading...',
+  }, content))
 
   const {
     
     title,
+    type,
+    source,
+    publicationType,
     description,
     publisher,
 
@@ -35,7 +50,15 @@ export default function Item({ props }) {
     available,
     temporal,
 
+    projectPartner,
+    projectContact,
+    projectMember,
+    projectLeader,
+
   } = data
+
+  const itemType = type && type[0]
+  const ItemMeta = ItemTypes[itemType]
 
   return <article id="dataset" className="body content">
 
@@ -45,12 +68,17 @@ export default function Item({ props }) {
 
     {ItemHeader({
       title,
+      type,
       publisher,
       description,
       author,
       dspace,
       reference
     })}
+
+    <section style={{ padding: '20px 40px' }}>
+    { ItemMeta ? <ItemMeta data={data}/> : null }
+    </section>
 
     {ItemInformation({
       created,
@@ -62,6 +90,8 @@ export default function Item({ props }) {
       keyword,
       theme,
     })}
+
+    <a href="mailto:amsdatahub@ams-institute.org">Correcties, feedback</a>
 
   </article>
 

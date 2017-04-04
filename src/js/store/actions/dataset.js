@@ -15,21 +15,30 @@ const listQuery = (field, separator) => query =>
 
 export const dataset = {
 
-  fetch: dispatch => id => {
+  fetch: dispatch => handle => {
 
     axios({
-      url: `${domains.rest}/items/${id}?expand=all`,
+      url: `${domains.solr}handle:(${handle})`,
       method: 'get',
     }).then(request => {
-      dispatch(dataset.loaded(request.data))
-      dispatch(dataset.fetchRelated(dispatch)(request.data))
-    }).catch(error => {
-      dataset.error(error)
-    })
+
+      const content = request.data.response.docs[0]
+      console.log(content)
+      if (content.withdrawn === 'true') {
+        dispatch(dataset.loaded({ 'dc.title': "This item is no longer available." }))
+        dispatch(dataset.fetchRelated(dispatch)(content))
+      }
+      else {
+        dispatch(dataset.loaded(content))
+        dispatch(dataset.fetchRelated(dispatch)(content))
+      }
+      
+
+    }).catch(dataset.error)
 
     return {
       type: 'dataset-loading',
-      payload: { loading: true, active: true, id, related: { loaded: false } },
+      payload: { loading: true, active: true, handle, related: { loaded: false } },
     }
 
   },
@@ -57,46 +66,51 @@ export const dataset = {
 
   fetchRelated: dispatch => data => {
     
-    const { handle, metadata } = data
+    const { handle, metadata, withdrawn } = data
+
+    if (withdrawn === 'true') dispatch(dataset.loadedRelated({}))
+    else {
+
+      const relatedFields = fields.related
+      const queryRelated = pipe(literalQuery(handle), group(' OR '))(relatedFields)
     
-    const relatedFields = fields.related
-    const queryRelated = pipe(literalQuery(handle), group(' OR '))(relatedFields)
-      
-    const inlineHandles = metadata.reduce((result, { key, value }) => {
-      if (~relatedFields.indexOf(key)) result.push(`"${value}"`)
-      return result
-    }, [])
-
-    const queryHandles = listQuery('handle', ' OR ')(inlineHandles)
-
-    const query = group(' OR ')([queryRelated, queryHandles])
-
-    axios({
-      url: domains.solr + query,
-      method: 'get',
-    }).then(request => {
-
-      const { docs } = request.data.response
-
-      const data = docs.reduce((result, item) => {
-        let type = (item['dcterms.type'] || []).join("")
-        if (type === 'spatial_data_set') type = 'dataset'
-          console.log(type, item['dcterms.type'])
-        if (handle !== item.handle && type in result) result[type].data.push(item)
+      const inlineHandles = Object.keys(data).reduce((result, key) => {
+        if (~relatedFields.indexOf(key)) result.push(`"${data[key]}"`)
         return result
-      }, { 
-        paper: { title: 'Papers', data: [] }, 
-        project: { title: 'Projects', data: [] },
-        dataset: { title: 'Datasets', data: [] }, 
-      })
+      }, [])
 
-      dispatch(dataset.loadedRelated(data))
+      const queryHandles = listQuery('handle', ' OR ')(inlineHandles)
 
-    }).catch(error => dataset.errorRelated(error))
+      const query = group(' OR ')([queryRelated, queryHandles])
 
-    return {
-      type: 'related-loading',
-      payload: { related: { loading: true } },
+      axios({
+        url: domains.solr + query,
+        method: 'get',
+      }).then(request => {
+
+        const { docs } = request.data.response
+
+        const data = docs.reduce((result, item) => {
+          let type = (item['dcterms.type'] || []).join("")
+          if (type === 'spatial_data_set') type = 'dataset'
+          if (handle !== item.handle && type in result) result[type].data.push(item)
+          return result
+        }, { 
+          publications: { title: 'Publications', data: [] }, 
+          project: { title: 'Projects', data: [] },
+          dataset: { title: 'Datasets', data: [] }, 
+          tool: { title: 'Tools', data: [] },
+        })
+
+        dispatch(dataset.loadedRelated(data))
+
+      }).catch(error => dataset.errorRelated(error))
+
+      return {
+        type: 'related-loading',
+        payload: { related: { loading: true } },
+      }
+
     }
 
   },

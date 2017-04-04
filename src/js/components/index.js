@@ -16,3 +16,8 @@ export ItemHeader from './ItemHeader'
 export ItemRelated from './ItemRelated'
 export ItemInformation from './ItemInformation'
 export ItemFilters from './ItemFilters'
+
+export ItemDataset from './ItemDataset'
+export ItemProject from './ItemProject'
+export ItemPublication from './ItemPublication'
+export ItemTool from './ItemTool'

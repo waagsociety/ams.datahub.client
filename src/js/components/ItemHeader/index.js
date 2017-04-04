@@ -13,11 +13,11 @@ function Authors(content) {
 }
 
 function Ref(url) {
-  if (url.length) return <a href={url} className="external button" target="_blank">View Source</a>
+  if (url.length) return <a href={url} className="external button" target="_blank">More Information...</a>
   else return []
 }
 
-export default function ItemHeader({ title, publisher, author, description, dspace, reference }) {
+export default function ItemHeader({ title, type, publisher, author, description, dspace, reference }) {
 
   return <header className='datasetheader'>
     <h1>{title}</h1>
@@ -28,7 +28,7 @@ export default function ItemHeader({ title, publisher, author, description, dspa
     {description.map((text, index) => <p key={index}>{text}</p>)}
 
     {dspace.map((link, index) => 
-      <a key={index} className="primary button" href={link.replace('/xmlui/', '/jspui/')} target='_blank'>View in dSpace</a>
+      <a key={index} className="primary button" href={link.replace('/xmlui/', '/jspui/')} target='_blank'>Complete description (dSpace)</a>
     )}
 
     {Ref(reference)}

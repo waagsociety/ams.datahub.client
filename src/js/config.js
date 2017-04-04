@@ -7,7 +7,7 @@ export const domains = {
 
 // fields
 export const fields = {
-  related: ['ams.relatedDataset', 'ams.relatedProject', 'ams.relatedPaper'],
+  related: ['ams.relatedDataset', 'ams.relatedProject', 'ams.relatedPublication', 'ams.relatedTool'],
   tags: [
     {
       name: 'Type',

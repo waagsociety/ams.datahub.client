@@ -27,12 +27,15 @@ export default class Index extends React.Component {
     const { store, dispatch } = this.props
     const { route, search, dataset } = store
     const { query, hash } = route
+      
 
     if (Object.keys(query).length === 1 && query.scope) location.hash = ''
 
-    else if (query.item) { // Open a dataset
-      const id = query.item.join('')
-      if (dataset.id !== id) dispatch(action.dataset.fetch(dispatch)(id))
+    else if (query.handle) { // Open a dataset
+      const handle = query.handle.join('')
+      if (dataset.handle !== handle) {
+        dispatch(action.dataset.fetch(dispatch)(handle))
+      }
     }
     
     else if (search.hash !== hash) { 
@@ -53,7 +56,7 @@ export default class Index extends React.Component {
 
     switch(true) {
 
-      case !!query.item: return <div id='article' className='page container cover'>
+      case !!query.handle: return <div id='article' className='page container cover'>
         <Item props={props}/>
         <RelatedPanel props={props}/>
       </div>

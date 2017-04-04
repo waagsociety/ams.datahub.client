@@ -11,7 +11,7 @@ const fieldIndexMap = fields.tags.reduce((map, item, index) => {
   return map
 }, {})
 
-const fieldList = fields.tags.map(x => x.field).join(',')
+const fieldList = fields.tags.concat({ field: 'handle' }).map(x => x.field).join(',')
 const fieldParameter = '&fl=' + fieldList + '&facet.field=' + fieldList + '&group.facet=true'
 
 export const search = {
@@ -25,7 +25,7 @@ export const search = {
     const scope = (query.scope || ["ams"])[0]
 
     const filterAMS = scope === 'ams'
-      ? ' AND (location.coll:24 OR location.coll:22 OR location.coll:23)'
+      ? ' AND (location.coll:24 OR location.coll:22 OR location.coll:23 OR location.coll:30)'
       : ''
 
     const searchQuery = `(${[      
@@ -52,7 +52,8 @@ export const search = {
       return result
     }, [searchQuery]).join(' AND ')
 
-    const searchURL = domains.solr + searchParameters
+    const searchURL = domains.solr + searchParameters + ' AND withdrawn:(false)'
+    // console.log(searchURL)
     axios({ method, url: searchURL + '&rows=10000&fl=title,handle,search.resourceid,dcterms.type' })
       .then(request => {
         dispatch(search.load(request))
@@ -102,12 +103,12 @@ export const search = {
         const filters = field && field in item && item[field]
 
         if (Array.isArray(filters)) {           
-            const groupIndex = fieldIndexMap[field]
-            filters.forEach(filter => {
-              const filterCount = metadata[groupIndex].tags[filter]
-              if (filterCount) metadata[groupIndex].tags[filter] += 1 
-              else metadata[groupIndex].tags[filter] = 1
-            })
+          const groupIndex = fieldIndexMap[field]
+          filters.forEach(filter => {
+            const filterCount = metadata[groupIndex].tags[filter]
+            if (filterCount) metadata[groupIndex].tags[filter] += 1 
+            else metadata[groupIndex].tags[filter] = 1
+          })
         }
 
       })

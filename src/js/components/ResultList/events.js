@@ -2,10 +2,10 @@ import { route, view } from '../../store'
 
 export const eventHandlers = ({ dispatch }) => ({
 
-  viewData(id) {
+  viewData(handle) {
     return event => {
       event.preventDefault()
-      dispatch(route.replace({ item: [id] }))
+      dispatch(route.replace({ handle: [handle] }))
     }
   },
 
