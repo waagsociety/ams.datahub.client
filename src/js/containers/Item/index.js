@@ -110,7 +110,9 @@ export default function Item({ props }) {
       theme,
     })}
 
-    <a className='content' href={href}>Submit feedback for this {type[0] || 'item'}</a>
+    <button className='button'>
+      <a href={href}>Submit feedback for this {type[0] || 'item'}</a>
+    </button>
 
   </article>
 
