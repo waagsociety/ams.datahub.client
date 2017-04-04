@@ -23,7 +23,7 @@ export const dataset = {
     }).then(request => {
 
       const content = request.data.response.docs[0]
-      console.log(content)
+
       if (content.withdrawn === 'true') {
         dispatch(dataset.loaded({ 'dc.title': "This item is no longer available." }))
         dispatch(dataset.fetchRelated(dispatch)(content))

@@ -27,7 +27,14 @@ export default function Item({ props }) {
 
   const size = Object.keys(content).length
 
-  console.log('content', content)
+  const mailto = {
+    address: 'amsdatahub@ams-institute.org',
+    subject: 'AMS Datahub Feedback',
+    body: encodeURI(location.href),
+  }
+
+  const href = `mailto:${mailto.address}?subject=${mailto.subject}&body=${mailto.body}`
+  console.log(href)
 
   const data = mapMetadata(Object.assign({
     'dc.title': 'Loading...',
@@ -41,6 +48,7 @@ export default function Item({ props }) {
     publicationType,
     description,
     publisher,
+    contributor,
 
     author,
     dspace,
@@ -53,7 +61,11 @@ export default function Item({ props }) {
     modified,
     available,
     temporal,
+    temporalResolution,
     spatial,
+    spatialResolution,
+
+    access,
 
     projectPartner,
     projectContact,
@@ -64,6 +76,8 @@ export default function Item({ props }) {
 
   const itemType = type && type[0]
   const ItemMeta = ItemTypes[itemType]
+
+  console.log(location.href)
 
   return <article id="dataset" className="Item body">
 
@@ -96,8 +110,9 @@ export default function Item({ props }) {
       theme,
     })}
 
-    <a className='content feedback-btn' href="mailto:amsdatahub@ams-institute.org">Geef feedback</a>
-
+    <button className='button feedback-btn'>
+      <a href={href}>Submit feedback for this {type[0] || 'item'}</a>
+    </button>
   </article>
 
 }

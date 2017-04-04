@@ -1,9 +1,21 @@
 import React from 'react'
+import Li from '../Li'
 
 export default function ItemDataset({ data }) {
-  const { source } = data
+  const { access, sourceType, spatialResolution, temporalResolution, publisher, creator, contributor } = data
   return <section className='ItemDataset content'>
+
     <h1>Dataset</h1>
-    <a href={source} target='_blank'>Get this Tool</a>
+
+    <ul>
+      <Li header='Access Level' content={access}/>
+      <Li header='Source Type' content={sourceType}/>
+      <Li header='Spatial Resolution' content={spatialResolution}/>
+      <Li header='Temporal Resolution' content={temporalResolution}/>
+      <Li header='Publisher' content={publisher}/>
+      <Li header='Creator' content={creator}/>
+      <Li header='Contributors' content={contributor}/>
+    </ul>
+
   </section>
 }

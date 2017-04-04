@@ -23,12 +23,13 @@ export function mapMetadata(metadata) {
     'dc.description': 'description',
     'dc.description.abstract': 'description',
     'dcterms.abstract': 'description',
+    'dc.contributor': 'contributor',
 
     'dc.publisher': 'publisher',
     // 'dc.source': 'source',
     'dcat.downloadURL': 'source',
     
-    'dc.creator': 'author', 
+    'dc.creator': 'creator', 
     'dc.contributor.author': 'author',
 
     'dc.identifier.uri': 'dspace',
@@ -47,7 +48,9 @@ export function mapMetadata(metadata) {
     'dcterms.issued': 'issued',
     'dc.date.available': 'available',
     'dcterms.temporal': 'temporal',
+    'ams.temporalResolution': 'temporalResolution',
     'dcterms.spatial': 'spatial',
+    'rdfs.comment.spatialResolution': 'spatialResolution',
 
     'ams.projectPartner': 'projectPartner',
     'ams.projectMember': 'projectMember',
@@ -57,6 +60,9 @@ export function mapMetadata(metadata) {
     'ams.relatedDataset': 'relatedDataset',
     'ams.relatedProject': 'relatedProject',
     'ams.relatedPaper': 'relatedPaper',
+
+    'ams.accessLevel': 'access',
+    'ams.sourceType': 'sourceType',
 
   }
 

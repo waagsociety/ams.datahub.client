@@ -1,4 +1,5 @@
 import React from 'react'
+import Li from '../Li'
 
 export default function ItemProject({ data }) {
   
@@ -10,22 +11,10 @@ export default function ItemProject({ data }) {
     <h1>Project</h1>
     
     <ul>
-      <li>
-        <header>Project Leader</header>
-        { projectLeader.map((item, index) => <span key={index}>{item}</span>) }
-      </li>
-      <li>
-        <header>Project Partner</header>
-        { projectPartner.map((item, index) => <span key={index}>{item}</span>) }
-      </li>
-      <li>
-        <header>Project Duration</header>
-        { temporal.map((item, index) => <span key={index}>{item}</span>) }
-      </li>
-      <li>
-        <header>Geographical Focus Area</header>
-        { spatial.map((item, index) => <span key={index}>{item}</span>) }
-      </li>
+      <Li header='Project Leader' content={projectLeader}/>
+      <Li header='Project Partner' content={projectPartner}/>
+      <Li header='Project Duration' content={temporal}/>
+      <Li header='Geographical Focus Area' content={spatial}/>
     </ul>
 
     { source.length ? <a href={source} target='_blank'>Project Website</a> : null }

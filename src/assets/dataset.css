@@ -179,20 +179,23 @@ ul.authors li {
 .ItemProject h1{
   font-size: 1.2em !important;
 }
-.ItemProject ul {
+.ItemProject ul,
+.ItemDataset ul {
   padding-left: 0em;
   display: flex;
   border-bottom: 1px solid #ccc;
 }
 
-.ItemProject ul li {
+.ItemProject ul li,
+.ItemDataset ul li {
   line-height: 1.9;
   margin: 1em 0;
   margin-right: 50px;
 }
 
 
-.ItemProject ul li header{
+.ItemProject ul li header,
+.ItemDataset ul li header{
   text-transform: uppercase;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.5);
