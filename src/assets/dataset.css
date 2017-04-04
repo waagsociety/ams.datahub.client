@@ -183,15 +183,18 @@ ul.authors li {
   color: hsl(252, 50%, 48%);
 }
 
-.itemTool h1,
+.ItemTool h1,
 .ItemProject h1,
 .ItemDataset h1,
 .ItemPublication h1{
   font-size: 1.2em !important;
 }
 
+.ItemTool a {
+  font-weight: bold;
+  border-bottom: 2px solid;
+}
 
-.itemTool ul,
 .ItemPublication ul,
 .ItemProject ul,
 .ItemDataset ul {
@@ -200,7 +203,12 @@ ul.authors li {
   border-bottom: 1px solid #ccc;
 }
 
-.itemTool ul li,
+.ItemTool {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+
 .ItemPublication ul li,
 .ItemProject ul li,
 .ItemDataset ul li {
