@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function ItemInformation(dates, strings) {
+export default function ItemInformation(dates, strings, feedback) {
 
   const { created, modified, available } = dates
   const { temporal, license, keyword, theme } = strings
+  const { href, type } = feedback
 
   dates = [
     { name: "Created", value: created[0] },
@@ -27,23 +28,28 @@ export default function ItemInformation(dates, strings) {
         <header>{item.name}</header>
         {item.value}
       </li>)
-    }</ul> 
+    }</ul>
+
+
+    <button className='button feedback-btn'>
+      <a href={href}>Submit feedback for this {type[0] || 'item'}</a>
+    </button>
   </section>
 
 }
 
 function toMonthString(n) {
-  return [ 
-    'January', 
-    'February', 
-    'March', 
-    'April', 
-    'May', 
-    'June', 
-    'July', 
-    'August', 
-    'September', 
-    'October', 
+  return [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
     'November',
     'December'
   ][n]

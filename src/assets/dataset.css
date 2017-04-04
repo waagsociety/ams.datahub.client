@@ -110,11 +110,14 @@ p {
   border-bottom: 1px solid #eee;
   transition: transform .15s ease-out;
 }
+
 .button.close .fa{
   top: 0.02em;
   margin-right: 0.1em;
   position: relative;
 }
+
+
 .button.close:hover{
   cursor: pointer;
   color: hsl(252, 50%, 48%);
@@ -162,23 +165,34 @@ ul.authors li {
 }
 
 .feedback-btn {
-  background: red;
   padding: 1.1em;
   position: absolute;
   right: 0;
-  bottom: 0;
+  top: 0;
   display: inline-block;
-    padding: 0.75em 1em 0.9375em;
-    color: white;
-    margin: 1em 0 0;
-    text-decoration: none;
-    cursor: pointer;
-        background: linear-gradient(135deg, hsl(265, 70%, 66%), hsl(208, 70%, 66%));
+  padding: 0.75em 1em 0.9375em;
+  color: black;
+  border-left: 1px solid #eee;
+  border-top: 1px solid #eee;
+  text-decoration: none;
+  cursor: pointer;
+  transform: translateY(-100%);
 }
 
-.ItemProject h1{
+.feedback-btn:hover {
+  color: hsl(252, 50%, 48%);
+}
+
+.itemTool h1,
+.ItemProject h1,
+.ItemDataset h1,
+.ItemPublication h1{
   font-size: 1.2em !important;
 }
+
+
+.itemTool ul,
+.ItemPublication ul,
 .ItemProject ul,
 .ItemDataset ul {
   padding-left: 0em;
@@ -186,6 +200,8 @@ ul.authors li {
   border-bottom: 1px solid #ccc;
 }
 
+.itemTool ul li,
+.ItemPublication ul li,
 .ItemProject ul li,
 .ItemDataset ul li {
   line-height: 1.9;
@@ -193,7 +209,8 @@ ul.authors li {
   margin-right: 50px;
 }
 
-
+.itemTool ul li header,
+.ItemProject ul li header,
 .ItemProject ul li header,
 .ItemDataset ul li header{
   text-transform: uppercase;
@@ -209,6 +226,16 @@ ul.authors li {
 
 .panel .metadata.related li {
   margin-bottom: 1em !important;
+}
+
+.external.button {
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.5em 0 0.4375em;
+  margin: 1em;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 3px solid hsl(265, 70%, 66%);
 }
 
 .metadata header, .group h1 {

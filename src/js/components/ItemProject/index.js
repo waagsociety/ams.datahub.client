@@ -2,14 +2,14 @@ import React from 'react'
 import Li from '../Li'
 
 export default function ItemProject({ data }) {
-  
+
   const { source, projectLeader, projectPartner, temporal, spatial } = data
   console.log(source)
- 
+
   return <section className='ItemProject content'>
-    
+
     <h1>Project</h1>
-    
+
     <ul>
       <Li header='Project Leader' content={projectLeader}/>
       <Li header='Project Partner' content={projectPartner}/>

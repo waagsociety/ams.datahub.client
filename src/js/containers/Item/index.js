@@ -104,11 +104,7 @@ export default function Item({ props }) {
       license,
       keyword,
       theme,
-    })}
-
-    <button className='button feedback-btn'>
-      <a href={href}>Submit feedback for this {type[0] || 'item'}</a>
-    </button>
+    }, {href, type})}
   </article>
 
 }
