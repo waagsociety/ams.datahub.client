@@ -21,3 +21,5 @@ export ItemDataset from './ItemDataset'
 export ItemProject from './ItemProject'
 export ItemPublication from './ItemPublication'
 export ItemTool from './ItemTool'
+
+export ItemBody from './ItemBody'

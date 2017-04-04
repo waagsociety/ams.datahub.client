@@ -21,7 +21,7 @@ export default function ItemInformation(dates, strings) {
     { name: "Keywords", value: keyword.join(', ') },
   ].filter(item => !!item.value.length)
 
-  return <section className='datasetinformation'>
+  return <section className='ItemInformation content datasetinformation'>
     <ul className='metadata related'>{
       dates.concat(strings).map(item => <li key={item.name}>
         <header>{item.name}</header>

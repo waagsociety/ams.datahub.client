@@ -47,6 +47,7 @@ export function mapMetadata(metadata) {
     'dcterms.issued': 'issued',
     'dc.date.available': 'available',
     'dcterms.temporal': 'temporal',
+    'dcterms.spatial': 'spatial',
 
     'ams.projectPartner': 'projectPartner',
     'ams.projectMember': 'projectMember',

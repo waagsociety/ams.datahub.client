@@ -3,11 +3,13 @@ import { eventHandlers } from './events'
 import { mapMetadata } from './actions'
 import {
   ItemHeader,
+  ItemBody,
   ItemInformation,
   ItemDataset,
   ItemPublication,
   ItemProject,
   ItemTool,
+  ItemMeta,
 } from '../../components'
 
 const ItemTypes = {
@@ -24,6 +26,8 @@ export default function Item({ props }) {
   const { content } = store.dataset
 
   const size = Object.keys(content).length
+
+  console.log('content', content)
 
   const data = mapMetadata(Object.assign({
     'dc.title': 'Loading...',
@@ -49,6 +53,7 @@ export default function Item({ props }) {
     modified,
     available,
     temporal,
+    spatial,
 
     projectPartner,
     projectContact,
@@ -60,7 +65,7 @@ export default function Item({ props }) {
   const itemType = type && type[0]
   const ItemMeta = ItemTypes[itemType]
 
-  return <article id="dataset" className="body content">
+  return <article id="dataset" className="Item body">
 
     <button className="close button" type="button" onClick={closeItem}>
       <i className="fa fa-times" aria-hidden="true"></i> close
@@ -76,9 +81,9 @@ export default function Item({ props }) {
       reference
     })}
 
-    <section style={{ padding: '20px 40px' }}>
-    { ItemMeta ? <ItemMeta data={data}/> : null }
-    </section>
+    {ItemMeta ? <ItemMeta data={data}/> : null}
+
+    {ItemBody({ description, author, dspace, reference })}
 
     {ItemInformation({
       created,
@@ -91,7 +96,7 @@ export default function Item({ props }) {
       theme,
     })}
 
-    <a href="mailto:amsdatahub@ams-institute.org">Correcties, feedback</a>
+    <a className='content' href="mailto:amsdatahub@ams-institute.org">Correcties, feedback</a>
 
   </article>
 
