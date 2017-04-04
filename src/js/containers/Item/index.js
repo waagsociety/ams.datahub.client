@@ -41,6 +41,7 @@ export default function Item({ props }) {
     publicationType,
     description,
     publisher,
+    contributor,
 
     author,
     dspace,
@@ -53,7 +54,11 @@ export default function Item({ props }) {
     modified,
     available,
     temporal,
+    temporalResolution,
     spatial,
+    spatialResolution,
+
+    access,
 
     projectPartner,
     projectContact,
