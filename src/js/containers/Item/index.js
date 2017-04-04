@@ -34,7 +34,7 @@ export default function Item({ props }) {
   }, content))
 
   const {
-    
+
     title,
     type,
     source,
@@ -96,7 +96,7 @@ export default function Item({ props }) {
       theme,
     })}
 
-    <a className='content' href="mailto:amsdatahub@ams-institute.org">Correcties, feedback</a>
+    <a className='content feedback-btn' href="mailto:amsdatahub@ams-institute.org">Geef feedback</a>
 
   </article>
 

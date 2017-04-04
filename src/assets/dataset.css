@@ -20,7 +20,7 @@ article section {
   border-right: 1px solid #ddd;
 }
 
-#dataset section { 
+#dataset section {
   /*padding: 2.5em 40px 5em;*/
   margin: 0 auto;
   display: block;
@@ -30,10 +30,6 @@ article section {
 }
 #dataset .datasetbody{
   padding: 0 40px 2.5em;
-}
-.datasetinformation{
-  padding: 0 40px 2.5em;
-  /*box-shadow: inset 0 1px 0 0 rgba(192,192,192,0.4)*/
 }
 .datasetfooter{
   padding: 2.5em 40px 5em;
@@ -73,7 +69,7 @@ article section {
 }
 .metadata.related li{
   margin-bottom: 1em;
-  margin-right: 40px;
+  margin-right: 80px;
 }
 
 
@@ -89,15 +85,16 @@ article .tag {
   font-weight: 600;
   font-size: 200%;
   line-height: 1.2;
-  margin: 0 0 1em;
+  margin: 0 0 0.2em;
   padding-right: 2.5em;
 }
 
 p {
   max-width: 56em;
-  margin: 1em 0;
+  margin: 0 0 1em;
   font-size: 112.5%;
-  line-height: 1.6;
+  line-height: 1.8;
+  color: rgba(0,0,0,0.8)
 }
 
 .button.close {
@@ -135,14 +132,83 @@ header.datasetheader .button { margin-right: 1em }
   font-weight: normal;
 }
 
-#dataset section {
-  padding-top: 2.5em;
-}
-
 ul.authors li {
   /*display: inline-block;*/
 }
 
+.ItemDataset,
+.ItemBody,
+.ItemTool,
+.ItemProject,
+.ItemPublication {
+  padding: 1.5em 40px;
+}
 
 
+.datasetinformation{
+  padding: 1.5em 40px 4.5em;
+  /*box-shadow: inset 0 1px 0 0 rgba(192,192,192,0.4)*/
+}
 
+.ItemInformation {
+  background: rgba(0, 10, 10, 0.04);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.ItemInformation span {
+  line-height: 1.9;
+}
+
+.feedback-btn {
+  background: red;
+  padding: 1.1em;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: inline-block;
+    padding: 0.75em 1em 0.9375em;
+    color: white;
+    margin: 1em 0 0;
+    text-decoration: none;
+    cursor: pointer;
+        background: linear-gradient(135deg, hsl(265, 70%, 66%), hsl(208, 70%, 66%));
+}
+
+.ItemProject h1{
+  font-size: 1.2em !important;
+}
+.ItemProject ul {
+  padding-left: 0em;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.ItemProject ul li {
+  line-height: 1.9;
+  margin: 1em 0;
+  margin-right: 50px;
+}
+
+
+.ItemProject ul li header{
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 0.875em;
+  letter-spacing: 0.03em;
+}
+
+.panel .metadata.related {
+  padding: 20px 0;
+}
+
+.panel .metadata.related li {
+  margin-bottom: 1em !important;
+}
+
+.metadata header, .group h1 {
+  /*color: rgba(0, 0, 0, 0.5);*/
+  letter-spacing: 0.03em;
+}
