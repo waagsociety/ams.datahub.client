@@ -30,11 +30,9 @@ export default function Item({ props }) {
   const mailto = {
     address: 'amsdatahub@ams-institute.org',
     subject: 'AMS Datahub Feedback',
-    body: encodeURI(location.href),
+    source: encodeURI(location.href),
   }
-
-  const href = `mailto:${mailto.address}?subject=${mailto.subject}&body=${mailto.body}`
-  console.log(href)
+  const href = `mailto:${mailto.address}?subject=${mailto.subject} - ${mailto.source}`
 
   const data = mapMetadata(Object.assign({
     'dc.title': 'Loading...',
@@ -76,8 +74,6 @@ export default function Item({ props }) {
 
   const itemType = type && type[0]
   const ItemMeta = ItemTypes[itemType]
-
-  console.log(location.href)
 
   return <article id="dataset" className="Item body">
 
