@@ -59,7 +59,7 @@ export function mapMetadata(metadata) {
     
     'ams.relatedDataset': 'relatedDataset',
     'ams.relatedProject': 'relatedProject',
-    'ams.relatedPaper': 'relatedPaper',
+    'ams.relatedPublication': 'relatedPublication',
 
     'ams.accessLevel': 'access',
     'ams.sourceType': 'sourceType',

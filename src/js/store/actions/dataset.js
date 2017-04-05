@@ -23,6 +23,7 @@ export const dataset = {
     }).then(request => {
 
       const content = request.data.response.docs[0]
+      // console.log(content)
 
       if (content.withdrawn === 'true') {
         dispatch(dataset.loaded({ 'dc.title': "This item is no longer available." }))
@@ -75,14 +76,19 @@ export const dataset = {
       const queryRelated = pipe(literalQuery(handle), group(' OR '))(relatedFields)
     
       const inlineHandles = Object.keys(data).reduce((result, key) => {
-        if (~relatedFields.indexOf(key)) result.push(`"${data[key]}"`)
-        return result
-      }, [])
+        return ~relatedFields.indexOf(key)
+          ? result.concat(data[key])
+          : result
+      }, []).map(function(handle) {
+        return '"' + handle + '"'
+      })
+
 
       const queryHandles = listQuery('handle', ' OR ')(inlineHandles)
 
       const query = group(' OR ')([queryRelated, queryHandles])
 
+      console.log('(' + query + ') AND withdrawn:("false")')
       axios({
         url: domains.solr + query,
         method: 'get',
@@ -96,7 +102,7 @@ export const dataset = {
           if (handle !== item.handle && type in result) result[type].data.push(item)
           return result
         }, { 
-          publications: { title: 'Publications', data: [] }, 
+          publication: { title: 'Publications', data: [] }, 
           project: { title: 'Projects', data: [] },
           dataset: { title: 'Datasets', data: [] }, 
           tool: { title: 'Tools', data: [] },
