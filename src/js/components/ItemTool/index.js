@@ -1,8 +1,6 @@
 import React from 'react'
 import validUrl from 'valid-url'
 
-console.log(validUrl)
-
 export default function ItemTool({ data }) {
   
   const { source } = data

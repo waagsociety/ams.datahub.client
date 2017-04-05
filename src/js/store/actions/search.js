@@ -17,7 +17,7 @@ const fieldParameter = '&fl=' + fieldList + '&facet.field=' + fieldList + '&grou
 export const search = {
 
   fetch: dispatch => route => {
-        
+    
     const { hash, query } = route
 
     const method = 'get'
@@ -25,7 +25,7 @@ export const search = {
     const scope = (query.scope || ["ams"])[0]
 
     const filterAMS = scope === 'ams'
-      ? ' AND (location.coll:24 OR location.coll:22 OR location.coll:23 OR location.coll:30)'
+      ? ' AND (location.coll:31 OR location.coll:32 OR location.coll:33 OR location.coll:24 OR location.coll:23 OR location.coll:30)'
       : ''
 
     const searchQuery = `(${[      
