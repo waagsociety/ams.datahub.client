@@ -3,8 +3,7 @@ import React from 'react'
 export default function ItemBody({ description, author, dspace, reference }) {
 
   return <section className='ItemBody content'>
-    {Authors(author)}
-
+    
     {description.map((text, index) => <p key={index}>{text}</p>)}
 
     {dspace.map((link, index) => 

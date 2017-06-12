@@ -2,7 +2,6 @@ export function getItemType(content) {
 
   const { metadata } = content
   const key = 'dcterms.type'
-
   if (metadata) { 
     const value = (metadata.find(item => item.key === key) || {}).value
     if (value) return value.toLowerCase()
@@ -31,6 +30,7 @@ export function mapMetadata(metadata) {
     
     'dc.creator': 'creator', 
     'dc.contributor.author': 'author',
+    'author': 'author',
 
     'dc.identifier.uri': 'dspace',
     'dcat.landingPage': 'reference',

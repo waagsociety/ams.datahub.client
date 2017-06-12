@@ -23,11 +23,12 @@ export const dataset = {
     }).then(request => {
 
       const content = request.data.response.docs[0]
-      // console.log(content)
-
+      console.log(content)
+      
       if (content.withdrawn === 'true') {
         dispatch(dataset.loaded({ 'dc.title': "This item is no longer available." }))
         dispatch(dataset.fetchRelated(dispatch)(content))
+
       }
       else {
         dispatch(dataset.loaded(content))
@@ -87,8 +88,6 @@ export const dataset = {
       const queryHandles = listQuery('handle', ' OR ')(inlineHandles)
 
       const query = group(' OR ')([queryRelated, queryHandles])
-
-      console.log('(' + query + ') AND withdrawn:("false")')
       axios({
         url: domains.solr + query,
         method: 'get',

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ItemHeader({ title, type, publisher, author, description, dspace, reference }) {
+export default function ItemHeader({ title }) {
 
   return <header className='ItemHeader content datasetheader'>
 

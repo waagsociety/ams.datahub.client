@@ -9,7 +9,6 @@ export default function ItemTool({ data }) {
   return <section className='ItemTool content'>
     
     <h1>Tool</h1>
-    
     { sources.length ? <a href={sources[0]} target='_blank'>Get this Tool</a> : null }
 
   </section>

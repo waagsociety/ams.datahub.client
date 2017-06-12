@@ -2,7 +2,14 @@
 html { color: #eee }
 html { background: #000 }
 
+article { background-color: #aaa }
+
 .content { color: #000 }
+.content { background-color: #fff }
+
+article {
+  background-color: gray
+}
 
 #app {
   overflow: hidden;

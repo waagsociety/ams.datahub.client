@@ -9,7 +9,6 @@ import {
   ItemPublication,
   ItemProject,
   ItemTool,
-  ItemMeta,
 } from '../../components'
 
 const ItemTypes = {
@@ -24,7 +23,7 @@ export default function Item({ props }) {
   const { store } = props
   const { closeItem } = eventHandlers(props)
   const { content } = store.dataset
-
+  
   const size = Object.keys(content).length
 
   const mailto = {
@@ -81,15 +80,7 @@ export default function Item({ props }) {
       <i className="fa fa-times" aria-hidden="true"></i> close
     </button>
 
-    {ItemHeader({
-      title,
-      type,
-      publisher,
-      description,
-      author,
-      dspace,
-      reference
-    })}
+    {ItemHeader({ title })}
 
     {ItemMeta ? <ItemMeta data={data}/> : null}
 

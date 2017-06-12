@@ -53,7 +53,7 @@ export default function ResultList({ props }) {
 
         return <li className={isActive ? 'active' : ''} key={handle}>
           <h1>{title}</h1>
-          <a href={`#handle=${handle}`} onClick={viewData(handle)} className='primary button'>View {type}</a>
+          <a href={`#handle=${handle}`} onClick={viewData(handle)} className='primary button'>View {type} description</a>
         </li>
       }) }</ul>
       
