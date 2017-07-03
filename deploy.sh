@@ -6,9 +6,9 @@ APP_GIT_DIR=/home/nathan/ams.datahub.client
 PRODUCTION_DIR=${DEST_DIR}
 STAGING_DIR=${PRODUCTION_DIR}/beta
 
-tar czf ${DEST_DIR} ${AMS_CLIENT_BACKUP}
+tar czf ${AMS_CLIENT_BACKUP} ${DEST_DIR}
 
-if [ "$1 " == "beta" ]
+if [ "${1} " = "beta " ]
 then
 	CURBY_DEST_DIR=${STAGING_DIR}
 else
