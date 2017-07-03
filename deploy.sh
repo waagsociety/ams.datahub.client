@@ -32,7 +32,13 @@ fi
 
 cd -
 
-COPY_NOT="content|README"
+if [ -d "${CURBY_DEST_DIR}/content" ]
+then
+	COPY_NOT="content|README"
+else
+	COPY_NOT="README"
+fi
+
 MY_FILES="$(ls  ${CURBY_GIT_DIR} | grep -vE "${COPY_NOT}")"
 
 for i in ${MY_FILES}
