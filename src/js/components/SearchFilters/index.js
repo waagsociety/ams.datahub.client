@@ -6,7 +6,7 @@ export default function SearchFilters({ props }) {
   const { search, view, route } = props.store
   const { focus } = view.FilterGroup
   const { metadata = [] } = search
-  const className = [ 'content tags' ].join(' ')
+  const className = ['content tags'].join(' ')
   const showSearchTag = view.SearchInput.value || search.active
 
   const focusMetadata = focus && metadata.filter(group => group.key === focus)
@@ -20,8 +20,10 @@ export default function SearchFilters({ props }) {
       <h1>Search</h1>
       <SearchTag props={props} />
     </section>
-    { metadata.filter(({ tags }) => !!Object.keys(tags).length).map(group =>
-      <SearchFiltersGroup key={group.key} props={props} content={group}/>) 
+    { metadata.map(group => {
+        return <SearchFiltersGroup key={group.key} props={props} content={group}/>
+      }) 
+
     }
   </div>
 

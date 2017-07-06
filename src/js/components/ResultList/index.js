@@ -6,12 +6,11 @@ import { resultsPerPage, initialResults } from '../../config'
 export default function ResultList({ props }) {
 
   const { search, route } = props.store
-  const { content } = search
+  const { content, loading } = search
   const { results, handle } = route.query
-  const { docs = [], numFound = 0, loading } = content
+  const { length } = content
   const { viewData, showAll, skipPage, closeResults } = eventHandlers(props)
-  
-  const pageCount = Math.ceil(numFound / resultsPerPage)
+  const pageCount = Math.ceil(length / resultsPerPage)
   const multiplePages = pageCount > 1
 
   let page = parseInt(results && results[0]) || 1
@@ -20,9 +19,9 @@ export default function ResultList({ props }) {
   const limit = ((page - 1) * resultsPerPage) + resultsPerPage || initialResults
   const expand = true //page && !props.store.dataset.active
 
-  const title = loading && 'Loading' || numFound + ' Results found'
-  const viewMore = numFound > initialResults
-  const moreCount = viewMore ? numFound - initialResults : numFound
+  const title = loading && 'Loading' || length + ' Results found'
+  const viewMore = length > initialResults
+  const moreCount = viewMore ? length - initialResults : length
   const moreText = viewMore ? `View ${moreCount} more results` : 'Expand result list'
   const loadClass = loading && 'loading'
   const expandClass = expand ? 'expanded' : ''
@@ -30,7 +29,7 @@ export default function ResultList({ props }) {
 
   const className = [ expandClass, loadClass, paginationClass, 'container floating secondary panel' ].join(' ')
 
-  const data = docs.slice(start, limit)
+  const data = content.slice(start, limit)
   const activeHandle = handle && parseInt(handle[0])
 
   const pageInput = <label className='pagenumber'>
@@ -46,12 +45,11 @@ export default function ResultList({ props }) {
 
       <ul>{ data.map((item, i) => {
         const title = item['title'] || "Untitled"
-        // const id = item['search.resourceid']
         const handle = item['handle']
         const type = item['dcterms.type'] || "item"
         const isActive = handle === activeHandle
 
-        return <li className={isActive ? 'active' : ''} key={handle}>
+        return <li className={isActive ? 'active' : ''} key={handle || Date.now()}>
           <h1>{title}</h1>
           <a href={`#handle=${handle}`} onClick={viewData(handle)} className='primary button'>View {type} description</a>
         </li>

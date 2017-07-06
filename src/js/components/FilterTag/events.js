@@ -4,6 +4,7 @@ export const eventHandlers = ({ dispatch, store }, payload) => ({
 
   toggleActivity({ target }) {
 
+
     const { query } = store.route
     const { key, value } = payload
     

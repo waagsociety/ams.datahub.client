@@ -1,10 +1,11 @@
 import React from 'react'
 import { eventHandlers } from './events'
 
-export default function FilterTag({ props, content }) {
+export default function FilterTag({ props, item, content }) {
 
   const { route } = props.store
-  const { key, value, name, count } = content
+  const { label, count } = item
+  const { key, value, name } = content
   const { toggleActivity } = eventHandlers(props, content)
   const { query } = route
 
@@ -14,7 +15,7 @@ export default function FilterTag({ props, content }) {
 
   const className = `tag ${active ? 'active' : ''}`
 
-  return <label className={className} style={getCountPadding(count)} title={value}>
+  return <label className={className} style={getCountPadding(count)} title={label}>
     <input type='checkbox' name={name} value={value} checked={active} onChange={toggleActivity}/>
     <svg viewBox='0 0 18 18'><path d="M9,5 v8 M5,9 h8" /></svg>
     {value}

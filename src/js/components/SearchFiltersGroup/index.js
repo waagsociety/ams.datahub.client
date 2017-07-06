@@ -5,22 +5,25 @@ import { eventHandlers } from './events'
 
 export default function SearchFilterGroup({ props, content }) {
 
-  const { name, key, tags } = content
+  const { name, key, tags, data } = content
   const { FilterGroup, SearchInput } = props.store.view
   const { focus } = FilterGroup
   const { value } = SearchInput
   const { focusGroup } = eventHandlers(props)
   const pattern = focus && value && new RegExp(value, 'i')
 
-  const tagData = Object.keys(tags)
-  const amount = tagData.length
+  const tagData = data
+  const amount = data.length
 
-  const sortedTagData = tagData.sort((a, b) => tags[a] < tags[b] ? 1 : -1 )
-  const slicedTagData = sortedTagData.slice(0, focus ? sortedTagData.length : initialFiltersPerGroup)
+
+
+  const slicedTagData = tagData.slice(0, focus ? tagData.length : initialFiltersPerGroup)
   const filteredTagData = focus && value 
-    ? slicedTagData.filter(tag => pattern.test(tag)) 
+    ? slicedTagData.filter(tag => pattern.test(tag.label)) 
     : slicedTagData
-  const moreTags = sortedTagData.length < tagData.length
+  // const moreTags = sortedTagData.length < tagData.length
+
+  // console.log(filteredTagData)
 
   return <section className='group'>
     { focus ? <button className='close' type='button' value='' onClick={focusGroup}>
@@ -28,8 +31,8 @@ export default function SearchFilterGroup({ props, content }) {
     </button> : [] }
     <h1>{name}</h1>
     <ul>{ 
-      filteredTagData.filter(hasContents).map((value, i) => <li key={i}>
-        <FilterTag props={props} content={{ name, key, value, count: tags[value] }}/>
+      filteredTagData.map(item => <li key={item.value}>
+        <FilterTag props={props} item={item} content={{ value: item.value, name, key }}/>
       </li>)
     }</ul>
     { amount > initialFiltersPerGroup && !focus
@@ -42,4 +45,4 @@ export default function SearchFilterGroup({ props, content }) {
 
 }
 
-const hasContents = value => !!value
+const hasContents = value => !!value.label
