@@ -27,7 +27,7 @@ export default function Item({ props }) {
   const size = Object.keys(content).length
 
   const mailto = {
-    address: 'datahub@ams-institute.org',
+    address: 'datasteward@ams-institute.org',
     subject: 'AMS Datahub Feedback',
     source: encodeURI(location.href),
   }
